@@ -1,0 +1,9 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Poppins";
+    src: url("./fonts/Poppins-Regular.ttf");
+}
