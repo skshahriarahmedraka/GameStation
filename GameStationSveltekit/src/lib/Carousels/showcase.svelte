@@ -45,6 +45,6 @@ let showCaptions=false
 
 
   
-  <div class="max-w-4xl">
-    <CarouselTransition {images} loop transitionType="fade" transitionParams="{{ duration: 1000 }}" {showCaptions} {showThumbs} duration="3000" />
+  <div class="max-w-4xl ">
+    <CarouselTransition {images} loop transitionType="fade" transitionParams={{ duration: 1000 }} {showCaptions} {showThumbs} duration="3000" />
   </div>

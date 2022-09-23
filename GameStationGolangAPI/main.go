@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	// "app/config"
-	"app/controller"
+	"app/config"
+	// "app/controller"
 	"app/middleware"
 	"app/router"
 
@@ -18,7 +18,7 @@ import (
 func init(){
 
 	// LOAD ENVIRONMENT VARIABLES
-	// config.LoadEnvironmentVar()
+	config.LoadEnvironmentVar()
 
 }
 
@@ -35,20 +35,23 @@ func main() {
 	r := gin.New()
 	r.Use(gin.Logger())
 
-	// USER ROUTE HANDLER
-	router.UserRoutes(r)
+	// ROUTE WITHOUT AUTHENTICATION
+	router.RouteWithoutAuth(r)
 
+	// AUTHENTICATION
 	r.Use(middleware.Authentication())
 
-	r.GET("/addtocart", controller.AddtoCart())
-	r.GET("/removeitem", controller.Removeitem())
-	r.GET("/listcart", controller.GetItemFromCart())
-	r.POST("/addaddress", controller.Addaddress())
-	r.POST("/edithomeaddress", controller.Edithomeaddress())
-	r.POST("/editworkaddresss", controller.Edithomeaddress())
-	r.GET("/deleteaddress", controller.Deleteaddress())
-	r.GET("/cartchackout", controller.Cartcheckout())
-	r.GET("/instantbuy", controller.Instantbuy())
+	// ROUTE ACCESSABLE AFTER AUTHENTICATION
+	router.RouteWithAuth(r)
+	// r.GET("/addtocart", controller.AddtoCart())
+	// r.GET("/removeitem", controller.Removeitem())
+	// r.GET("/listcart", controller.GetItemFromCart())
+	// r.POST("/addaddress", controller.Addaddress())
+	// r.POST("/edithomeaddress", controller.Edithomeaddress())
+	// r.POST("/editworkaddresss", controller.Edithomeaddress())
+	// r.GET("/deleteaddress", controller.Deleteaddress())
+	// r.GET("/cartchackout", controller.Cartcheckout())
+	// r.GET("/instantbuy", controller.Instantbuy())
 
 	log.Println("Server is started in PORT 8001 ...👨‍💻 ")
 	if e := r.Run(os.Getenv("HOST") + ":" + os.Getenv("PORT")); e != nil {

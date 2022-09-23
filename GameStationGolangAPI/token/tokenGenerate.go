@@ -1,7 +1,7 @@
 package token
 
 import (
-	"app/errors"
+	"app/LogError"
 	"app/model"
 	"fmt"
 	"os"
@@ -25,19 +25,23 @@ func TokenGenerate(email, firstName, lastName, UID string) (string, string, erro
 	}
 
 	RefreshClaims := model.SignDetails{
+		Email:     email,
+		FirstName: firstName,
+		LastName:  lastName,
+		UID:       UID,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Local().Add(time.Hour * time.Duration(168)).Unix(),
 		},
 	}
 	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString([]byte(os.Getenv("JWT_SECRET")))
-	errors.ERROR("🚀 ~ file: tokenGenerate.go ~ line 29 ~ funcTokenGenerater ~ err : ", err)
+	LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 29 ~ funcTokenGenerater ~ err : ", err)
 
 	if err != nil {
 		return "", "", err
 	}
 
 	refreshtoken, err := jwt.NewWithClaims(jwt.SigningMethodHS256, RefreshClaims).SignedString([]byte(os.Getenv("JWT_REFRESH_SECRET")))
-	errors.ERROR("🚀 ~ file: tokenGenerate.go ~ line 37 ~ funcTokenGenerater ~ err : ", err)
+	LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 37 ~ funcTokenGenerater ~ err : ", err)
 	if err != nil {
 		return "", "", err
 	}
@@ -48,7 +52,7 @@ func ValidateJWT(s string) (claims *model.SignDetails, msg string) {
 	token, err := jwt.ParseWithClaims(s, &model.SignDetails{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(os.Getenv("JWT_SECRET")), nil
 	})
-	errors.ERROR("🚀 ~ file: tokenGenerate.go ~ line 45 ~ token,err:=jwt.ParseWithClaims ~ err : ", err)
+	LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 45 ~ token,err:=jwt.ParseWithClaims ~ err : ", err)
 
 	if err != nil {
 		msg = err.Error()
@@ -71,7 +75,7 @@ func ValidateRefreshJWT(s string) (claims *model.SignDetails, msg string) {
 	token, err := jwt.ParseWithClaims(s, &model.SignDetails{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(os.Getenv("JWT_REFRESH_SECRET")), nil
 	})
-	errors.ERROR("🚀 ~ file: tokenGenerate.go ~ line 68 ~ token,err:=jwt.ParseWithClaims ~ err : ", err)
+	LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 68 ~ token,err:=jwt.ParseWithClaims ~ err : ", err)
 
 	if err != nil {
 		msg = err.Error()
@@ -99,7 +103,7 @@ func UpdateAllToken(signedtoken string, refreshtoken string, userid string){
 	updateObj=append(updateObj, bson.E{Key:"refreshToken",Value:refreshtoken})
 	updatedAt,err:= time.Parse(time.RFC3339,time.Now().Format(time.RFC3339))
     fmt.Println("🚀 ~ file: tokenGenerate.go ~ line 99 ~ funcUpdateAllToken ~ updatedAt : ", updatedAt)
-    errors.ERROR("🚀 ~ file: tokenGenerate.go ~ line 99 ~ funcUpdateAllToken ~ err : ", err)
+    LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 99 ~ funcUpdateAllToken ~ err : ", err)
 	if err!=nil {
 		return
 	}

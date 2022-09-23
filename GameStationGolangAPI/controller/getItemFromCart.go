@@ -7,8 +7,8 @@ import (
 )
 
 
-func GetItemFromCart() gin.HandlerFunc {
+func (H *DatabaseCollections)GetItemFromCart() gin.HandlerFunc {
 	return func(c *gin.Context){
-		c.JSON(http.StatusOK,"GetItemFromCart ok !!!")
+		c.JSON(http.StatusOK,"listcart ok !!!")
 	}
 }

@@ -8,11 +8,11 @@ import (
 
 type User struct {
 	ID        primitive.ObjectID `json:"_id" bson:"_id"`
-	UserID      string        `json:"userid"`
+	UserID    string             `json:"userid"`
 	FirstName string             `json:"firstname" validate:"required,min=3,max=30"`
-	LastName  string             `json:"lastlame" validate:"required,min=2,max=30"`
+	LastName  string             `json:"lastname	" validate:"required,min=2,max=30"`
 	Email     string             `json:"email" validate:"required,min=2,max=40"`
-	Password  string             `json:"password" validate:"required.min=3,max=50"`
+	Password  string             `json:"password" validate:"required,min=3,max=50"`
 	Mobile    string             `json:"mobile"`
 	// Token 	*string 	`json:"token"`
 	// RefreshToken *string `json:"refreshtoken"`
@@ -25,10 +25,50 @@ type User struct {
 
 type Product struct {
 	ProductID   primitive.ObjectID `json:"_id" bson:"_id"`
-	ProductName *string            `json:"productname" bson:"productname"`
-	Price       *uint64            `json:"price" bson:"price"`
-	Rating      *uint8             `json:"rating" bson:"rating"`
-	Image       *string            `json:"image" bson:"image"`
+	ProductName string             `json:"productname" bson:"productname"`
+	// Price       int                `json:"price" bson:"price"`
+	Rating      int                `json:"rating" bson:"rating"`
+	// Image       string             `json:"image" bson:"image"`
+	//
+	GameID string `json:"" bson:""`
+	Name        string `json:"" bson:""`
+	Price string `json:"" bson:""`
+	LogoImage   string `json:"logoimage" bson:"logoimage"`
+	BigPoster   string `json:"" bson:""`
+	SmallPoster string `json:"" bson:""`
+	Moto        string `json:"" bson:""`
+	Genres      []string `json:"" bson:""`
+	Feature     []string `json:"" bson:""`
+	Description string `json:"" bson:""`
+	FollowUs    struct {
+		Site     string `json:"" bson:""`
+		Facebook string `json:"" bson:""`
+		Discord  string `json:"" bson:""`
+		Twitter  string `json:"" bson:""`
+	} `json:"followus" bson:"followus"`
+	// Rating int
+	StudioReview struct {
+		PcGamer string `json:"" bson:""`
+		GameInformer string `json:"" bson:""`
+		IGN string `json:"" bson:""`
+	} `json:"" bson:""`
+	MinimumSpec map[string]string `json:"" bson:""`
+	RecommendedSpec map[string]string `json:"" bson:""`
+	SupportedLang []string `json:"" bson:""`
+
+	Developer string `json:"" bson:""`
+	Publisher string `json:"" bson:""`
+	InitialRelease string `json:"" bson:""`
+	SupportedPlatform string `json:"" bson:""`
+	
+
+}
+
+type SocialFollow struct {
+	Site     string
+	Facebook string
+	Discord  string
+	Twitter  string
 }
 
 type UserProduct struct {

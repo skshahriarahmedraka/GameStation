@@ -29,7 +29,7 @@
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"flowbite": "^1.5.3",
-		"flowbite-svelte": "^0.26.18",
+		"flowbite-svelte": "^0.26.28",
 		"postcss": "^8.4.16",
 		"postcss-load-config": "^4.0.1",
 		"prettier": "^2.7.1",
@@ -46,6 +46,7 @@
 	"type": "module",
 	"dependencies": {
 		"@tailwindcss/line-clamp": "^0.4.2",
+		"daisyui": "^2.31.0",
 		"tailwindcss-question-mark": "^0.1.1"
 	}
 }

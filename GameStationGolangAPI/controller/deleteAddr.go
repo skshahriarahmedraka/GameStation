@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Deleteaddress() gin.HandlerFunc {
+func (H *DatabaseCollections)Deleteaddress() gin.HandlerFunc {
 	return func(c *gin.Context){
 		c.JSON(http.StatusOK,"Deleteaddress !!! ")
 	}

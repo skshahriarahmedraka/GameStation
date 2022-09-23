@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Edithomeaddress()gin.HandlerFunc {
+func (H *DatabaseCollections)Edithomeaddress()gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.JSON(http.StatusOK,"Edithomeaddress ok !!!! ")
 	}

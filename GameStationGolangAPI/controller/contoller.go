@@ -1,10 +1,26 @@
-package controller
+// package controller
+
+// import (
+// 	"app/database"
+
+// 	"go.mongodb.org/mongo-driver/mongo"
+// )
+
+// var UserCollection *mongo.Collection=database.UserDatabase(database.Client,"usercoll")
+// var ProductCollection *mongo.Collection=database.ProductDatabase(database.Client,"productcoll")
+
+package controller 
+
 
 import (
-	"app/database"
+
 
 	"go.mongodb.org/mongo-driver/mongo"
+	// "gorm.io/gorm"
 )
 
-var UserCollection *mongo.Collection=database.UserDatabase(database.Client,"usercoll")
-var ProductCollection *mongo.Collection=database.ProductDatabase(database.Client,"productcoll")
+type DatabaseCollections struct {
+	Mongo *mongo.Database
+	// Postgres *gorm.DB 
+}
+

@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Addaddress() gin.HandlerFunc {
+func (H *DatabaseCollections)Addaddress() gin.HandlerFunc {
 	return func(c *gin.Context){
 		c.JSON(http.StatusOK,"Addaddress ok !!!")
 	}

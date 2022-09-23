@@ -7,7 +7,7 @@ import (
 )
 
 
-func UserSearch() gin.HandlerFunc {
+func (H *DatabaseCollections)UserSearch() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.JSON(http.StatusOK,"UserSearch ok...")
 	}

@@ -23,7 +23,7 @@ import Nav from "$lib/navbar/nav.svelte";
     /* your styles go here */
 </style>
 
-<div class=" min-h-screen min-w-full bg-[#121212] flex flex-col gap-5">
+<div class=" min-h-screen max-h-fit w-full bg-[#121212] flex flex-col gap-5 overflow-hidden">
     <Nav />
    
 	<div class=" w-full h-fit flex flex-row justify-center gap-2">

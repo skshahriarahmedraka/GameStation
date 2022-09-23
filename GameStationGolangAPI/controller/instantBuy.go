@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Instantbuy() gin.HandlerFunc {
+func (H *DatabaseCollections)Instantbuy() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.JSON(http.StatusOK,"Instantbuy ok !!! ")
 	}
