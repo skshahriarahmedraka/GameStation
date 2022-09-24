@@ -4,8 +4,8 @@
     // 
 
 	import ImageShow from "$lib/Carousels/imageShow.svelte";
-import Showcase from "$lib/Carousels/showcase.svelte";
-import Blog from "$lib/cards/midCard.svelte";
+import Showcase from "$lib/Carousels/showcase.txt";
+import Blog from "$lib/cards/midCard.txt";
 import Nav from "$lib/navbar/nav.svelte";
 	import Smallcard from "$lib/cards/smallcard.svelte";
 	import MostPopular from "$lib/HomeCatagoris/MostPopular.svelte";

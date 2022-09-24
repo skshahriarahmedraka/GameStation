@@ -1,25 +1,34 @@
 <script lang="ts">
 	import GameProfile from '$lib/cards/gameProfile.svelte';
-	import Showcase from '$lib/Carousels/showcase.svelte';
+	import Showcase from '$lib/Carousels/showcase.txt';
 	// import Showcase from "$lib/Carousels/showcase.svelte";
 	import Daisyui1 from '$lib/Carousels/daisyui1.svelte';
-	import RatingsStar from '$lib/logo/ratingsStar.svelte';
+	import RatingsStar from '$lib/logo/ratingsStar.txt';
 	import Rating3 from '$lib/logo/rating4.svelte';
 
 	const anthem = new URL('../images/anthem.jpg', import.meta.url).href;
 	const fifa = new URL('../images/fifa.png', import.meta.url).href;
 	const forbiddenwest = new URL('../images/forbiddenwest.jpg', import.meta.url).href;
 	const war = new URL('../images/GodOfWar.jpg', import.meta.url).href;
+	import Youtube from '$lib/svgs/youtube.svelte';
 	import { Carousel, CarouselTransition } from 'flowbite-svelte';
 	import Game from '$lib/logo/game.svelte';
+	import Peoples from '$lib/svgs/Peoples.svelte';
+	import Fb from '$lib/foot/icons/fb.svelte';
 	const syn1 = new URL('../../lib/images/assassinscreedsyndicate/1.jpg', import.meta.url).href;
 	const syn2 = new URL('../../lib/images/assassinscreedsyndicate/2.jpg', import.meta.url).href;
-	const syn3  = new URL('../../lib/images/assassinscreedsyndicate/3.jpg', import.meta.url).href;
+	const syn3 = new URL('../../lib/images/assassinscreedsyndicate/3.jpg', import.meta.url).href;
 	const syn4 = new URL('../../lib/images/assassinscreedsyndicate/4.jpg', import.meta.url).href;
 	const syn5 = new URL('../../lib/images/assassinscreedsyndicate/5.jpg', import.meta.url).href;
 	// const syn6 = new URL('../../lib/images/assassinscreedsyndicate/6.jpg', import.meta.url).href;
 	const syn7 = new URL('../../lib/images/assassinscreedsyndicate/7.jpg', import.meta.url).href;
+	import Discord from '../../lib/foot/icons/discord.svelte';
+	import { goto } from '$app/navigation';
 
+	// your script goes here
+
+	import Twitter from '$lib/foot/icons/twitter.svelte';
+	// import Game from '$lib/logo/game.svelte';
 
 	const images = [
 		{
@@ -49,26 +58,37 @@
 	];
 
 	let Gamedata = {
-        GameID:"1234",
+		GameID: '1234',
 		Name: "Assassin's Creed Syndicate",
 		Moto: 'London, 1868. In the heart of the Industrial Revolution, play as Jacob Frye - a brash and charismatic Assassin.',
 
-		LogoImage: "https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fassassins-creed-syndicate%2Fhome%2FACV_UCS12483_EGST_Logo_Color_1000x407-1000x407-48fad9206ee895c599365e2b7c5bebcab099bd26.png?h=270&resize=1&w=480",
-		BigPosterImage: 'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fassassins-creed-syndicate%2Fhome%2FACS-STD-2560x1440-635b7b6c86f18730071426375e7c4fe0bd831ddd.jpg',
-		SmallPosterImage: 'https://cdn1.epicgames.com/epic/offer/AC_Syndicate_Portrait-1280x1420-b74c2aa94670d9e97cc6ddab0a5d4dd0.png?h=854&resize=1&w=640',
-		
-        OtherImages: [syn1,syn2,syn3 ,syn4,syn5,syn7],
-        Genres: ['Action', 'RPG', 'Adventure'],
-		Feature: ['achivement', 'control', 'support'],
+		LogoImage:
+			'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fassassins-creed-syndicate%2Fhome%2FACV_UCS12483_EGST_Logo_Color_1000x407-1000x407-48fad9206ee895c599365e2b7c5bebcab099bd26.png?h=270&resize=1&w=480',
+		BigPosterImage:
+			'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fassassins-creed-syndicate%2Fhome%2FACS-STD-2560x1440-635b7b6c86f18730071426375e7c4fe0bd831ddd.jpg',
+		SmallPosterImage:
+			'https://cdn1.epicgames.com/epic/offer/AC_Syndicate_Portrait-1280x1420-b74c2aa94670d9e97cc6ddab0a5d4dd0.png?h=854&resize=1&w=640',
+
+		OtherImages: [syn1, syn2, syn3, syn4, syn5, syn7],
+		Genres: ['Action', 'RPG', 'Adventure'],
+		Feature: ['Single Player', 'Achivement', 'Control', 'Support'],
 		Description: `As Jacob Frye, a young and reckless Assassin, use your skills to help those trampled by the march of progress.
 Travel the city at the height of the Industrial Revolution and meet iconic historical figures. From Westminster to Whitechapel, you will come across Darwin, Dickens, Queen Victoria… and many more.
 As a gang leader, strengthen your stronghold and rally rival gang members to your cause, in order to take back the capital from the Templars’ hold.`,
-		FollowUs: { facebook: 'https://www.facebook.com/epicgames', discord: 'https://discord.com/app',youtube:"https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A", twitter: 'https://twitter.com/epicgames', site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate' },
+		FollowUs: {
+			facebook: 'https://www.facebook.com/epicgames',
+			discord: 'https://discord.com/app',
+			youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
+			twitter: 'https://twitter.com/epicgames',
+			site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
+		},
 		Rating: 9,
 		RatingGivenBy: {
-			'PC Gamer': "The Assassin’s Creed series has been running for eight years, and that kind of longevity doesn’t happen without taking a few risks. To combat fatigue, each entry attempts to punctuate the familiar with new elements. Not all of these experiments pay off, ",
-			IGN: "Syndicate smartly negotiates this internal conflict by dramatising it in the form of its twin playable characters, Evie and Jacob Frye. The former is a devout Assassin, intent on stopping the Templars by tracking down the remaining pieces of Eden. Her brother Jacob, however, is a pragmatist – a social reformer who rails against the Assassin’s burdensome legacy",
-			'Game Informer': "Syndicate moves Assassin's Creed forward with a solid new adventure, a beautiful London playground and a renewed sense of fun"
+			'PC Gamer':
+				'The Assassin’s Creed series has been running for eight years, and that kind of longevity doesn’t happen without taking a few risks. To combat fatigue, each entry attempts to punctuate the familiar with new elements. Not all of these experiments pay off, ',
+			IGN: 'Syndicate smartly negotiates this internal conflict by dramatising it in the form of its twin playable characters, Evie and Jacob Frye. The former is a devout Assassin, intent on stopping the Templars by tracking down the remaining pieces of Eden. Her brother Jacob, however, is a pragmatist – a social reformer who rails against the Assassin’s burdensome legacy',
+			'Game Informer':
+				"Syndicate moves Assassin's Creed forward with a solid new adventure, a beautiful London playground and a renewed sense of fun"
 		},
 		Minspec: {
 			OS: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)',
@@ -86,13 +106,29 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 			Storage: '200 GB',
 			'Sound Card': 'DirectX Compatible Sound Card with latest drivers'
 		},
-        Price: 34.55,
-        Discount: 25,
-        Developer: "Ubisoft",
-        Publisher:"Ubisoft",
-        Released: "02/20/20",
-        Platform:["windows","linux", "mac"]
+		Price: 34.55,
+		Discount: 25,
+		Developer: 'Ubisoft',
+		Publisher: 'Ubisoft',
+		Released: '02/20/20',
+		Platform: ['windows', 'linux', 'mac'],
+		Players: 23478238
 	};
+
+	function RoundNumOfPeople(x: number) {
+		if (x >= 1000000000) {
+			x /= 1000000000;
+			return String(x.toFixed(2)) + 'B';
+		} else if (x >= 1000000) {
+			x /= 1000000;
+			return String(x.toFixed(2)) + 'M';
+		} else if (x >= 1000) {
+			x /= 1000;
+			return String(x.toFixed(2)) + 'K';
+		} else {
+			return String(x);
+		}
+	}
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -100,29 +136,124 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 <div class=" flex h-fit w-full flex-row justify-center  gap-6  text-slate-100">
 	<div class="flex flex-col gap-3 ">
 		<p class=" text-5xl text-slate-100">{Gamedata.Name}</p>
-		<div class="">
+		<div class=" flex flex-row gap-4">
 			<Rating3 value={Gamedata.Rating} />
+			<Peoples class="h-6 w-6 stroke-blue-400" />
+			<p class=" -ml-2 text-lg">{RoundNumOfPeople(Gamedata.Players)}</p>
 		</div>
 		<div class="flex flex-row gap-3 ">
-			<div class="flex flex-col w-[1080px]">
+			<div class="flex w-[1080px] flex-col gap-4">
+				<!-- image show case -->
 				<Daisyui1 OtherImages={Gamedata.OtherImages} />
-                <p class=" text-2xl mt-4 ">{Gamedata.Moto}</p>
-                <div class="w-full mt-12">
-                    <!-- GENRE -->
-                    <div class="w-1/2 flex flex-col">
-                        <p class="">Genres</p>
-                        <div class="">
-
-                        </div>
-                    </div>
-                    <!-- features -->
-                    <div class="w-1/2"></div>
-                </div>
-
+				<p class=" text-2xl  ">{Gamedata.Moto}</p>
+				<!-- Genres and features -->
+				<div class="mt-12 flex w-full flex-row  font-Poppins">
+					<!-- GENRE -->
+					<div class="flex w-1/2 flex-col border-l-[1px] border-slate-400 border-opacity-30 p-3">
+						<p class=" font-normal text-gray-500">Genres</p>
+						<div class=" flex  flex-row gap-2 text-base">
+							{#each Gamedata.Genres as G}
+								<p class="">{G} ,</p>
+							{/each}
+						</div>
+					</div>
+					<!-- features -->
+					<div class="flex w-1/2 flex-col border-l-[1px] border-slate-400 border-opacity-30 p-3">
+						<p class=" font-normal text-gray-500">features</p>
+						<div class=" flex  flex-row gap-2 text-base">
+							{#each Gamedata.Feature as G}
+								<p class="">{G} ,</p>
+							{/each}
+						</div>
+					</div>
+				</div>
+				<!-- description -->
+				<div class=" flex flex-col ">
+					<p class=" text-xl font-semibold">Description :</p>
+					<p class="">
+						{Gamedata.Description}
+					</p>
+				</div>
+				<div class="flex flex-col gap-2 ">
+					<p class="text-xl font-semibold">Follow Us :</p>
+					<div class=" flex flex-row rounded-lg gap-5 justify-center bg-[#262626] py-3 ">
+						{#if Gamedata.FollowUs.facebook.trim() != ''}
+							<button class="">
+								<Fb class="h-7 w-7 fill-slate-200" />
+							</button>
+						{/if}
+						{#if Gamedata.FollowUs.youtube.trim() != ''}
+							<button class="">
+								<Youtube class="h-8 w-8 fill-slate-200" />
+							</button>
+						{/if}
+						{#if Gamedata.FollowUs.discord.trim() != ''}
+							<button class="">
+								<Discord class="h-8 w-8 fill-slate-200" />
+							</button>
+						{/if}
+						{#if Gamedata.FollowUs.twitter.trim() != ''}
+							<button class="">
+								<Twitter class="h-8 w-8 fill-slate-200" />
+							</button>
+						{/if}
+					</div>
+				</div>
+				<!-- Org Review -->
+				<p class="text-xl font-semibold">Organizations Review :</p>
+				<div class=" flex flex-row justify-around gap-2">
+					{#each Object.entries(Gamedata.RatingGivenBy) as [title, Value]}
+						<!-- content here -->
+						<div class="h-[300px] w-[250px] rounded-xl bg-[#262626] p-4  ">
+							<p class="border-b-[1px] border-gray-500  border-opacity-10 pb-2 text-lg ">{title}</p>
+							<p class=" pt-2 text-sm text-slate-400">{Value}</p>
+						</div>
+					{/each}
+				</div>
+				<!-- spec -->
+				<div class="flex flex-col rounded-md bg-[#262626] p-4">
+					<div class="flex h-16 w-full flex-row gap-4 ">
+						<p class=" text-lg underline ">Windows</p>
+						<p class="text-lg underline">Linux</p>
+						<p class="text-lg underline">Mac</p>
+					</div>
+					<div class="flex h-fit w-full flex-row justify-start rounded-md bg-opacity-50 ">
+						<div class=" flex  w-1/2 flex-col gap-4 ">
+							<p class=" text-lg font-semibold">Minimum Requirement :</p>
+							<div class=" flex flex-col gap-3 ">
+								{#each Object.entries(Gamedata.Minspec) as [title, Value]}
+									<div class="flex flex-col gap-1">
+										<p class=" text-gray-500">{title}</p>
+										<p class="">{Value}</p>
+									</div>
+								{/each}
+							</div>
+						</div>
+						<div class=" flex  w-1/2 flex-col gap-4 ">
+							<p class=" text-lg font-semibold">Recomended Requirement :</p>
+							<div class=" flex flex-col gap-3 ">
+								{#each Object.entries(Gamedata.Recomendedspec) as [title, Value]}
+									<div class="flex flex-col gap-1">
+										<p class=" text-gray-500">{title}</p>
+										<p class="">{Value}</p>
+									</div>
+								{/each}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<GameProfile LogoImage={Gamedata.LogoImage} Released={Gamedata.Released} Price={Gamedata.Price} Platform={Gamedata.Platform} Publisher={Gamedata.Publisher} Develper={Gamedata.Publisher} Discount={Gamedata.Discount} />
+			<GameProfile
+				LogoImage={Gamedata.LogoImage}
+				Released={Gamedata.Released}
+				Price={Gamedata.Price}
+				Platform={Gamedata.Platform}
+				Publisher={Gamedata.Publisher}
+				Develper={Gamedata.Publisher}
+				Discount={Gamedata.Discount}
+			/>
 		</div>
-        <div class=""></div>
+		<div class="" />
 	</div>
 	<!-- <Showcase /> -->
 </div>

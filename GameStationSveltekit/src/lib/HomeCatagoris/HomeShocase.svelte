@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ImageShow from '$lib/Carousels/imageShow.svelte';
-	import Showcase from '$lib/Carousels/showcase.svelte';
-	import Blog from '$lib/cards/midCard.svelte';
+	import Showcase from '$lib/Carousels/showcase.txt';
+	import Blog from '$lib/cards/midCard.txt';
 	import Nav from '$lib/navbar/nav.svelte';
 	import Smallcard from '$lib/cards/smallcard.svelte';
 	let mirage = new URL('../smallImages/mirage.jpg', import.meta.url).href;
