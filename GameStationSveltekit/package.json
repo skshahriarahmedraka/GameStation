@@ -21,6 +21,8 @@
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/typography": "^0.5.7",
+		"@types/minio": "^7.0.13",
+		"@types/uuid": "^8.3.4",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"autoprefixer": "^10.4.8",
@@ -28,8 +30,6 @@
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"flowbite": "^1.5.3",
-		"flowbite-svelte": "^0.26.28",
 		"postcss": "^8.4.16",
 		"postcss-load-config": "^4.0.1",
 		"prettier": "^2.7.1",
@@ -46,7 +46,10 @@
 	"type": "module",
 	"dependencies": {
 		"@tailwindcss/line-clamp": "^0.4.2",
+		"axios": "^0.27.2",
 		"daisyui": "^2.31.0",
-		"tailwindcss-question-mark": "^0.1.1"
+		"minio": "^7.0.32",
+		"tailwindcss-question-mark": "^0.1.1",
+		"uuid": "^9.0.0"
 	}
 }

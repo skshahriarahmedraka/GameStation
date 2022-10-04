@@ -17,6 +17,7 @@ func RouteWithAuth( r *gin.Engine){
 	r.GET("/removeitem", H.Removeitem())
 	r.GET("/listcart", H.GetItemFromCart())
 	r.POST("/addaddress", H.Addaddress())
+	
 	r.POST("/edithomeaddress", H.Edithomeaddress())
 	r.POST("/editworkaddresss", H.Edithomeaddress())
 	r.GET("/deleteaddress", H.Deleteaddress())

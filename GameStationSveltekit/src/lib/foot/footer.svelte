@@ -42,7 +42,7 @@
 					<p>Support-A-Creator</p>
 					<p>Distribute on Game Station</p>
 					<p>Careers</p>
-					<p>Company</p>
+					<p class="hover:font-bold underline hover:cursor-pointer " on:click="{()=>{goto('/addgame')}}">Add Game</p>
 				</div>
 				<div class=" flex flex-col">
 					<p>Fan Art Policy</p>

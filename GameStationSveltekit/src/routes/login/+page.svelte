@@ -128,9 +128,9 @@ import { goto } from "$app/navigation";
 				{/if}
 			</div>
 			<input
-				bind:value={LoginData['Email']}
+			bind:value={LoginData.Email}
 				type="text"
-				class=" mx-4 mt-2 h-12 w-[415px] self-center rounded-2xl border-2 border-[#24262b] bg-[#303338]  p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
+				class=" self-center h-12 w-[415px] p-2 text-lg font-medium text-[#98999e] outline-none focus:border-sky-500  bg-[#303338] border-2 mx-4 my-2 border-[#24262b]  active:border-gray-800 rounded-2xl "
 			/>
 			<div class="flex flex-row">
 				<div class=" ml-12 mt-2 self-start text-left text-base font-semibold text-gray-300 ">
@@ -157,7 +157,8 @@ import { goto } from "$app/navigation";
 			<input
 				bind:value={LoginData['Password']}
 				type="password"
-				class=" mx-4 mt-2 h-12 w-[415px] self-center rounded-2xl border-2 border-[#24262b] bg-[#303338]  p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
+				class=" self-center h-12 w-[415px] p-2 text-lg font-medium text-[#98999e] outline-none focus:border-sky-500  bg-[#303338] border-2 mx-4 my-2 border-[#24262b]  active:border-gray-800 rounded-2xl "
+
 			/>
 			<div class="mt-8 ml-4 text-center text-xs font-semibold text-gray-500">
 				By registering, you agree to Accord's <p
@@ -195,4 +196,12 @@ import { goto } from "$app/navigation";
 
 <style>
 	/* your styles go here */
+	input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #303338 inset !important;
+}
+
+
 </style>

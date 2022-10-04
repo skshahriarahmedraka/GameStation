@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{html,js,svelte,ts}',    "./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}",],
+	content: ['./src/**/*.{html,js,svelte,ts}',  ],
 		theme: {
 		extend: {
 			fontFamily:{
@@ -15,7 +15,6 @@ module.exports = {
 		require('@tailwindcss/aspect-ratio'),
 		require('@tailwindcss/forms'),
 		require('prettier-plugin-tailwindcss'),
-		require('flowbite/plugin'),
 		require("daisyui")	
 
 	],

@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import '../app.css';
-    import "flowbite/dist/flowbite.css";
+    // import "flowbite/dist/flowbite.css";
 	// 
 	import { page } from '$app/stores';
 	import Error1 from '$lib/Error/error1.svelte';

@@ -3,7 +3,7 @@
 	import Game from '$lib/logo/game.svelte';
 	import Search from '$lib/logo/Search.svelte';
 	import CartIcon from '$lib/svgs/cartIcon.svelte';
-	import Coin from '$lib/svgs/coin.svelte';
+	import Coin from '$lib/svgs/coin2.svelte';
 	import Profile from '$lib/svgs/profile.svelte';
 	import World from '$lib/svgs/world.svelte';
 	import { goto } from '$app/navigation';
@@ -60,7 +60,7 @@
 		News
 	</button>
 	<!-- search bar  -->
-	<div class="mx-2 flex justify-center  text-gray-200">
+	<div class="mx-2 flex justify-center  text-gray-200 font-Poppins">
 		<div class=" xl:w-[600px]">
 			<div class="  relative flex w-full flex-row items-stretch ">
 				<!-- search input -->
@@ -94,7 +94,7 @@
 	<div
 		class=" mx-1 flex h-[60%] w-fit flex-row items-center gap-2  rounded-2xl border-0 border-blue-500 bg-sky-300 bg-opacity-30 pr-2"
 	>
-		<Coin class="h-8 w-8" />
+		<Coin class="h-8 w-8 storke-[1px] stroke-yellow-300" />
 		<p class="text-slate-200 ">{826753}</p>
 	</div>
 	<div 	on:click={() => {
