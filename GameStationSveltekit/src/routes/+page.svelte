@@ -26,7 +26,7 @@ import Nav from "$lib/navbar/nav.svelte";
 <div class=" min-h-screen max-h-fit w-full bg-[#121212] flex flex-col gap-5 overflow-hidden">
     <Nav />
    
-	<div class=" w-full h-fit flex flex-row justify-center gap-2">
+	<div class=" w-full h-fit flex flex-row xl:flex-row justify-center gap-2 md:flex-col md:flex-wrap  ">
         <!-- showcase Images and small game cards -->
         <HomeShocase />
         

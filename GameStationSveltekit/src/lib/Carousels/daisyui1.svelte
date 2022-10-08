@@ -63,7 +63,7 @@ import {elasticIn, elasticOut } from 'svelte/easing';
 <div class="carousel aspect-[16/9] h-[600px]">
          <!-- content here -->
 
-         <div  transition:slide="{{ duration: 2000, easing:elasticOut}}"   id="slide1" class="carousel-item relative w-full">
+         <div  transition:slide="{{ duration: 1000, easing:elasticOut}}"   id="slide1" class="carousel-item relative w-full">
              <img    src="{OtherImages[ActiveIndex]}" alt="" class="w-full object-cover rounded-xl transition-all ease-linear duration-200" />
              <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                  <button on:click={()=>{ChangeActiveImageNagative()}} class="btn btn-circle">❮</button>

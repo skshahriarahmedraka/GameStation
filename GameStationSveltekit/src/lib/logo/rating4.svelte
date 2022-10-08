@@ -64,7 +64,7 @@
 			>
 		{/each}
 	{/if}
-    <p class="text-xl text-slate-200 font-semibold ml-2">{value/2}<p class="text-lg text-slate-200  ">/5<p></p>
+    <p class="text-xl text-slate-200 font-semibold ml-2">{value}<p class="text-lg text-slate-200  ">/10<p></p>
 </div>
 
 <style>

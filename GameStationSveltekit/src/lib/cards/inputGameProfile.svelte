@@ -8,32 +8,42 @@
 	import CameraPlus from '$lib/svgs/cameraPlus.svelte';
 	import Checked from '$lib/svgs/checked.svelte';
 	import axios from 'axios';
+	import  { createEventDispatcher } from 'svelte';
+
+	const dispatch= createEventDispatcher()
 
 	const mirageLogo = new URL('../images/mirageLogo.png', import.meta.url).href;
-	export let LogoImage: string;
-	export let Price: number = 0;
-	export let Discount: number = 25;
+	let ThisSmallPosterImage:any
+	let ThisLogoImage:any 
+	export let LogoImage: string=""
+	export let SmallPosterImage:string=""
+	export let Price: number ;
+	export let Discount: number ;
 	export let Develper: string = '';
 	export let Publisher: string = '';
 	export let Platform: string[] = ['', '', ''];
 	export let Released: string = '';
 	let avatar: any = '';
 	let FileInput: any;
+	let FileInput2: any;
 
 	const onFileSelected = (e: any) => {
 		let image = e.target.files[0];
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
+		let name =e.target.files[0].name
 		reader.onload = (e) => {
-			avatar = e.target?.result;
-			UploadImage(String(e.target?.result));
+			LogoImage = String(e.target?.result)
+			
+			UploadImage(String(e.target?.result),name);
 		};
 	};
 
-	async function UploadImage(img: string) {
-		const data = { img: '' };
+	async function UploadImage(img: string,name:string) {
+		const data = { img: '',name:"" };
 		const imgData = img.split(',');
 		data['img'] = imgData[1];
+		data["name"]=name 
 
 		// console.log(data);
 		const res = await fetch('/api/imgupload', {
@@ -47,47 +57,135 @@
 		});
 		const imgLink = await res.json();
 		console.log('🚀 ~ file: inputGameProfile.svelte ~ line 56 ~ UploadImage ~ imgLink', imgLink);
-		avatar=imgLink.Link 
+		LogoImage=imgLink.Link 
 	}
 
+	const onSmallPosterImageSelected = (e: any) => {
+		let image = e.target.files[0];
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		let name =e.target.files[0].name
+
+		reader.onload = (e) => {
+			SmallPosterImage = String(e.target?.result)
+			UploadSmallPosterImage(String(e.target?.result),name);
+		};
+	};
+
+	async function UploadSmallPosterImage(img: string,name:string) {
+		const data = { img: '',name:"" };
+		const imgData = img.split(',');
+		data['img'] = imgData[1];
+		data["name"]=name 
+		// console.log(data);
+		const res = await fetch('/api/imgupload', {
+			method: 'POST',
+			// mode: 'no-cors',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify(data)
+		});
+		if (res.status === 200) {
+			const imgLink = await res.json();
+			console.log("🚀 ~ file: inputGameProfile.svelte ~ line 85 ~ UploadSmallPosterImage ~ imgLink", imgLink)
+			SmallPosterImage=imgLink.Link 
+		}else {
+			
+			console.log("❌🔥 ~ file: inputGameProfile.svelte ~ line 91 ~ UploadSmallPosterImage ~ error")
+		}
+	}
+
+	// function upload(e: any) {
+	// 	const formData = new FormData();
+	// 	// formData.append('damName', value);
+	// 	formData.append('img', e.target.files[0]);
+	// 	const upload = fetch('/api/imgupload', {
+	// 		method: 'POST',
+	// 		// mode: 'no-cors',
+	// 		// credentials: 'include',
+
+	// 		// headers: {
+	// 		// 	"Content-type":"multipart/form-data",
+	// 		// 	// Accept: 'application/json'
+	// 		// },
+
+	// 		body: formData
+	// 	})
+	// 		.then((response) => {
+	// 			// console.log("🚀 ~ file: inputGameProfile.svelte ~ line 109 ~ .then ~ response.text()", response.json())
+	// 			return response.json();
+	// 		})
+	// 		.then((imgLink) => {
+	// 			console.log('Success:', imgLink);
+	// 			avatar=imgLink.Link 
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error('Error:', error);
+	// 		});
+	// }
 	
-	
 
 
-
+	// LogoImage=avatar
 	
 </script>
 
 <!-- markup (zero or more items) goes here -->
 
 <div class="flex  h-fit w-80 flex-col gap-3  ">
+	<p class="text-xl font-semibold">Logo Image :</p>
 	<div class=" relative  flex w-full flex-row justify-center ">
-		{#if avatar != ''}
+		{#if LogoImage != ''}
 			<!-- banner image -->
 			<img
-				src={avatar}
+				src={LogoImage}
+				bind:this={ThisLogoImage}
+				on:error={ ()=>{ThisLogoImage.src=LogoImage}}
 				alt="ProfileImage"
 				class=" aspect-[18/10]  w-full self-center rounded-lg object-contain "
 			/>
 		{:else}
-			<!-- banner image -->
-			<!-- <Accord_Default class="mt-6 aspect-[16/9]  w-[80%] object-contain   rounded-lg  bg-slate-600 " /> -->
-			<!-- <Bd class="mt-6 aspect-[16/9]  w-[80%] object-cover   rounded-lg  bg-slate-600 " />  -->
-			<!-- <Accord class="mt-6 w-[80%] aspect-[16/9] h-80 self-center rounded-lg object-fill bg-slate-600 " /> -->
-			<CameraPlus class="  h-56 w-56  stroke-1 " />
-			<!-- <img
-				src="{imgUrl}"
-				alt="ProfileImage"
-				class=" mt-6 aspect-[16/9] w-[80%]  self-center rounded-lg object-cover "
-			/> -->
+		<CameraPlus class="  h-56 w-56 rounded-xl stroke-slate-200 border-2 border-slate-200 transition-all ease-linear duration-150 hover:stroke-slate-500 hover:border-slate-500 stroke-[1px] hover:cursor-pointer" />
+			
+			<!-- <CameraPlus class="  rounded-xl  h-56 w-56 stroke-slate-200 stroke-[1px] border-2 border-slate-200 transition-all ease-linear duration-150 hover:stroke-slate-500 hover:border-slate-500  hover:cursor-pointer"   /> -->
+			
 		{/if}
 		<button class=" absolute   h-full   w-full self-end  " on:click={() => FileInput.click()}>
-			<!-- <img src="https://static.thenounproject.com/png/625182-200.png" alt="uploadImage" class=" h-28 w-28"> -->
-			<!-- banner camera logo -->
-			<!-- <Camera class="h-10 w-10 stroke-slate-100 stroke-1 opacity-50  hover:opacity-100" /> -->
+		
 			<input
 				bind:this={FileInput}
 				on:change={(e) => onFileSelected(e)}
+				type="file"
+				class=" hidden h-10 w-10 "
+				accept=".jpg, .jpeg, .png, .svg"
+			/>
+		</button>
+	</div>
+
+	<p class="text-xl font-semibold">Small Poster Image :</p>
+	<div class=" relative  flex w-full flex-row justify-center ">
+		{#if SmallPosterImage != ''}
+			<!-- banner image -->
+			<img
+				src={SmallPosterImage}
+				bind:this={ThisSmallPosterImage}
+				on:error={ ()=>{ThisSmallPosterImage.src=SmallPosterImage}}
+				alt="ProfileImage"
+				class=" aspect-[18/10]  w-full self-center rounded-lg object-contain "
+			/>
+		{:else}
+		<CameraPlus class=" h-56 w-56 rounded-xl  border-2 border-slate-200 transition-all ease-linear duration-150 hover:stroke-slate-500 hover:border-slate-500 stroke-[1px] hover:cursor-pointer" />
+
+			<!-- <CameraPlus class=" border-2 border-slate-400 rounded-xl  h-56 w-56  stroke-1 " /> -->
+			
+		{/if}
+		<button class=" absolute   h-full   w-full self-end  " on:click={() => FileInput2.click()}>
+		
+			<input
+				bind:this={FileInput2}
+				on:change={(e) => onSmallPosterImageSelected(e)}
 				type="file"
 				class=" hidden h-10 w-10 "
 				accept=".jpg, .jpeg, .png, .svg"
@@ -242,6 +340,7 @@
 				class="flex flex-row stroke-2"
 				on:click={() => {
 					Platform[2] === 'windows' ? (Platform[2] = '') : (Platform[2] = 'windows');
+					// dispatch("Platform")
 				}}
 			>
 				<Checked

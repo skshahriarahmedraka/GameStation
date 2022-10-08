@@ -10,6 +10,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: secret
       MONGO_INITDB_DATABASE: userdb 
+    volumes:
+      - /docker/mongodb:/data/db
     ports:
       - "27017:27017"
     networks:

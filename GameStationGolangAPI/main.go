@@ -13,6 +13,7 @@ import (
 	"github.com/gin-gonic/gin"
 	// "github.com/gobuffalo/packr/v2"
 	// "github.com/joho/godotenv"
+	"github.com/gin-contrib/cors"
 )
 
 func init(){
@@ -34,7 +35,12 @@ func main() {
 
 	r := gin.New()
 	r.Use(gin.Logger())
-
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:5173"}
+	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
+	// config.AllowAllOrigins = true
+  
+	r.Use(cors.New(config))
 	// ROUTE WITHOUT AUTHENTICATION
 	router.RouteWithoutAuth(r)
 

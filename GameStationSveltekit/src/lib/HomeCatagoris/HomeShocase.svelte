@@ -74,7 +74,7 @@
 
 <!-- <Daisyui1 OtherImages={listOfImage}/> -->
 <ImageShow {liObj} />
-<div class="flex flex-col gap-2 overflow-hidden">
+<div class="flex flex-col gap-2 overflow-hidden md:flex-row xl:flex-col lg:flex-row   h-fit">
 	{#each liObj as Obj}
 		<Smallcard {Obj} />
 	{/each}

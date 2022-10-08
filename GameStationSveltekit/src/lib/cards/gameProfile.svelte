@@ -32,11 +32,11 @@
 		>Buy Now</button
 	>
 	<button
-		class=" ml-4 h-[50px] w-[320px] rounded-lg border-2 border-white font-Poppins text-lg font-semibold hover:border-slate-300  text-white hover:text-slate-300"
+		class=" ml-4 h-[50px] w-[320px] rounded-lg border-2 border-white hover:bg-gray-600 hover:bg-opacity-70 hover:text-white font-Poppins text-lg font-semibold hover:border-slate-300  text-white "
 		>Add To Cart</button
 	>
 	<button
-		class=" ml-4 flex h-[30px] w-[320px] flex-row  items-center justify-center rounded-lg border-2  border-white hover:border-slate-300 font-Poppins font-semibold hover:text-slate-200 text-white"
+		class=" ml-4 flex h-[30px] w-[320px] flex-row  items-center justify-center rounded-lg border-2 hover:bg-gray-600 hover:bg-opacity-70 hover:text-white border-white hover:border-slate-300 font-Poppins font-semibold  text-white"
 	>
 		<Plus class="h-4 w-4" />
 		<p class="text-sm">Add To Wishlist</p></button

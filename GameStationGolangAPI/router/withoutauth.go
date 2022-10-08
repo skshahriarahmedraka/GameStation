@@ -38,6 +38,10 @@ func RouteWithoutAuth( r *gin.Engine){
 	r.POST("/user/register",H.Register())
 	r.POST("/user/login",H.Login())
 	r.POST("/admin/addproduct",H.AdminAddProduct())
+	r.GET("/game/:gameid",H.GetGameData())
+	
+
+
 	r.GET("/product/:productid",H.ViewProduct())
 	r.GET("/user/search",H.UserSearch())
 	r.POST("/imgupload",H.ImgUpload())

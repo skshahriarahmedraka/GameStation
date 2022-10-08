@@ -58,7 +58,10 @@ func MongodbConnection() *mongo.Database {
 	err =client.Ping(context.TODO(),nil)
     LogError.LogError("❌ ~ file: databaseSetup.go ~ line 27 ~ funcDBSetup ~ err : ", err)
 	Mydb := client.Database("userdb")
-	fmt.Println("sucessfully connected to database")
+	if err== nil {
+
+		fmt.Println("⚡😍 sucessfully connected to database")
+	}
 	return Mydb
 
 }

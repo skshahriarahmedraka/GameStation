@@ -1,4 +1,7 @@
 <script lang="ts">
+	export let data 
+	console.log("🚀 ~ file: +page.svelte ~ line 3 ~ data", data.loadData)
+
 	import GameProfile from '$lib/cards/gameProfile.svelte';
 	import Showcase from '$lib/Carousels/showcase.txt';
 	// import Showcase from "$lib/Carousels/showcase.svelte";
@@ -75,11 +78,11 @@
 Travel the city at the height of the Industrial Revolution and meet iconic historical figures. From Westminster to Whitechapel, you will come across Darwin, Dickens, Queen Victoria… and many more.
 As a gang leader, strengthen your stronghold and rally rival gang members to your cause, in order to take back the capital from the Templars’ hold.`,
 		FollowUs: {
-			facebook: 'https://www.facebook.com/epicgames',
-			discord: 'https://discord.com/app',
-			youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
-			twitter: 'https://twitter.com/epicgames',
-			site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
+			Facebook: 'https://www.facebook.com/epicgames',
+			Discord: 'https://discord.com/app',
+			Youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
+			Twitter: 'https://twitter.com/epicgames',
+			Site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
 		},
 		Rating: 9,
 		RatingGivenBy: {
@@ -129,166 +132,174 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 		}
 	}
 
-	import Happysad from "$lib/svgs/happysad.svelte"
-	import Globe from "$lib/svgs/globe.svelte"
-	import WriteOnPaper from "$lib/svgs/writeonpaper.svelte"
-	import LoveEmoji from "$lib/svgs/loveImoji.svelte"
-	import Mouse from "$lib/svgs/mouse.svelte"
-	import Cup from "$lib/svgs/cup.svelte"
+	import Happysad from '$lib/svgs/happysad.svelte';
+	import Globe from '$lib/svgs/globe.svelte';
+	import WriteOnPaper from '$lib/svgs/writeonpaper.svelte';
+	import LoveEmoji from '$lib/svgs/loveImoji.svelte';
+	import Mouse from '$lib/svgs/mouse.svelte';
+	import Cup from '$lib/svgs/cup.svelte';
 	import { xlink_attr } from 'svelte/internal';
 	import { json } from '@sveltejs/kit';
 	import Control from '$lib/svgs/control.svelte';
-	let TheGameHas= [
-		{"title" :"Amazing Characters", icon:Happysad},
-		{"title" :"Diverse Characters", icon:Globe},
-		{"title" :"Amazing Storytelling", icon:WriteOnPaper},
-		{"title" :"Highly Recommended", icon:LoveEmoji},
-		{"title" :"Quickly Understood Controls", icon:Control},
-		{"title" :"Amazing Characters", icon:Cup},
-	]
-
+	import { navigating } from '$app/stores';
+	import SaturnLoading from '$lib/loading/saturnLoading.svelte';
+	import World from '$lib/svgs/world.svelte';
+	let TheGameHas = [
+		{ title: 'Amazing Characters', icon: Happysad },
+		{ title: 'Diverse Characters', icon: Globe },
+		{ title: 'Amazing Storytelling', icon: WriteOnPaper },
+		{ title: 'Highly Recommended', icon: LoveEmoji },
+		{ title: 'Quickly Understood Controls', icon: Control },
+		{ title: 'Amazing Characters', icon: Cup }
+	];
 </script>
 
+<div class=" flex h-fit w-full flex-row justify-center  gap-6  text-slate-100">
+	<div class="flex flex-col gap-3 ">
+		<p class=" text-5xl text-slate-100">{Gamedata.Name}</p>
+		<div class=" flex flex-row gap-4">
+			<Rating3 value={Gamedata.Rating} />
+			<Peoples class="h-6 w-6 stroke-blue-400" />
+			<p class=" -ml-2 text-lg">{RoundNumOfPeople(Gamedata.Players)}</p>
+		</div>
+		<div class="flex flex-row gap-3 ">
+			<div class="flex w-[1080px] flex-col gap-4">
+				<!-- image show case -->
+				<Daisyui1 OtherImages={Gamedata.OtherImages} />
+				<p class=" text-2xl  ">{Gamedata.Moto}</p>
+				<!-- Genres and features -->
+				<div class="mt-12 flex w-full flex-row  font-Poppins">
+					<!-- GENRE -->
+					<div class="flex w-1/2 flex-col border-l-[1px] border-slate-400 border-opacity-30 p-3">
+						<p class=" font-normal text-gray-500">Genres</p>
+						<div class=" flex  flex-row gap-2 text-base">
+							{#each Gamedata.Genres as G}
+								<p class="">{G} ,</p>
+							{/each}
+						</div>
+					</div>
+					<!-- features -->
+					<div class="flex w-1/2 flex-col border-l-[1px] border-slate-400 border-opacity-30 p-3">
+						<p class=" font-normal text-gray-500">features</p>
+						<div class=" flex  flex-row gap-2 text-base">
+							{#each Gamedata.Feature as G}
+								<p class="">{G} ,</p>
+							{/each}
+						</div>
+					</div>
+				</div>
+				<!-- description -->
+				<div class=" flex flex-col ">
+					<p class=" text-xl font-semibold">Description :</p>
+					<p class="">
+						{Gamedata.Description}
+					</p>
+				</div>
+				<div class="flex flex-col gap-2 ">
+					<p class="text-xl font-semibold">Follow Us :</p>
+					<div class=" flex flex-row justify-center gap-5 rounded-lg bg-[#262626] py-3 ">
+						{#if Gamedata.FollowUs.Site.trim() != ''}
+							<button class="">
+								<!-- <Fb class="h-7 w-7 fill-slate-200" /> -->
+								<World class="h-9 w-9 fill-slate-200"/>
 
-	<div class=" flex h-fit w-full flex-row justify-center  gap-6  text-slate-100">
-		<div class="flex flex-col gap-3 ">
-			<p class=" text-5xl text-slate-100">{Gamedata.Name}</p>
-			<div class=" flex flex-row gap-4">
-				<Rating3 value={Gamedata.Rating} />
-				<Peoples class="h-6 w-6 stroke-blue-400" />
-				<p class=" -ml-2 text-lg">{RoundNumOfPeople(Gamedata.Players)}</p>
-			</div>
-			<div class="flex flex-row gap-3 ">
-				<div class="flex w-[1080px] flex-col gap-4">
-					<!-- image show case -->
-					<Daisyui1 OtherImages={Gamedata.OtherImages} />
-					<p class=" text-2xl  ">{Gamedata.Moto}</p>
-					<!-- Genres and features -->
-					<div class="mt-12 flex w-full flex-row  font-Poppins">
-						<!-- GENRE -->
-						<div class="flex w-1/2 flex-col border-l-[1px] border-slate-400 border-opacity-30 p-3">
-							<p class=" font-normal text-gray-500">Genres</p>
-							<div class=" flex  flex-row gap-2 text-base">
-								{#each Gamedata.Genres as G}
-									<p class="">{G} ,</p>
+							</button>
+						{/if}
+						{#if Gamedata.FollowUs.Facebook.trim() != ''}
+							<button class="">
+								<Fb class="h-7 w-7 fill-slate-200" />
+							</button>
+						{/if}
+						{#if Gamedata.FollowUs.Youtube.trim() != ''}
+							<button class="">
+								<Youtube class="h-8 w-8 fill-slate-200" />
+							</button>
+						{/if}
+						{#if Gamedata.FollowUs.Discord.trim() != ''}
+							<button class="">
+								<Discord class="h-8 w-8 fill-slate-200" />
+							</button>
+						{/if}
+						{#if Gamedata.FollowUs.Twitter.trim() != ''}
+							<button class="">
+								<Twitter class="h-8 w-8 fill-slate-200" />
+							</button>
+						{/if}
+					</div>
+				</div>
+				<!-- Org Review -->
+				<p class="text-xl font-semibold">Organizations Review :</p>
+				<div class=" flex flex-row justify-around gap-2">
+					{#each Object.entries(Gamedata.RatingGivenBy) as [title, Value]}
+						<!-- content here -->
+						<div class="h-[300px] w-[250px] rounded-xl bg-[#262626] p-4  ">
+							<p class="border-b-[1px] border-gray-500  border-opacity-10 pb-2 text-lg ">
+								{title}
+							</p>
+							<p class=" pt-2 text-sm text-slate-400">{Value}</p>
+						</div>
+					{/each}
+				</div>
+				<div class="flex flex-row flex-wrap justify-center gap-3	 ">
+					{#each TheGameHas as q}
+						<!-- content here -->
+						<div
+							class=" flex h-72 w-80 flex-col items-center justify-center rounded-md bg-[#262626] p-4 align-middle "
+						>
+							<svelte:component this={q.icon} />
+							<!-- <p class="">{x.}</p> -->
+							<div class=" w-fit text-sm">The game has</div>
+							<div class="w-fit text-center text-3xl font-semibold ">{q.title}</div>
+						</div>
+					{/each}
+				</div>
+				<!-- spec -->
+				<div class="flex flex-col rounded-md bg-[#262626] p-4">
+					<div class="flex h-16 w-full flex-row gap-4 ">
+						<p class=" text-lg underline ">Windows</p>
+						<p class="text-lg underline">Linux</p>
+						<p class="text-lg underline">Mac</p>
+					</div>
+					<div class="flex h-fit w-full flex-row justify-start rounded-md bg-opacity-50 ">
+						<div class=" flex  w-1/2 flex-col gap-4 ">
+							<p class=" text-lg font-semibold">Minimum Requirement :</p>
+							<div class=" flex flex-col gap-3 ">
+								{#each Object.entries(Gamedata.Minspec) as [title, Value]}
+									<div class="flex flex-col gap-1">
+										<p class=" text-gray-500">{title}</p>
+										<p class="">{Value}</p>
+									</div>
 								{/each}
 							</div>
 						</div>
-						<!-- features -->
-						<div class="flex w-1/2 flex-col border-l-[1px] border-slate-400 border-opacity-30 p-3">
-							<p class=" font-normal text-gray-500">features</p>
-							<div class=" flex  flex-row gap-2 text-base">
-								{#each Gamedata.Feature as G}
-									<p class="">{G} ,</p>
+						<div class=" flex  w-1/2 flex-col gap-4 ">
+							<p class=" text-lg font-semibold">Recomended Requirement :</p>
+							<div class=" flex flex-col gap-3 ">
+								{#each Object.entries(Gamedata.Recomendedspec) as [title, Value]}
+									<div class="flex flex-col gap-1">
+										<p class=" text-gray-500">{title}</p>
+										<p class="">{Value}</p>
+									</div>
 								{/each}
-							</div>
-						</div>
-					</div>
-					<!-- description -->
-					<div class=" flex flex-col ">
-						<p class=" text-xl font-semibold">Description :</p>
-						<p class="">
-							{Gamedata.Description}
-						</p>
-					</div>
-					<div class="flex flex-col gap-2 ">
-						<p class="text-xl font-semibold">Follow Us :</p>
-						<div class=" flex flex-row justify-center gap-5 rounded-lg bg-[#262626] py-3 ">
-							{#if Gamedata.FollowUs.facebook.trim() != ''}
-								<button class="">
-									<Fb class="h-7 w-7 fill-slate-200" />
-								</button>
-							{/if}
-							{#if Gamedata.FollowUs.youtube.trim() != ''}
-								<button class="">
-									<Youtube class="h-8 w-8 fill-slate-200" />
-								</button>
-							{/if}
-							{#if Gamedata.FollowUs.discord.trim() != ''}
-								<button class="">
-									<Discord class="h-8 w-8 fill-slate-200" />
-								</button>
-							{/if}
-							{#if Gamedata.FollowUs.twitter.trim() != ''}
-								<button class="">
-									<Twitter class="h-8 w-8 fill-slate-200" />
-								</button>
-							{/if}
-						</div>
-					</div>
-					<!-- Org Review -->
-					<p class="text-xl font-semibold">Organizations Review :</p>
-					<div class=" flex flex-row justify-around gap-2">
-						{#each Object.entries(Gamedata.RatingGivenBy) as [title, Value]}
-							<!-- content here -->
-							<div class="h-[300px] w-[250px] rounded-xl bg-[#262626] p-4  ">
-								<p class="border-b-[1px] border-gray-500  border-opacity-10 pb-2 text-lg ">
-									{title}
-								</p>
-								<p class=" pt-2 text-sm text-slate-400">{Value}</p>
-							</div>
-						{/each}
-					</div>
-					<div class="flex flex-row flex-wrap gap-3 justify-center	 ">
-						{#each TheGameHas as q}
-							 <!-- content here -->
-							 <div class=" h-72 w-80 bg-[#262626] rounded-md flex flex-col justify-center items-center align-middle p-4 ">
-								<svelte:component this={q.icon}  />
-								<!-- <p class="">{x.}</p> -->
-								<div class=" w-fit text-sm">The game has</div>
-								<div class="w-fit text-3xl text-center font-semibold ">{q.title}</div>
-							 </div>
-						{/each}
-						
-					</div>
-					<!-- spec -->
-					<div class="flex flex-col rounded-md bg-[#262626] p-4">
-						<div class="flex h-16 w-full flex-row gap-4 ">
-							<p class=" text-lg underline ">Windows</p>
-							<p class="text-lg underline">Linux</p>
-							<p class="text-lg underline">Mac</p>
-						</div>
-						<div class="flex h-fit w-full flex-row justify-start rounded-md bg-opacity-50 ">
-							<div class=" flex  w-1/2 flex-col gap-4 ">
-								<p class=" text-lg font-semibold">Minimum Requirement :</p>
-								<div class=" flex flex-col gap-3 ">
-									{#each Object.entries(Gamedata.Minspec) as [title, Value]}
-										<div class="flex flex-col gap-1">
-											<p class=" text-gray-500">{title}</p>
-											<p class="">{Value}</p>
-										</div>
-									{/each}
-								</div>
-							</div>
-							<div class=" flex  w-1/2 flex-col gap-4 ">
-								<p class=" text-lg font-semibold">Recomended Requirement :</p>
-								<div class=" flex flex-col gap-3 ">
-									{#each Object.entries(Gamedata.Recomendedspec) as [title, Value]}
-										<div class="flex flex-col gap-1">
-											<p class=" text-gray-500">{title}</p>
-											<p class="">{Value}</p>
-										</div>
-									{/each}
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<GameProfile
-					LogoImage={Gamedata.LogoImage}
-					Released={Gamedata.Released}
-					Price={Gamedata.Price}
-					Platform={Gamedata.Platform}
-					Publisher={Gamedata.Publisher}
-					Develper={Gamedata.Publisher}
-					Discount={Gamedata.Discount}
-				/>
 			</div>
-			<div class="" />
+			<GameProfile
+				LogoImage={Gamedata.LogoImage}
+				Released={Gamedata.Released}
+				Price={Gamedata.Price}
+				Platform={Gamedata.Platform}
+				Publisher={Gamedata.Publisher}
+				Develper={Gamedata.Publisher}
+				Discount={Gamedata.Discount}
+			/>
 		</div>
-		<!-- <Showcase /> -->
+		<div class="" />
 	</div>
-
+	<!-- <Showcase /> -->
+</div>
 
 <style>
 	/* your styles go here */
