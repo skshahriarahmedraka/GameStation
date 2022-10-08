@@ -23,7 +23,7 @@
 
 
 {#if loadingState}
-	<Loading class=" scale-150" />
+	<Loading class=" scale-105" />
 {:else if $page.error}
 	<!-- <Error1/> -->
 	<Error2 />

@@ -14,7 +14,7 @@
 	<Nav />
 	{#if $navigating}
 		<!-- content here -->
-		<SaturnLoading class=" scale-150" />
+		<SaturnLoading class=" scale-105 " />
 	{:else}
 		<slot />
 	{/if}

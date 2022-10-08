@@ -98,7 +98,8 @@
 			ActiveIndex = showImages.length - 1;
 			BigPosterImage = showImages[0];
 			if (showImages.length > 1) {
-				OtherImages = showImages.slice(1);
+				// OtherImages = showImages.slice(1);
+				OtherImages = showImages;
 			}
 		}else {
 			

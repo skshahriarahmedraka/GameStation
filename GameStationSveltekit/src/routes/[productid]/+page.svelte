@@ -1,7 +1,8 @@
 <script lang="ts">
-	export let data 
-	console.log("🚀 ~ file: +page.svelte ~ line 3 ~ data", data.loadData)
+	export let data;
+	console.log('🚀 ~ file: +page.svelte ~ line 3 ~ data', data.mydata);
 
+	let Gamedata =data.mydata 
 	import GameProfile from '$lib/cards/gameProfile.svelte';
 	import Showcase from '$lib/Carousels/showcase.txt';
 	// import Showcase from "$lib/Carousels/showcase.svelte";
@@ -59,7 +60,7 @@
 		}
 	];
 
-	let Gamedata = {
+	let Gamedata3 = {
 		GameID: '1234',
 		Name: "Assassin's Creed Syndicate",
 		Moto: 'London, 1868. In the heart of the Industrial Revolution, play as Jacob Frye - a brash and charismatic Assassin.',
@@ -75,8 +76,8 @@
 		Genres: ['Action', 'RPG', 'Adventure'],
 		Feature: ['Single Player', 'Achivement', 'Control', 'Support'],
 		Description: `As Jacob Frye, a young and reckless Assassin, use your skills to help those trampled by the march of progress.
-Travel the city at the height of the Industrial Revolution and meet iconic historical figures. From Westminster to Whitechapel, you will come across Darwin, Dickens, Queen Victoria… and many more.
-As a gang leader, strengthen your stronghold and rally rival gang members to your cause, in order to take back the capital from the Templars’ hold.`,
+		Travel the city at the height of the Industrial Revolution and meet iconic historical figures. From Westminster to Whitechapel, you will come across Darwin, Dickens, Queen Victoria… and many more.
+		As a gang leader, strengthen your stronghold and rally rival gang members to your cause, in order to take back the capital from the Templars’ hold.`,
 		FollowUs: {
 			Facebook: 'https://www.facebook.com/epicgames',
 			Discord: 'https://discord.com/app',
@@ -115,6 +116,165 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 		Released: '02/20/20',
 		Platform: ['windows', 'linux', 'mac'],
 		Players: 23478238
+	};
+
+	let Gamedatax = {
+		GameID: '',
+		Name: "Assassin's Creed Syndicate",
+		Moto: 'London, 1868. In the heart of the Industrial Revolution, play as Jacob Frye - a brash and charismatic Assassin.',
+
+		LogoImage:
+			'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fassassins-creed-syndicate%2Fhome%2FACV_UCS12483_EGST_Logo_Color_1000x407-1000x407-48fad9206ee895c599365e2b7c5bebcab099bd26.png?h=270&resize=1&w=480',
+		BigPosterImage:
+			'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fassassins-creed-syndicate%2Fhome%2FACS-STD-2560x1440-635b7b6c86f18730071426375e7c4fe0bd831ddd.jpg',
+		SmallPosterImage:
+			'https://cdn1.epicgames.com/epic/offer/AC_Syndicate_Portrait-1280x1420-b74c2aa94670d9e97cc6ddab0a5d4dd0.png?h=854&resize=1&w=640',
+
+		OtherImages: [syn1, syn2, syn3, syn4, syn5, syn7],
+		Genres: ['Action', 'RPG', 'Adventure'],
+		Feature: ['Single Player', 'Achivement', 'Control', 'Support'],
+		Description: `As Jacob Frye, a young and reckless Assassin, use your skills to help those trampled by the march of progress.
+		Travel the city at the height of the Industrial Revolution and meet iconic historical figures. From Westminster to Whitechapel, you will come across Darwin, Dickens, Queen Victoria… and many more.	
+		As a gang leader, strengthen your stronghold and rally rival gang members to your cause, in order to take back the capital from the Templars’ hold.`,
+		FollowUs: {
+			Facebook: 'https://www.facebook.com/epicgames',
+			Discord: 'https://discord.com/app',
+			Youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
+			Twitter: 'https://twitter.com/epicgames',
+			Site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
+		},
+		Rating: 9,
+		RatingGivenBy: {
+			'PC Gamer':
+				'The Assassin’s Creed series has been running for eight years, and that kind of longevity doesn’t happen without taking a few risks. To combat fatigue, each entry attempts to punctuate the familiar with new elements. Not all of these experiments pay off, ',
+			IGN: 'Syndicate smartly negotiates this internal conflict by dramatising it in the form of its twin playable characters, Evie and Jacob Frye. The former is a devout Assassin, intent on stopping the Templars by tracking down the remaining pieces of Eden. Her brother Jacob, however, is a pragmatist – a social reformer who rails against the Assassin’s burdensome legacy',
+			'Game Informer':
+				"Syndicate moves Assassin's Creed forward with a solid new adventure, a beautiful London playground and a renewed sense of fun"
+		},
+		Minspec: [
+			{ Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+			{
+				Name: 'Storage',
+				Value: '100 GB'
+			},
+			{
+				Name: 'Memory',
+				Value: '6 GB RAM'
+			},
+			{
+				Name: 'GPU',
+				Value: 'NVIDIA GeForce GTX 660 / AMD Radeon R9 270 (2GB VRAM with Shader Model 5.0)'
+			},
+			{
+				Name: 'CPU',
+				Value: 'Intel Core i5 2400s @ 2.5 GHz / AMD FX 6350 @ 3.9 GHz'
+			},
+			{
+				Name: 'Sound Card',
+				Value: 'DirectX Compatible Sound Card with latest drivers'
+			}
+		],
+		Recomendedspec: [
+			{ Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+			{
+				Name: 'Storage',
+				Value: '100 GB'
+			},
+			{
+				Name: 'Memory',
+				Value: '6 GB RAM'
+			},
+			{
+				Name: 'GPU',
+				Value: 'NVIDIA GeForce GTX 660 / AMD Radeon R9 270 (2GB VRAM with Shader Model 5.0)'
+			},
+			{
+				Name: 'CPU',
+				Value: 'Intel Core i5 2400s @ 2.5 GHz / AMD FX 6350 @ 3.9 GHz'
+			},
+			{
+				Name: 'Sound Card',
+				Value: 'DirectX Compatible Sound Card with latest drivers'
+			}
+		],
+		Price: 34.55,
+		Discount: 25,
+		Developer: 'Ubisoft',
+		Publisher: 'Ubisoft',
+		Released: '02/20/20',
+		Platform: ['windows', 'linux', 'mac'],
+		Players: 23478238
+	};
+	let mydata = {
+		GameID: '',
+		Name: '',
+		Moto: '',
+		LogoImage: '',
+		BigPosterImage: '',
+		SmallPosterImage: '',
+
+		OtherImages: ['', '', '', '', '', ''],
+		Genres: ['', '', ''],
+		Feature: ['', '', '', ''],
+		Description: '',
+		FollowUs: {
+			Facebook: '',
+			Discord: '',
+			Youtube: '',
+			Twitter: '',
+			Site: ''
+		},
+		Rating: Number(),
+		RatingGivenBy: {
+			'PC Gamer': '',
+			IGN: '',
+			'Game Informer': ''
+		},
+		Minspec: [
+			{ Name: 'OS', Value: '' },
+			{
+				Name: 'Storage',
+				Value: ''
+			},
+			{
+				Name: 'Memory',
+				Value: ''
+			},
+			{
+				Name: 'GPU',
+				Value: ''
+			},
+			{
+				Name: 'CPU',
+				Value: ''
+			}
+		],
+		Recomendedspec: [
+			{ Name: 'OS', Value: '' },
+			{
+				Name: 'Storage',
+				Value: ''
+			},
+			{
+				Name: 'Memory',
+				Value: ''
+			},
+			{
+				Name: 'GPU',
+				Value: ''
+			},
+			{
+				Name: 'CPU',
+				Value: ''
+			}
+		],
+		Price: Number(),
+		Discount: Number(),
+		Developer: '',
+		Publisher: '',
+		Released: '',
+		Platform: ['', '', ''],
+		Players: Number()
 	};
 
 	function RoundNumOfPeople(x: number) {
@@ -201,8 +361,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 						{#if Gamedata.FollowUs.Site.trim() != ''}
 							<button class="">
 								<!-- <Fb class="h-7 w-7 fill-slate-200" /> -->
-								<World class="h-9 w-9 fill-slate-200"/>
-
+								<World class="h-9 w-9 fill-slate-200" />
 							</button>
 						{/if}
 						{#if Gamedata.FollowUs.Facebook.trim() != ''}
@@ -264,23 +423,37 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 						<div class=" flex  w-1/2 flex-col gap-4 ">
 							<p class=" text-lg font-semibold">Minimum Requirement :</p>
 							<div class=" flex flex-col gap-3 ">
-								{#each Object.entries(Gamedata.Minspec) as [title, Value]}
+								{#each Gamedata.Minspec as option}
+								<div class="flex flex-col gap-1">
+									<p class=" text-gray-400 font-semibold">{option.Name} :</p>
+									<!-- <p class="">{Value}</p> -->
+									<p class=" ml-2">{option.Value}</p>
+								</div>
+								{/each}
+								<!-- {#each Object.entries(Gamedata.Minspec) as [title, Value]}
 									<div class="flex flex-col gap-1">
 										<p class=" text-gray-500">{title}</p>
 										<p class="">{Value}</p>
 									</div>
-								{/each}
+								{/each} -->
 							</div>
 						</div>
 						<div class=" flex  w-1/2 flex-col gap-4 ">
 							<p class=" text-lg font-semibold">Recomended Requirement :</p>
 							<div class=" flex flex-col gap-3 ">
-								{#each Object.entries(Gamedata.Recomendedspec) as [title, Value]}
+								{#each Gamedata.Recomendedspec as option}
+									<div class="flex flex-col gap-1">
+										<p class=" text-gray-400 font-semibold">{option.Name} :</p>
+										<!-- <p class="">{Value}</p> -->
+										<p class=" ml-2">{option.Value}</p>
+									</div>
+								{/each}
+								<!-- {#each Object.entries(Gamedata.Recomendedspec) as [title, Value]}
 									<div class="flex flex-col gap-1">
 										<p class=" text-gray-500">{title}</p>
 										<p class="">{Value}</p>
 									</div>
-								{/each}
+								{/each} -->
 							</div>
 						</div>
 					</div>
@@ -292,7 +465,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 				Price={Gamedata.Price}
 				Platform={Gamedata.Platform}
 				Publisher={Gamedata.Publisher}
-				Develper={Gamedata.Publisher}
+				Develper={Gamedata.Developer}
 				Discount={Gamedata.Discount}
 			/>
 		</div>

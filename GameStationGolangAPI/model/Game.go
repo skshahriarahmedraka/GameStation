@@ -1,9 +1,9 @@
 package model
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+// import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Gamedata struct {
-	ID               primitive.ObjectID `json:"_id" bson:"_id"`
+	
 	GameID           string             `json:"GameID" bson:"GameID"`
 	Name             string             `json:"Name" bson:"Name"`
 	Moto             string             `json:"Moto" bson:""`
@@ -15,31 +15,31 @@ type Gamedata struct {
 	Feature          []string           `json:"Feature" bson:"Feature"`
 	Description      string             `json:"Description" bson:"Description"`
 	FollowUs         struct {
-		Facebook string `json:"" bson:""`
-		Youtube  string `json:"" bson:""`
-		Discord  string `json:"" bson:""`
-		Twitter  string `json:"" bson:""`
-		Site     string `json:"" bson:""`
+		Facebook string `json:"Facebook" bson:"Facebook"`
+		Youtube  string `json:"Youtube" bson:"Youtube"`
+		Discord  string `json:"Discord" bson:"Discord"`
+		Twitter  string `json:"Twitter" bson:"Twitter"`
+		Site     string `json:"Site" bson:"Site"`
 	} `json:"FollowUs" bson:"FollowUs"`
-	Rating        int `json:"" bson:""`
+	Rating        int `json:"Rating" bson:"Rating"`
 	RatingGivenBy struct {
-		PC_Gamer      string `json:"" bson:""`
-		IGN           string `json:"" bson:""`
-		Game_Informer string `json:"" bson:""`
-	} `json:"" bson:""`
+		PC_Gamer      string `json:"PC Gamer" bson:"PC Gamer"`
+		IGN           string `json:"IGN" bson:"IGN"`
+		Game_Informer string `json:"Game Informer" bson:"Game Informer"`
+	} `json:"RatingGivenBy" bson:"RatingGivenBy"`
 	Minspec []struct {
-		Name  string `json:"" bson:""`
-		Value string `json:"" bson:""`
-	} `json:"" bson:""`
+		Name  string `json:"Name" bson:"Name"`
+		Value string `json:"Value" bson:"Value"`
+	} `json:"Minspec" bson:"Minspec"`
 	Recomendedspec []struct {
-		Name  string `json:"" bson:""`
-		Value string `json:"" bson:""`
-	} `json:"" bson:""`
-	Price     int      `json:"" bson:""`
-	Discount  int      `json:"" bson:""`
-	Developer string   `json:"" bson:""`
-	Publisher string   `json:"" bson:""`
-	Released  string   `json:"" bson:""`
-	Platform  []string `json:"" bson:""`
-	Players   int      `json:"" bson:""`
+		Name  string `json:"Name" bson:"Name"`
+		Value string `json:"Value" bson:"Value"`
+	} `json:"Recomendedspec" bson:"Recomendedspec"`
+	Price     float64      `json:"Price" bson:"Price"`
+	Discount  int      `json:"Discount" bson:"Discount"`
+	Developer string   `json:"Developer" bson:"Developer"`
+	Publisher string   `json:"Publisher" bson:"Publisher"`
+	Released  string   `json:"Released" bson:"Released"`
+	Platform  []string `json:"Platform" bson:"Platform"`
+	Players   int      `json:"Players" bson:"Players"`
 }
