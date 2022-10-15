@@ -16,7 +16,7 @@ import (
 	"github.com/gin-contrib/cors"
 )
 
-func init(){
+func init() {
 
 	// LOAD ENVIRONMENT VARIABLES
 	config.LoadEnvironmentVar()
@@ -26,7 +26,7 @@ func init(){
 func main() {
 	//  SET MODE TO RELEASE
 	gin.SetMode(gin.ReleaseMode)
-	
+
 	//  fmt.Println("environment var :  ", os.Getenv("NAME"))
 	//  fmt.Println("environment var :  ", os.Getenv("NAME")=="SK SHAHRIAR AHMED RAKA")
 	// fmt.Println("environment var :", os.Getenv("POSTGRES_TIMEZONE"))
@@ -35,12 +35,12 @@ func main() {
 
 	r := gin.New()
 	r.Use(gin.Logger())
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:5173"}
+	conf := cors.DefaultConfig()
+	conf.AllowOrigins = []string{"http://localhost:5173"}
 	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
 	// config.AllowAllOrigins = true
-  
-	r.Use(cors.New(config))
+
+	r.Use(cors.New(conf))
 	// ROUTE WITHOUT AUTHENTICATION
 	router.RouteWithoutAuth(r)
 

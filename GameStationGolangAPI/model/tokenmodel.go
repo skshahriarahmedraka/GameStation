@@ -1,14 +1,10 @@
 package model
 
-
 import "github.com/golang-jwt/jwt/v4"
 
-
-
-type SignDetails struct {
-	Email string 
-	FirstName string 
-	LastName string 
-	UID string 
+type TokenClaims struct {
+	Email  string `json:"Email"`
+	Name   string `json:"Name"`
+	UserID string `json:"UserID"`
 	jwt.StandardClaims
 }
