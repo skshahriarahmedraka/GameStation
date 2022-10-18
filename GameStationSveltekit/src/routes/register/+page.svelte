@@ -59,10 +59,10 @@
 			ErrorMsg.Password[0] = false;
 		}
 		if (!ErrorMsg.UserName[0] && !ErrorMsg.Email[0] && !ErrorMsg.Password[0]) {
-			await fetch('auth/register', {
-				credentials: 'same-origin',
+			await fetch('/api/register', {
+				// credentials: 'same-origin',
 				method: 'POST',
-				mode: 'cors',
+				// mode: 'cors',
 				body: JSON.stringify(RegisterData)
 			})
 				.then((response) => response.json())

@@ -16,6 +16,7 @@
 
 	let ShowSearchBar = false;
 	let ShowProfile = false;
+
 </script>
 
 <div
@@ -144,7 +145,7 @@
 	</div>
 	<div
 		on:click={() => {
-			goto('/carts');
+			goto(`/profile/`);
 		}}
 		class="sm:hidden md:hidden lg:hidden xl:hidden xs:hidden xxl:contents"
 	>

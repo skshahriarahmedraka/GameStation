@@ -132,181 +132,206 @@
 			return String(x);
 		}
 	}
-	let FormData3={
-    "GameID": "",
-    "Name": "Assassin's Creed® Mirage",
-    "Moto": "Experience the story of Basim, a cunning street thief seeking answers and justice as he navigates the bustling streets of ninth–century Baghdad.",
-    "LogoImage": "",
-    "BigPosterImage": "",
-    "SmallPosterImage": "",
-    "OtherImages": [
-        
-    ],
-    "Genres": [
-        "Action",
-        "RPG",
-        "Open World",
-        "Adventure"
-    ],
-    "Feature": [
-        "Achievements",
-        "Controller Support",
-        "Single Player"
-    ],
-    "Description": "Cyberpunk 2077 is an open-world, action-adventure RPG set in the megalopolis of Night City, where you play as a cyberpunk mercenary wrapped up in a do-or-die fight for survival. Improved and featuring all-new free additional content, customize your character and playstyle as you take on jobs, build a reputation, and unlock upgrades. The relationships you forge and the choices you make will shape the story and the world around you. Legends are made here. What will yours be?CREATE YOUR OWN CYBERPUNKBecome a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the streets of Night City.EXPLORE THE CITY OF THE FUTURENight City is packed to the brim with things to do, places to see, and people to meet. And it’s up to you where to go, when to go, and how to get there.BUILD YOUR LEGENDGo on daring adventures and build relationships with unforgettable characters whose fates are shaped by the choices you make.EQUIPPED WITH IMPROVEMENTSExperience Cyberpunk 2077 with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENT Get your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more.",
-    "FollowUs": {
-        "Facebook": "http://facebook.com",
-        "Discord": "http://discord.com",
-        "Youtube": "http://youtube.com",
-        "Twitter": "http://twitter.com",
-        "Site": "http://epicgames.com"
-    },
-    "Rating": 7,
-    "RatingGivenBy": {
-        "PC Gamer": "Experience Cyberpunk 2077 with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENTGet your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more.",
-        "IGN": "Cyberpunk 2077 with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENTGet your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more.",
-        "Game Informer": " with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENTGet your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more."
-    },
-    "Minspec": [
-        {
-            "Name": "OS",
-            "Value": "Windows 10 /11"
-        },
-        {
-            "Name": "Storage",
-            "Value": "100GB"
-        },
-        {
-            "Name": "Memory",
-            "Value": "6GB"
-        },
-        {
-            "Name": "CPU",
-            "Value": "Intel xeon 11Gen"
-        },
-        {
-            "Name": "GPU",
-            "Value": "nvidia 3090ti"
-        }
-    ],
-    "Recomendedspec": [
-        {
-            "Name": "OS",
-            "Value": "Ubuntu / Red Hat"
-        },
-        {
-            "Name": "Storage",
-            "Value": "200GB"
-        },
-        {
-            "Name": "Memory",
-            "Value": "10GB"
-        },
-        {
-            "Name": "GPU",
-            "Value": "Nvidia 4090"
-        },
-        {
-            "Name": "CPU",
-            "Value": "ryzen 7 7gen"
-        }
-    ],
-    "Price": 58.0,
-    "Discount": 30,
-    "Developer": "Epic Games",
-    "Publisher": "Sony Entertainment",
-    "Released": "23/8/22",
-    "Platform": [
-        "windows",
-        "linux",
-        "mac"
-    ],
-    "Players": 11869785
-}
-	let FormData = {
-    "GameID": "",
-    "Name": "",
-    "Moto": "",
-    "LogoImage": "",
-    "BigPosterImage": "",
-    "SmallPosterImage": "",
-    "OtherImages": [
-        
-    ],
-    "Genres": [
-  ""
-    ],
-    "Feature": [""],
-    "Description": "",
-    "FollowUs": {
-        "Facebook": "",
-        "Discord": "",
-        "Youtube": "",
-        "Twitter": "",
-        "Site": ""
-    },
-    "Rating": 0,
-    "RatingGivenBy": {
-        "PC Gamer": "",
-        "IGN": "",
-        "Game Informer": ""
-    },
-    "Minspec": [
-        {
-            "Name": "OS",
-            "Value": ""
-        },
-        {
-            "Name": "Storage",
-            "Value": ""
-        },
-        {
-            "Name": "",
-            "Value": ""
-        },
-        {
-            "Name": "CPU",
-            "Value": ""
-        },
-        {
-            "Name": "GPU",
-            "Value": ""
-        }
-    ],
-    "Recomendedspec": [
-        {
-            "Name": "OS",
-            "Value": ""
-        },
-        {
-            "Name": "Storage",
-            "Value": ""
-        },
-        {
-            "Name": "Memory",
-            "Value": ""
-        },
-        {
-            "Name": "GPU",
-            "Value": ""
-        },
-        {
-            "Name": "CPU",
-            "Value": ""
-        }
-    ],
-    "Price":0,
-    "Discount": 0,
-    "Developer": "",
-    "Publisher": "",
-    "Released": "",
-    "Platform": [
-        "",
-        "",
-        ""
-    ],
-    "Players": 0
-}
+	let FormData3 = {
+		GameID: '',
+		Name: "Assassin's Creed® Mirage",
+		Moto: 'Experience the story of Basim, a cunning street thief seeking answers and justice as he navigates the bustling streets of ninth–century Baghdad.',
+		LogoImage: '',
+		BigPosterImage: '',
+		SmallPosterImage: '',
+		OtherImages: [],
+		Genres: ['Action', 'RPG', 'Open World', 'Adventure'],
+		Feature: ['Achievements', 'Controller Support', 'Single Player'],
+		Description:
+			'Cyberpunk 2077 is an open-world, action-adventure RPG set in the megalopolis of Night City, where you play as a cyberpunk mercenary wrapped up in a do-or-die fight for survival. Improved and featuring all-new free additional content, customize your character and playstyle as you take on jobs, build a reputation, and unlock upgrades. The relationships you forge and the choices you make will shape the story and the world around you. Legends are made here. What will yours be?CREATE YOUR OWN CYBERPUNKBecome a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the streets of Night City.EXPLORE THE CITY OF THE FUTURENight City is packed to the brim with things to do, places to see, and people to meet. And it’s up to you where to go, when to go, and how to get there.BUILD YOUR LEGENDGo on daring adventures and build relationships with unforgettable characters whose fates are shaped by the choices you make.EQUIPPED WITH IMPROVEMENTSExperience Cyberpunk 2077 with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENT Get your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more.',
+		FollowUs: {
+			Facebook: 'http://facebook.com',
+			Discord: 'http://discord.com',
+			Youtube: 'http://youtube.com',
+			Twitter: 'http://twitter.com',
+			Site: 'http://epicgames.com'
+		},
+		Rating: 7,
+		RatingGivenBy: {
+			'PC Gamer':
+				'Experience Cyberpunk 2077 with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENTGet your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more.',
+			IGN: 'Cyberpunk 2077 with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENTGet your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more.',
+			'Game Informer':
+				' with a host of changes and improvements to gameplay and economy, the city, map usage, and more.INCLUDES FREE ADDITIONAL CONTENTGet your hands on a haul of free items including new guns and melee weapons, as well as extra customization options and more.'
+		},
+		Minspec: [
+			{
+				Name: 'OS',
+				Value: 'Windows 10 /11'
+			},
+			{
+				Name: 'Storage',
+				Value: '100GB'
+			},
+			{
+				Name: 'Memory',
+				Value: '6GB'
+			},
+			{
+				Name: 'CPU',
+				Value: 'Intel xeon 11Gen'
+			},
+			{
+				Name: 'GPU',
+				Value: 'nvidia 3090ti'
+			}
+		],
+		Recomendedspec: [
+			{
+				Name: 'OS',
+				Value: 'Ubuntu / Red Hat'
+			},
+			{
+				Name: 'Storage',
+				Value: '200GB'
+			},
+			{
+				Name: 'Memory',
+				Value: '10GB'
+			},
+			{
+				Name: 'GPU',
+				Value: 'Nvidia 4090'
+			},
+			{
+				Name: 'CPU',
+				Value: 'ryzen 7 7gen'
+			}
+		],
+		Price: 58.0,
+		Discount: 30,
+		Developer: 'Epic Games',
+		Publisher: 'Sony Entertainment',
+		Released: '23/8/22',
+		Platform: ['windows', 'linux', 'mac'],
+		Players: 11869785
+	};
+	let FormData: {
+		GameID: string;
+		Name: string;
+		Moto: string;
+		LogoImage: string;
+		BigPosterImage: string;
+		SmallPosterImage: string;
+		OtherImages: never[];
+		Genres: string[];
+		Feature: string[];
+		Description: string;
+		Rating: number;
+		RatingGivenBy: {
+			'PC Gamer': string;
+			IGN: string;
+			'Game Informer': string;
+		};
+		Minspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Recomendedspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Discount: number;
+		Price: number;
+		Developer: string;
+		Publisher: string;
+		Released: string;
+		Platform: string[];
+		Players: number;
+		Comment: {
+			Name: string;
+			Rating: 0;
+			Description: string;
+		}[];
+		FollowUs: {
+			Facebook: string;
+			Discord: string;
+			Youtube: string;
+			Twitter: string;
+			Site: string;
+		};
+	} = {
+		GameID: '',
+		Name: '',
+		Moto: '',
+		LogoImage: '',
+		BigPosterImage: '',
+		SmallPosterImage: '',
+		OtherImages: [],
+		Genres: [''],
+		Feature: [''],
+		Description: '',
+		FollowUs: {
+			Facebook: '',
+			Discord: '',
+			Youtube: '',
+			Twitter: '',
+			Site: ''
+		},
+		Rating: 0,
+		RatingGivenBy: {
+			'PC Gamer': '',
+			IGN: '',
+			'Game Informer': ''
+		},
+		Minspec: [
+			{
+				Name: 'OS',
+				Value: ''
+			},
+			{
+				Name: 'Storage',
+				Value: ''
+			},
+			{
+				Name: '',
+				Value: ''
+			},
+			{
+				Name: 'CPU',
+				Value: ''
+			},
+			{
+				Name: 'GPU',
+				Value: ''
+			}
+		],
+		Recomendedspec: [
+			{
+				Name: 'OS',
+				Value: ''
+			},
+			{
+				Name: 'Storage',
+				Value: ''
+			},
+			{
+				Name: 'Memory',
+				Value: ''
+			},
+			{
+				Name: 'GPU',
+				Value: ''
+			},
+			{
+				Name: 'CPU',
+				Value: ''
+			}
+		],
+		Price: 0,
+		Discount: 0,
+		Developer: '',
+		Publisher: '',
+		Released: '',
+		Platform: ['', '', ''],
+		Players: 0,
+		Comment: []
+	};
 
 	let Gamedata = {
 		GameID: '',
@@ -320,7 +345,7 @@
 		SmallPosterImage:
 			'https://cdn1.epicgames.com/epic/offer/AC_Syndicate_Portrait-1280x1420-b74c2aa94670d9e97cc6ddab0a5d4dd0.png?h=854&resize=1&w=640',
 
-		OtherImages: ["",""],
+		OtherImages: ['', ''],
 		Genres: ['Action', 'RPG', 'Adventure'],
 		Feature: ['Single Player', 'Achivement', 'Control', 'Support'],
 		Description: `As Jacob Frye, a young and reckless Assassin, use your skills to help those trampled by the march of progress.
@@ -460,19 +485,21 @@
 			// credentials: 'same-origin',
 			method: 'POST',
 			// mode: 'no-cors',
-			headers: new Headers({ 'Content-Type': 'application/json', Accept: 'application/json' }),
+			// headers: new Headers({ 'Content-Type': 'application/json', Accept: 'application/json' }),
 
 			body: JSON.stringify(FormData)
 		})
 			.then((response) => response.json())
 			.then((data) => {
 				console.log('🚀 ~ file: +page.svelte ~ line 312 ~ .then ~ REsponse', data);
-				console.log('🚀 ~ file: +page.svelte ~ line 312 ~ .then ~ response data.GameID', data.GameID);
-				if(data.GameID){
-
-					goto(`/${data.GameID}`)
-				}else {
-					throw error(404, 'Not Found')
+				console.log(
+					'🚀 ~ file: +page.svelte ~ line 312 ~ .then ~ response data.GameID',
+					data.GameID
+				);
+				if (data.GameID) {
+					goto(`/${data.GameID}`);
+				} else {
+					throw error(404, 'Not Found');
 				}
 			});
 

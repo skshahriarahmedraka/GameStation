@@ -39,30 +39,34 @@ export async function POST({ request }) {
 		Name: fileName,
 		BucketName: 'myimg'
 	};
-	let ResData: {
-		Link: string;
-		Name: string;
-		BucketName: string;
+	const ResData= {
+		Link: "http://127.0.0.1:9000/"+"myimg"+"/"+fileName,
+		Name: fileName,
+		BucketName: 'myimg'
 	};
 
-	await fetch('http://localhost:8001/imglink', {
-		method: 'POST',
-		mode: 'no-cors',
+	// await fetch('http://localhost:8001/imglink', {
+	// 	method: 'POST',
+	// 	mode: 'no-cors',
 
-		headers: {
-			'Content-Type': 'application/json',
-			Accept: 'application/json'
-		},
-		body: JSON.stringify(mydata)
-	})
-		.then((res) => {
-			return res.json();
-		})
-		.then((data) => {
-			console.log('🚀 ~ file: +server.ts ~ line 99 ~ .then ~ data', data);
+	// 	headers: {
+	// 		'Content-Type': 'application/json',
+	// 		Accept: 'application/json'
+	// 	},
+	// 	body: JSON.stringify(mydata)
+	// })
+	// 	.then((res) => {
+	// 		return res.json();
+	// 	})
+	// 	.then((data) => {
+	// 		console.log('🚀 ~ file: +server.ts ~ line 99 ~ .then ~ data', data);
 
-			ResData = data;
-		});
+	// 		ResData = data;
+
+	// 	});
+		
+	// ResData.Link="http://127.0.0.1:9000/"+ResData.BucketName+"/"+ResData.Name
+	// console.log("🚀 ~ file: +server.ts ~ line 67 ~ .then ~ ResData.Link", ResData.Link)
 
 	return json(ResData);
 }

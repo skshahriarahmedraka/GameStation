@@ -9,7 +9,7 @@ export async function POST({ cookies , request }) {
     let resData:any
     await fetch('http://localhost:8001/sveltekit/register', {
 			// credentials: 'same-origin',
-				credentials: 'include',
+				// credentials: 'include',
 
 			method: 'POST',
 			mode: 'no-cors',

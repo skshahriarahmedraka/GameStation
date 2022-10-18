@@ -1,8 +1,17 @@
-import { error, json } from '@sveltejs/kit';
+// import { error, json } from '@sveltejs/kit';
 
+import { redirect } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params, }) {
+export const load: PageServerLoad = async ({ params,locals }) => {
+
+	if (!locals.user.Authenticated) {
+		console.log("🚀 ~ file: +page.server.ts ~ line 7 ~ constload:PageServerLoad= ~ locals.user", locals.user)
+		throw redirect(302, '/login')
+	  }
+
+
 	let mydata
 	console.log("🚀 ~ file: +page.server.ts ~ line 13 ~ GET ~ params.productid", params.productid)
 	await fetch(`http://localhost:8001/game/${params.productid}`,{

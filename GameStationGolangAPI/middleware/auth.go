@@ -27,9 +27,9 @@ func Authentication() gin.HandlerFunc {
 
 		}
 		c.Set("Email", claims.Email)
-		c.Set("UserID", claims.UID)
-		c.Set("FirstName", claims.FirstName)
-		c.Set("LastName", claims.LastName)
+		c.Set("UserID", claims.UserID)
+		c.Set("FirstName", claims.Name)
+		//c.Set("LastName", claims.LastName)
 		LogError.LogError("🚀 ~ file: auth.go ~ line 9 ~ returnfunc ~ err : ", err)
 	}
 

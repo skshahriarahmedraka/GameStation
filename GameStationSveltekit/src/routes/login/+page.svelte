@@ -44,10 +44,10 @@ import { goto } from "$app/navigation";
 		}
 		 else {
 			// await fetch("http://localhost:8080/login", {
-			let res =await fetch('/auth/login', {
-				credentials: 'same-origin',
+			let res =await fetch('/api/login', {
+				// credentials: 'same-origin',
 				method: 'POST',
-				mode: 'cors',
+				// mode: 'cors',
 				body: JSON.stringify(LoginData)
 			})
 			

@@ -127,7 +127,7 @@
 					on:change={(e) => onFileSelected(e)}
 					type="file"
 					class=" hidden h-0 w-0  hover:cursor-pointer "
-					accept=".jpg, .jpeg, .png, .svg"
+					accept=".jpg, .jpeg, .png, .svg .webp"
 				/>
 			</button>
 		{:else}

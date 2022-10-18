@@ -159,7 +159,7 @@
 				on:change={(e) => onFileSelected(e)}
 				type="file"
 				class=" hidden h-10 w-10 "
-				accept=".jpg, .jpeg, .png, .svg"
+				accept=".jpg, .jpeg, .png, .svg  .webp"
 			/>
 		</button>
 	</div>
@@ -188,7 +188,7 @@
 				on:change={(e) => onSmallPosterImageSelected(e)}
 				type="file"
 				class=" hidden h-10 w-10 "
-				accept=".jpg, .jpeg, .png, .svg"
+				accept=".jpg, .jpeg, .png, .svg .webp"
 			/>
 		</button>
 	</div>

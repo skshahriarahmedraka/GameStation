@@ -55,7 +55,7 @@
 		data['name'] = name;
 
 		// console.log(data);
-		const res = await fetch('/api/imgupload', {
+		const res = await fetch('/api/', {
 			method: 'POST',
 			// mode: 'no-cors',
 			headers: {

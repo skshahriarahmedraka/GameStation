@@ -34,9 +34,9 @@ func (H *DatabaseCollections) AdminAddProduct() gin.HandlerFunc {
 			fmt.Println("🚀 ~ file: adminAddProduct.go ~ line 25 ~ Validate ~ Successfull : ")
 
 		}
-		// SET THE UUID 
+		// SET THE UUID
 		id := uuid.New()
-		myGameData.GameID= id.String()
+		myGameData.GameID = id.String()
 
 		// insert in mongodb
 
@@ -59,8 +59,16 @@ func (H *DatabaseCollections) AdminAddProduct() gin.HandlerFunc {
 		// var req interface{}
 
 		// fmt.Println("🚀 ~ file: adminAddProduct.go ~ line 17 ~ returnfunc ~ req : ", req)
-
-		c.JSON(http.StatusOK, gin.H{"status":"submitted success full","GameID": id.String()})
+		fmt.Println("myGameData.GameID", myGameData.GameID)
+		var rest react
+		rest.status = "submitted success full"
+		rest.GameID = myGameData.GameID
+		c.JSON(http.StatusOK, rest)
 
 	}
+}
+
+type react struct {
+	status string
+	GameID string
 }

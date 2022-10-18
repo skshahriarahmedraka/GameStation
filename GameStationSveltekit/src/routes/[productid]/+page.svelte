@@ -203,9 +203,21 @@
 		Publisher: 'Ubisoft',
 		Released: '02/20/20',
 		Platform: ['windows', 'linux', 'mac'],
-		Players: 23478238
+		Players: 23478238,
+		Comment: [
+			{Name:"raka",Rating:7,Description:"when you assign the cursor returned from the find() method to a variable using the var keyword, the cursor does not automatically iterate. You can use the cursor method forEach() to iterate the cursor and access the documents, as in the following example: var myCursor = db."},
+			{Name:"raka",Rating:7,Description:"when you assign the cursor returned from the find() method to a variable using the var keyword, the cursor does not automatically iterate. You can use the cursor method forEach() to iterate the cursor and access the documents, as in the following example: var myCursor = db."},
+
+		]
 	};
-	let mydata = {
+	let TempComment={Name:"",Rating:0,Description:""}
+	function AddComment(){
+
+
+		Gamedata.Comment.push(TempComment)
+	}
+
+			let mydata = {
 		GameID: '',
 		Name: '',
 		Moto: '',
@@ -276,6 +288,7 @@
 		Platform: ['', '', ''],
 		Players: Number()
 	};
+
 
 	function RoundNumOfPeople(x: number) {
 		if (x >= 1000000000) {
@@ -469,7 +482,23 @@
 				Discount={Gamedata.Discount}
 			/>
 		</div>
-		<div class="" />
+		<!-- COMMENT -->
+		<div class=" flex flex-col " >
+			<p class=" text-2xl  ">Leave Your Review :</p>
+			<Rating3 value={TempComment.Rating} />
+			<input
+				bind:value={TempComment.Rating}
+				type="text"
+				placeholder="Ratings"
+				class=" h-8 w-24 self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 text-base  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
+			/>
+				<textarea
+					type="text"
+					placeholder="Game Moto"
+					
+					class=" scrol3 h-20 w-full self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 font-Poppins text-lg  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
+				/>
+		</div>
 	</div>
 	<!-- <Showcase /> -->
 </div>
