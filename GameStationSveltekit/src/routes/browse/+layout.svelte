@@ -43,7 +43,7 @@ import Nav from "$lib/navbar/nav.svelte";
 
 <!-- <slot/> -->
 
-<div class=" min-h-screen min-w-full bg-[#121212] flex flex-col gap-5 justify-between overflow-hidden">
+<div class=" min-h-screen min-w-full max-w-full bg-[#121212] flex flex-col gap-5 justify-between overflow-hidden">
     <Nav />
    
 	<div class=" w-full h-fit flex flex-row justify-center gap-2">
@@ -53,7 +53,7 @@ import Nav from "$lib/navbar/nav.svelte";
     </div>
     
     <div class="flex flex-col justify-center items-center ">
-        <MostPopular />
+        <!-- <MostPopular /> -->
         <slot />
         
     </div>

@@ -15,9 +15,13 @@
 	import Security from '$lib/svgs/security.svelte';
 	import Transaction from '$lib/svgs/transaction.svelte';
 	import User from '$lib/svgs/user.svelte';
+	import {UserSettingSelect} from "$lib/Store/store"
+	import Notification from '$lib/svgs/notification.svelte';
+	import Notifications from "$lib/settingsCom/Notifications.svelte"
 
 	let list = [
 		{ name: 'General', link: '', icon: User },
+		{ name: 'Notifications', link: '', icon: Notification },
 		{ name: 'Payment Mangement', link: '', icon: Paycard },
 		{ name: 'Request Token', link: '', icon: Coin },
 		{ name: 'Password & Security', link: '', icon: Security },
@@ -26,19 +30,22 @@
 		{ name: 'Contact Admin', link: '', icon: Message },
 		{ name: 'Contact Game Developer', link: '', icon: Message }
 	];
-	let active = list[0].name;
+	let active = $UserSettingSelect
 </script>
 
 <!-- markup (zero or more items) goes here -->
 
 <div class="flex flex-row justify-center gap-1">
 
-	<div class="flex flex-col gap-0.5 xs:hidden  ">
+	<div class="flex flex-col gap-0.5 xs:hidden sm:hidden md:hidden ">
 		{#each list as l}
 			<div
 				on:click={() => {
 					active = l.name;
 				}}
+				
+				on:keypress={()=>{}}
+				
 				class=" flex h-14 w-72 flex-row justify-center gap-2   rounded-md bg-gray-700 hover:cursor-pointer hover:bg-opacity-80  {active ===
 				l.name
 					? 'border-x-4 bg-opacity-60  border-blue-500 '
@@ -50,7 +57,7 @@
 		{/each}
 	</div>
 	<div
-		class=" flex h-fit min-h-[300px] w-[880px] flex-col rounded-lg  bg-slate-700 bg-opacity-30 font-Poppins"
+		class=" flex h-fit min-h-[300px] w-[880px] flex-col rounded-lg  bg-slate-700 bg-opacity-30 font-Poppins sm:bg-white "
 	>
 		{#if active === 'General'}
 			<General />
@@ -69,6 +76,8 @@
 			<ContractAdimin />
 		{:else if active ==='Contact Game Developer'}
 			<ContractGameDev />
+			{:else if active ==='Notifications'}
+			<Notifications />
 		{:else}
 			<!-- else content here -->
 		{/if}

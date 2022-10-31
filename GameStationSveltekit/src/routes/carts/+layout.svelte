@@ -29,7 +29,7 @@ import { page } from '$app/stores';
 <!-- <slot/> -->
 
 <!-- markup (zero or more items) goes here -->
-<div class=" min-h-screen min-w-full bg-[#1c1c1c] flex flex-col gap-5 justify-between overflow-hidden ">
+<div class=" min-h-screen  min-w-full max-w-full bg-[#1c1c1c] flex flex-col gap-5 justify-between overflow-hidden ">
     <Nav />
    
 	

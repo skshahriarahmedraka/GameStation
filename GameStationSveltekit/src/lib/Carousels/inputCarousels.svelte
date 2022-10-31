@@ -5,8 +5,8 @@
 	const war = new URL('../images/GodOfWar.jpg', import.meta.url).href;
 	import CameraPlus from '$lib/svgs/cameraPlus.svelte';
 
-	let ThisCarouselImage:any
-	export let OtherImages: string[];
+	let ThisCarouselImage: any;
+	export let OtherImages: string[] =[];
 	export let BigPosterImage: string = '';
 	// const images = [
 	// 	{
@@ -35,10 +35,10 @@
 	// 	}
 	// ];
 	// let activeImage = images[0];
-	let showImages: string[] = [];
+	// let showImages: string[] = [];
 	let ActiveIndex: number = 0;
 	function ChangeActiveImagePositive() {
-		if (ActiveIndex >= showImages.length) {
+		if (ActiveIndex >= OtherImages.length) {
 			ActiveIndex = 0;
 		} else {
 			ActiveIndex += 1;
@@ -46,7 +46,7 @@
 	}
 	function ChangeActiveImageNagative() {
 		if (ActiveIndex === 0) {
-			ActiveIndex = showImages.length;
+			ActiveIndex = OtherImages.length;
 		} else {
 			ActiveIndex -= 1;
 		}
@@ -90,20 +90,53 @@
 			const imgLink = await res.json();
 			// console.log('🚀 ~ file: inputCarousels.svelte ~ line 93 ~ UploadImage ~ imgLink', imgLink);
 
-			showImages.push(imgLink.Link);
+			OtherImages.push(imgLink.Link);
 			// console.log(
 			// 	'🚀 ~ file: inputCarousels.svelte ~ line 96 ~ UploadImage ~ showImages',
 			// 	showImages
 			// );
-			ActiveIndex = showImages.length - 1;
-			BigPosterImage = showImages[0];
-			if (showImages.length > 1) {
+			ActiveIndex = OtherImages.length - 1;
+			BigPosterImage = OtherImages[0];
+			// if (showImages.length > 1) {
 				// OtherImages = showImages.slice(1);
-				OtherImages = showImages;
-			}
+				// OtherImages = showImages;
+			// }
+		} else {
+			console.log('❌🔥 ~ file: inputCarousels.svelte ~ line 105 ~ UploadImage ~ Error');
+		}
+	}
+	function RemoveImage() {
+		console.log("🚀 ~ file: inputCarousels.svelte ~ line 110 ~ RemoveImage ~ ActiveIndex", ActiveIndex)
+		if (ActiveIndex === 0) {
+			// delete OtherImages[0];
+			var filtered = OtherImages.filter(function (value, index, arr) {
+				return value != BigPosterImage;
+			});
+			BigPosterImage = '';
+			OtherImages = filtered;
+		} else {
+			// delete OtherImages[ActiveIndex];
+			const s=OtherImages[ActiveIndex]
+			var filtered = OtherImages.filter(function (value, index, arr) {
+				return value != s
+			});
+			OtherImages = filtered;
+		}
+
+		// ThisCarouselImage.src = showImages[ActiveIndex];
+		// showImages = OtherImages;
+		console.log(
+			'🚀 ~ file: inputCarousels.svelte ~ line 117 ~ RemoveImage ~ ActiveIndex',
+			ActiveIndex
+		);
+		console.log('🚀 ~ file: inputCarousels.svelte ~ line 10 ~ OtherImages', OtherImages);
+		console.log('🚀 ~ file: inputCarousels.svelte ~ line 12 ~ BigPosterImage', BigPosterImage);
+		if (OtherImages.length!=0){
+
+			ActiveIndex=OtherImages.length-1
 		}else {
+			ActiveIndex=OtherImages.length
 			
-			console.log("❌🔥 ~ file: inputCarousels.svelte ~ line 105 ~ UploadImage ~ Error")
 		}
 	}
 </script>
@@ -116,7 +149,7 @@
 		id="slide1"
 		class="carousel-item relative w-full"
 	>
-		{#if ActiveIndex === showImages.length}
+		{#if ActiveIndex === OtherImages.length}
 			<!-- content here -->
 			<button class=" absolute   h-full   w-full self-end  " on:click={() => FileInput.click()}>
 				<CameraPlus
@@ -132,10 +165,30 @@
 			</button>
 		{:else}
 			<div class=" h-full w-full">
+				<svg
+					on:click={() => {
+						RemoveImage();
+					}}
+					on:keypress={()=>{}}
+
+					class="absolute top-5 left-5 h-10  w-10 stroke-white hover:cursor-pointer hover:fill-gray-500"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/></svg
+				>
 				<img
-					src={showImages[ActiveIndex]}
+					src={OtherImages[ActiveIndex]}
 					bind:this={ThisCarouselImage}
-				on:error={ ()=>{ThisCarouselImage.src=showImages[ActiveIndex]}}
+					on:error={() => {
+						ThisCarouselImage.src = OtherImages[ActiveIndex];
+					}}
 					alt=""
 					class="h-full w-full rounded-xl object-cover transition-all duration-200 ease-linear "
 				/>

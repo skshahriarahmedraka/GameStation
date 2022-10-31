@@ -1,5 +1,6 @@
 <script lang="ts">
     // your script goes here
+    import {UserSettingSelect} from "$lib/Store/store"
 </script>
 
 <style>

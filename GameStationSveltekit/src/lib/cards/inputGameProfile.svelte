@@ -17,8 +17,8 @@
 	let ThisLogoImage:any 
 	export let LogoImage: string=""
 	export let SmallPosterImage:string=""
-	export let Price: number ;
-	export let Discount: number ;
+	export let Price: number =0.0;
+	export let Discount: number=0 ;
 	export let Develper: string = '';
 	export let Publisher: string = '';
 	export let Platform: string[] = ['', '', ''];
@@ -26,7 +26,8 @@
 	let avatar: any = '';
 	let FileInput: any;
 	let FileInput2: any;
-
+	$: if (Price===null || Price <0){Price=0.0}
+	$: if (Discount===null || Discount<0){Discount=0}
 	const onFileSelected = (e: any) => {
 		let image = e.target.files[0];
 		let reader = new FileReader();
@@ -129,7 +130,9 @@
 
 
 	// LogoImage=avatar
-	
+	function RemoveImage(){
+
+	}
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -139,35 +142,73 @@
 	<div class=" relative  flex w-full flex-row justify-center ">
 		{#if LogoImage != ''}
 			<!-- banner image -->
-			<img
+			<div class="w-full h-full">
+				<svg
+					on:click={() => {
+						LogoImage=""
+					}}
+					on:keydown={()=>{}}
+					class="absolute top-5 left-5 h-8  w-8 stroke-white hover:cursor-pointer hover:fill-gray-500"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/></svg
+				>
+
+				<img
 				src={LogoImage}
 				bind:this={ThisLogoImage}
 				on:error={ ()=>{ThisLogoImage.src=LogoImage}}
 				alt="ProfileImage"
 				class=" aspect-[18/10]  w-full self-center rounded-lg object-contain "
-			/>
+				/>
+			</div>
 		{:else}
 		<CameraPlus class="  h-56 w-56 rounded-xl stroke-slate-200 border-2 border-slate-200 transition-all ease-linear duration-150 hover:stroke-slate-500 hover:border-slate-500 stroke-[1px] hover:cursor-pointer" />
 			
 			<!-- <CameraPlus class="  rounded-xl  h-56 w-56 stroke-slate-200 stroke-[1px] border-2 border-slate-200 transition-all ease-linear duration-150 hover:stroke-slate-500 hover:border-slate-500  hover:cursor-pointer"   /> -->
 			
+			<button class=" absolute   h-full   w-full self-end  " on:click={() => FileInput.click()}>
+			
+				<input
+					bind:this={FileInput}
+					on:change={(e) => onFileSelected(e)}
+					type="file"
+					class=" hidden h-10 w-10 "
+					accept=".jpg, .jpeg, .png, .svg  .webp"
+				/>
+			</button>
 		{/if}
-		<button class=" absolute   h-full   w-full self-end  " on:click={() => FileInput.click()}>
-		
-			<input
-				bind:this={FileInput}
-				on:change={(e) => onFileSelected(e)}
-				type="file"
-				class=" hidden h-10 w-10 "
-				accept=".jpg, .jpeg, .png, .svg  .webp"
-			/>
-		</button>
 	</div>
 
 	<p class="text-xl font-semibold">Small Poster Image :</p>
 	<div class=" relative  flex w-full flex-row justify-center ">
 		{#if SmallPosterImage != ''}
 			<!-- banner image -->
+			<div class="w-full h-full">
+				<svg
+					on:click={() => {
+						SmallPosterImage=""
+					}}
+					on:keydown={()=>{}}
+					class="absolute top-5 left-5 h-8  w-8 stroke-white hover:cursor-pointer hover:fill-gray-500"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/></svg
+				>
 			<img
 				src={SmallPosterImage}
 				bind:this={ThisSmallPosterImage}
@@ -175,22 +216,24 @@
 				alt="ProfileImage"
 				class=" aspect-[18/10]  w-full self-center rounded-lg object-contain "
 			/>
-		{:else}
-		<CameraPlus class=" h-56 w-56 rounded-xl  border-2 border-slate-200 transition-all ease-linear duration-150 hover:stroke-slate-500 hover:border-slate-500 stroke-[1px] hover:cursor-pointer" />
+			</div>
 
+		{:else}
+		
+		<CameraPlus class=" h-56 w-56 rounded-xl  border-2 border-slate-200 transition-all ease-linear duration-150 hover:stroke-slate-500 hover:border-slate-500 stroke-[1px] hover:cursor-pointer" />
 			<!-- <CameraPlus class=" border-2 border-slate-400 rounded-xl  h-56 w-56  stroke-1 " /> -->
 			
+			<button class=" absolute   h-full   w-full self-end  " on:click={() => FileInput2.click()}>
+			
+				<input
+					bind:this={FileInput2}
+					on:change={(e) => onSmallPosterImageSelected(e)}
+					type="file"
+					class=" hidden h-10 w-10 "
+					accept=".jpg, .jpeg, .png, .svg .webp"
+				/>
+			</button>
 		{/if}
-		<button class=" absolute   h-full   w-full self-end  " on:click={() => FileInput2.click()}>
-		
-			<input
-				bind:this={FileInput2}
-				on:change={(e) => onSmallPosterImageSelected(e)}
-				type="file"
-				class=" hidden h-10 w-10 "
-				accept=".jpg, .jpeg, .png, .svg .webp"
-			/>
-		</button>
 	</div>
 
 	<!-- <img src={LogoImage} alt="" class=" h-fit w-full object-cover " /> -->
@@ -223,7 +266,7 @@
 		<p class=" text-gray-400 ">Price :</p>
 		<input
 			bind:value={Price}
-			type="text"
+			type="number"
 			placeholder="Price"
 			class=" my-2 h-8 w-full self-start rounded-2xl border-2  border-[#24262b]  bg-[#303338] p-2   font-medium  text-slate-100 outline-none  focus:border-sky-500 active:border-gray-800 "
 		/>
@@ -234,7 +277,7 @@
 		<p class=" text-gray-400 ">Discount(%) :</p>
 		<input
 			bind:value={Discount}
-			type="text"
+			type="number"
 			placeholder="Discount"
 			class=" my-2 h-8 w-full self-start rounded-2xl border-2  border-[#24262b]  bg-[#303338] p-2   font-medium  text-slate-100 outline-none  focus:border-sky-500 active:border-gray-800 "
 		/>
@@ -353,5 +396,15 @@
 </div>
 
 <style>
+	input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 	/* your styles go here */
 </style>

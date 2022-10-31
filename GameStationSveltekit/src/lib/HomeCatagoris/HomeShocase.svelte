@@ -25,7 +25,8 @@
 			Image: mirage,
 			Price: '43.65',
 			Rating: 9.7,
-			NumberOfPlayers: 34821571533
+			NumberOfPlayers: 34821571533,
+			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns."
 		},
 		{
 			ID: '1321432',
@@ -33,7 +34,9 @@
 			Image: anthem,
 			Rating: 9.7,
 			NumberOfPlayers: 34821571533,
-			Price: '43.65'
+			Price: '43.65',
+			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+
 		},
 		{
 			ID: '1321432',
@@ -41,6 +44,8 @@
 			Image: fifa,
 			Rating: 9.7,
 			NumberOfPlayers: 34821571533,
+			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+
 			Price: '43.65'
 		},
 		{
@@ -48,6 +53,7 @@
 			Name: "Assassin's Creed® Mirage",
 			Image: forbiddenwest,
 			Rating: 9.7,
+			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
 			NumberOfPlayers: 34821571533,
 			Price: '43.65'
 		},
@@ -56,6 +62,7 @@
 			Name: "Assassin's Creed® Mirage",
 			Image: anthem,
 			Rating: 9.7,
+			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
 			NumberOfPlayers: 34821571533,
 			Price: '43.65'
 		},
@@ -64,6 +71,7 @@
 			Name: "Assassin's Creed® Mirage",
 			Image: fifa,
 			Rating: 9.7,
+			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
 			NumberOfPlayers: 34821571533,
 			Price: '43.65'
 		}

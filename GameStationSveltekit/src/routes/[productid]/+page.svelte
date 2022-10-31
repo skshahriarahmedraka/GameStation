@@ -2,8 +2,53 @@
 	export let data;
 	console.log('🚀 ~ file: +page.svelte ~ line 3 ~ data', data.mydata);
 
-	let Gamedata =data.mydata 
+	let Gamedata : {
+		GameID: string;
+		Name: string;
+		Moto: string;
+		LogoImage: string;
+		BigPosterImage: string;
+		SmallPosterImage: string;
+		OtherImages: string[];
+		Genres: string[];
+		Feature: string[];
+		Description: string;
+		Rating: number;
+		RatingGivenBy: {
+			'PC Gamer': string;
+			IGN: string;
+			'Game Informer': string;
+		};
+		Minspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Recomendedspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Discount: number;
+		Price: number;
+		Developer: string;
+		Publisher: string;
+		Released: string;
+		Platform: string[];
+		Players: number;
+		Comment: {
+			Name: string;
+			Rating: number;
+			Description: string;
+		}[];
+		FollowUs: {
+			Facebook: string;
+			Discord: string;
+			Youtube: string;
+			Twitter: string;
+			Site: string;
+		};
+	} = data.mydata;
 	import GameProfile from '$lib/cards/gameProfile.svelte';
+	import {UserProData} from "$lib/Store/store"
 	import Showcase from '$lib/Carousels/showcase.txt';
 	// import Showcase from "$lib/Carousels/showcase.svelte";
 	import Daisyui1 from '$lib/Carousels/daisyui1.svelte';
@@ -205,19 +250,48 @@
 		Platform: ['windows', 'linux', 'mac'],
 		Players: 23478238,
 		Comment: [
-			{Name:"raka",Rating:7,Description:"when you assign the cursor returned from the find() method to a variable using the var keyword, the cursor does not automatically iterate. You can use the cursor method forEach() to iterate the cursor and access the documents, as in the following example: var myCursor = db."},
-			{Name:"raka",Rating:7,Description:"when you assign the cursor returned from the find() method to a variable using the var keyword, the cursor does not automatically iterate. You can use the cursor method forEach() to iterate the cursor and access the documents, as in the following example: var myCursor = db."},
-
+			{
+				Name: 'raka',
+				Rating: 7,
+				Description:
+					'when you assign the cursor returned from the find() method to a variable using the var keyword, the cursor does not automatically iterate. You can use the cursor method forEach() to iterate the cursor and access the documents, as in the following example: var myCursor = db.'
+			},
+			{
+				Name: 'raka',
+				Rating: 7,
+				Description:
+					'when you assign the cursor returned from the find() method to a variable using the var keyword, the cursor does not automatically iterate. You can use the cursor method forEach() to iterate the cursor and access the documents, as in the following example: var myCursor = db.'
+			}
 		]
 	};
-	let TempComment={Name:"",Rating:0,Description:""}
-	function AddComment(){
-
-
-		Gamedata.Comment.push(TempComment)
+	let TempComment = { Name: $UserProData.Name, Rating: 0 as number, Description: '' };
+	function AddComment() {
+		Gamedata.Comment.push(TempComment);
+	}
+	async function SubmitComment(){
+		let mydata={
+					GameID : Gamedata.GameID as string, 
+					Comment : TempComment 
+				}
+		
+		await fetch('/api/productid/postcomment', {
+				// credentials: 'same-origin',
+				method: 'POST',
+				// mode: 'cors',
+				body: JSON.stringify(mydata)
+			})
+				.then((res) => {
+					return res.json();
+				})
+				.then((resdata: any) => {
+					console.log("🚀 ~ file: +page.svelte ~ line 240 ~ .then ~ resdata comment", resdata)
+					Gamedata.Comment.push(TempComment)
+					console.log("🚀 ~ file: +page.svelte ~ line 242 ~ .then ~ Gamedata", Gamedata)
+					console.log("🚀 ~ file: +page.svelte ~ line 242 ~ .then ~ Gamedata commnet", Gamedata.Comment)
+				});
 	}
 
-			let mydata = {
+	let mydata = {
 		GameID: '',
 		Name: '',
 		Moto: '',
@@ -289,7 +363,6 @@
 		Players: Number()
 	};
 
-
 	function RoundNumOfPeople(x: number) {
 		if (x >= 1000000000) {
 			x /= 1000000000;
@@ -317,6 +390,9 @@
 	import { navigating } from '$app/stores';
 	import SaturnLoading from '$lib/loading/saturnLoading.svelte';
 	import World from '$lib/svgs/world.svelte';
+	import Textarea from '$lib/otherComponents/textarea.svelte';
+	import { UserSettingSelect } from '$lib/Store/store';
+	import { comment } from 'postcss';
 	let TheGameHas = [
 		{ title: 'Amazing Characters', icon: Happysad },
 		{ title: 'Diverse Characters', icon: Globe },
@@ -414,7 +490,6 @@
 				</div>
 				<div class="flex flex-row flex-wrap justify-center gap-3	 ">
 					{#each TheGameHas as q}
-						<!-- content here -->
 						<div
 							class=" flex h-72 w-80 flex-col items-center justify-center rounded-md bg-[#262626] p-4 align-middle "
 						>
@@ -437,11 +512,11 @@
 							<p class=" text-lg font-semibold">Minimum Requirement :</p>
 							<div class=" flex flex-col gap-3 ">
 								{#each Gamedata.Minspec as option}
-								<div class="flex flex-col gap-1">
-									<p class=" text-gray-400 font-semibold">{option.Name} :</p>
-									<!-- <p class="">{Value}</p> -->
-									<p class=" ml-2">{option.Value}</p>
-								</div>
+									<div class="flex flex-col gap-1">
+										<p class=" font-semibold text-gray-400">{option.Name} :</p>
+										<!-- <p class="">{Value}</p> -->
+										<p class=" ml-2">{option.Value}</p>
+									</div>
 								{/each}
 								<!-- {#each Object.entries(Gamedata.Minspec) as [title, Value]}
 									<div class="flex flex-col gap-1">
@@ -456,7 +531,7 @@
 							<div class=" flex flex-col gap-3 ">
 								{#each Gamedata.Recomendedspec as option}
 									<div class="flex flex-col gap-1">
-										<p class=" text-gray-400 font-semibold">{option.Name} :</p>
+										<p class=" font-semibold text-gray-400">{option.Name} :</p>
 										<!-- <p class="">{Value}</p> -->
 										<p class=" ml-2">{option.Value}</p>
 									</div>
@@ -482,22 +557,50 @@
 				Discount={Gamedata.Discount}
 			/>
 		</div>
+		<p class=" text-2xl font-Poppins">Reviews : </p>
+		<!-- show COMMENT -->
+		<div class=" flex flex-col gap-3">
+			{#if Gamedata.Comment != null}
+				{#each Gamedata.Comment as comment}
+				<div class=" flex flex-col gap-1">
+					<p class=" font-semibold text-blue-600">{comment.Name}</p>
+					<Rating3 value={comment.Rating} />
+					<p class="">{comment.Description}</p>
+					
+				</div>
+				{/each}
+				 <!-- content here -->
+			{/if}
+		</div>
 		<!-- COMMENT -->
-		<div class=" flex flex-col " >
+		<div class=" flex flex-col gap-2">
 			<p class=" text-2xl  ">Leave Your Review :</p>
-			<Rating3 value={TempComment.Rating} />
-			<input
+			<div class=" gap-2 flex flex-row">
+
+				<Rating3 value={TempComment.Rating} />
+				<input
 				bind:value={TempComment.Rating}
-				type="text"
+				type="number"
 				placeholder="Ratings"
 				class=" h-8 w-24 self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 text-base  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
-			/>
-				<textarea
-					type="text"
-					placeholder="Game Moto"
-					
-					class=" scrol3 h-20 w-full self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 font-Poppins text-lg  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
 				/>
+			</div>
+			<textarea
+				type="text"
+				placeholder="Game Moto"
+				bind:value={TempComment.Description}
+				class=" scrol3 h-20 w-full self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 font-Poppins text-lg  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
+			/>
+			<div class=" self-end">
+				<button
+					on:click={() => {
+						SubmitComment()
+					}}
+					class="h-10 w-fit rounded-xl bg-blue-600 px-3 font-Poppins font-semibold text-white hover:bg-sky-500 active:bg-blue-800  "
+				>
+					Post Comment 
+				</button>
+			</div>
 		</div>
 	</div>
 	<!-- <Showcase /> -->
@@ -505,4 +608,14 @@
 
 <style>
 	/* your styles go here */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
 </style>

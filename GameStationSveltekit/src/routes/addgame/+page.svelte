@@ -119,7 +119,9 @@
 	// 	};
 
 	function RoundNumOfPeople(x: number) {
-		if (x >= 1000000000) {
+		if (x === null) {
+			return 0;
+		} else if (x >= 1000000000) {
 			x /= 1000000000;
 			return String(x.toFixed(2)) + 'B';
 		} else if (x >= 1000000) {
@@ -218,7 +220,7 @@
 		LogoImage: string;
 		BigPosterImage: string;
 		SmallPosterImage: string;
-		OtherImages: never[];
+		OtherImages: string[];
 		Genres: string[];
 		Feature: string[];
 		Description: string;
@@ -245,7 +247,7 @@
 		Players: number;
 		Comment: {
 			Name: string;
-			Rating: 0;
+			Rating: number;
 			Description: string;
 		}[];
 		FollowUs: {
@@ -289,7 +291,7 @@
 				Value: ''
 			},
 			{
-				Name: '',
+				Name: 'Memory',
 				Value: ''
 			},
 			{
@@ -331,6 +333,123 @@
 		Platform: ['', '', ''],
 		Players: 0,
 		Comment: []
+	};
+
+	let FormDataErr: {
+		GameID: boolean;
+		Name: boolean;
+		Moto: boolean;
+		LogoImage: boolean;
+		BigPosterImage: boolean;
+		SmallPosterImage: boolean;
+		OtherImages: boolean;
+		Genres: boolean;
+		Feature: boolean;
+		Description: boolean;
+		Rating: boolean;
+		RatingGivenBy: {
+			'PC Gamer': boolean;
+			IGN: boolean;
+			'Game Informer': boolean;
+		};
+		Minspec: {
+			Name: string;
+			Value: boolean;
+		}[];
+		Recomendedspec: {
+			Name: string;
+			Value: boolean;
+		}[];
+		Discount: boolean;
+		Price: boolean;
+		Developer: boolean;
+		Publisher: boolean;
+		Released: boolean;
+		Platform: boolean;
+		Players: boolean;
+
+		FollowUs: {
+			Facebook: boolean;
+			Discord: boolean;
+			Youtube: boolean;
+			Twitter: boolean;
+			Site: boolean;
+		};
+	} = {
+		GameID: true,
+		Name: true,
+		Moto: true,
+		LogoImage: true,
+		BigPosterImage: true,
+		SmallPosterImage: true,
+		OtherImages: true,
+		Genres: true,
+		Feature: true,
+		Description: true,
+		FollowUs: {
+			Facebook: true,
+			Discord: true,
+			Youtube: true,
+			Twitter: true,
+			Site: true
+		},
+		Rating: true,
+		RatingGivenBy: {
+			'PC Gamer': true,
+			IGN: true,
+			'Game Informer': true
+		},
+		Minspec: [
+			{
+				Name: 'OS',
+				Value: true
+			},
+			{
+				Name: 'Storage',
+				Value: true
+			},
+			{
+				Name: 'Memory',
+				Value: true
+			},
+			{
+				Name: 'CPU',
+				Value: true
+			},
+			{
+				Name: 'GPU',
+				Value: true
+			}
+		],
+		Recomendedspec: [
+			{
+				Name: 'OS',
+				Value: true
+			},
+			{
+				Name: 'Storage',
+				Value: true
+			},
+			{
+				Name: 'Memory',
+				Value: true
+			},
+			{
+				Name: 'GPU',
+				Value: true
+			},
+			{
+				Name: 'CPU',
+				Value: true
+			}
+		],
+		Price: true,
+		Discount: true,
+		Developer: true,
+		Publisher: true,
+		Released: true,
+		Platform: true,
+		Players: true
 	};
 
 	let Gamedata = {
@@ -475,11 +594,18 @@
 	// SUBMIT A GAME
 	let responseClone;
 	import { error, json } from '@sveltejs/kit';
-	import axios from 'axios';
+	// import axios from 'axios';
 	import Globe from '$lib/svgs/globe.svelte';
 	import World from '$lib/svgs/world.svelte';
 	import { goto } from '$app/navigation';
+
+	function Checkerror() {
+		if (FormData.Name.trim() === '') {
+			FormDataErr.Name = true;
+		}
+	}
 	async function PostGameData() {
+		// Checkerror()
 		// console.log('🚀 ~ file: +page.svelte ~ line 306 ~ PostGameData', data);
 		fetch('/api/addgame', {
 			// credentials: 'same-origin',
@@ -497,7 +623,8 @@
 					data.GameID
 				);
 				if (data.GameID) {
-					goto(`/${data.GameID}`);
+					console.log('🚀 ~ file: +page.svelte ~ line 627 ~ .then ~ data.GameID', data.GameID);
+					// goto(`/${data.GameID}`);
 				} else {
 					throw error(404, 'Not Found');
 				}
@@ -544,6 +671,16 @@
 	// 				console.log(error);
 	// 			});
 	// 	}
+	let ThisGenreInput: any;
+	function RemoveGenreFromList(s: number) {
+		GenreObj.List.splice(s, 1);
+		ThisGenreInput.focus();
+	}
+	let ThisFeatureInput: any;
+	function RemoveFeatureFromList(s: number) {
+		FeaturesObj.List.splice(s, 1);
+		ThisFeatureInput.focus();
+	}
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -555,21 +692,21 @@
 			bind:value={FormData.Name}
 			type="text"
 			placeholder="Game Name"
-			class=" my-2 h-16 w-[70%] self-start rounded-2xl border-2  border-[#24262b]  bg-[#303338] p-2  text-5xl font-medium  text-slate-100 outline-none  focus:border-sky-500 active:border-gray-800 "
+			class=" my-2 h-16 w-[70%] self-start rounded-2xl border-2  border-[#24262b]  bg-[#303338] p-2  text-5xl font-medium  text-slate-100 outline-none  focus:border-sky-500 active:border-gray-800  "
 		/>
 		<!-- <p class=" text-5xl text-slate-100">{GameFormData.Name}</p> -->
 		<div class=" flex flex-row gap-4 ">
 			<Rating3 value={FormData.Rating} />
 			<input
 				bind:value={FormData.Rating}
-				type="text"
+				type="number"
 				placeholder="Ratings"
 				class=" h-8 w-24 self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 text-base  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
 			/>
 			<Peoples class="h-6 w-6 stroke-blue-400" />
 			<p class=" -ml-2 text-lg">{RoundNumOfPeople(FormData.Players)}</p>
 			<input
-				type="text"
+				type="number"
 				placeholder="Ratings"
 				bind:value={FormData.Players}
 				class=" h-8 w-24 self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 text-base  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
@@ -608,14 +745,32 @@
 									: ''} active:border-gray-800 "
 							>
 								<ul class="flex flex-row flex-wrap gap-2">
-									{#each GenreObj.List as t}
+									{#each GenreObj.List as t, i}
 										<li
 											class="m-1 rounded-md bg-[#3d4951] px-2 py-1 text-[#9bc0da] hover:cursor-pointer hover:bg-slate-600 hover:text-teal-200"
 										>
 											{t}
+											<svg
+												on:click={() => {
+													RemoveGenreFromList(i);
+												}}
+												on:keypress={() => {}}
+												class="inline-flex h-6 w-6 hover:stroke-red-500"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24"
+												xmlns="http://www.w3.org/2000/svg"
+												><path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d="M6 18L18 6M6 6l12 12"
+												/></svg
+											>
 										</li>
 									{/each}
 									<input
+										bind:this={ThisGenreInput}
 										on:keypress={onKeyPressGenre}
 										maxlength="20"
 										bind:value={GenreObj.Input}
@@ -645,15 +800,33 @@
 									? 'border-sky-500'
 									: ''} active:border-gray-800 "
 							>
-								<ul class="flex flex-row flex-wrap gap-2">
-									{#each FeaturesObj.List as t}
+								<ul class="flex flex-row flex-wrap gap-2 ">
+									{#each FeaturesObj.List as t, i}
 										<li
 											class="m-1 rounded-md bg-[#3d4951] px-2 py-1 text-[#9bc0da] hover:cursor-pointer hover:bg-slate-600 hover:text-teal-200"
 										>
 											{t}
+											<svg
+												on:click={() => {
+													RemoveFeatureFromList(i);
+												}}
+												on:keypress={() => {}}
+												class="inline-flex h-6 w-6 hover:stroke-red-500"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24"
+												xmlns="http://www.w3.org/2000/svg"
+												><path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d="M6 18L18 6M6 6l12 12"
+												/></svg
+											>
 										</li>
 									{/each}
 									<input
+										bind:this={ThisFeatureInput}
 										on:keypress={onKeyPressFeatures}
 										maxlength="20"
 										bind:value={FeaturesObj.Input}
@@ -860,4 +1033,15 @@
 
 <style>
 	/* your styles go here */
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
 </style>

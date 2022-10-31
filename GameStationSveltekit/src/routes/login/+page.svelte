@@ -1,13 +1,11 @@
-
 <script lang="ts">
-import { goto } from "$app/navigation";
-	import Amazon from "$lib/svgs/Amazon.svelte";
-	import Github from "$lib/svgs/Github.svelte";
-	import Google from "$lib/svgs/google.svelte";
-	import Twitter from "$lib/svgs/twitter.svelte";
-	import Bg1 from "$lib/images/mix3.jpeg"
+	import { goto } from '$app/navigation';
+	import Amazon from '$lib/svgs/Amazon.svelte';
+	import Github from '$lib/svgs/Github.svelte';
+	import Google from '$lib/svgs/google.svelte';
+	import Twitter from '$lib/svgs/twitter.svelte';
+	import Bg1 from '$lib/images/mix3.jpeg';
 	const LoginBg = new URL(Bg1, import.meta.url).href;
-
 
 	let LoginData = {
 		Email: '',
@@ -15,7 +13,6 @@ import { goto } from "$app/navigation";
 	};
 	let b: boolean = false;
 	let ErrorMsg = {
-		
 		Email: [false, 'invalid/wrong email'],
 		Password: [false, 'Password is too short']
 	};
@@ -34,56 +31,53 @@ import { goto } from "$app/navigation";
 		} else if (!ValidateEmail(LoginData.Email)) {
 			ErrorMsg.Email[1] = 'invalid/wrong email or password';
 			ErrorMsg.Email[0] = true;
-		} 
+		} else {
+			ErrorMsg.Email[0] = false;
+
+		}
 		if (LoginData.Password.trim() === '') {
 			ErrorMsg.Password[1] = 'Password is Empty';
-			ErrorMsg.Password[0]=true
-		} else if (LoginData.Password.length<8 || LoginData.Password.length>30){
+			ErrorMsg.Password[0] = true;
+		} else if (LoginData.Password.length < 8 || LoginData.Password.length > 30) {
 			ErrorMsg.Password[1] = 'Password is Too short';
-			ErrorMsg.Password[0]=true
+			ErrorMsg.Password[0] = true;
+		} else {
+			ErrorMsg.Password[0] = false
 		}
-		 else {
-			// await fetch("http://localhost:8080/login", {
-			let res =await fetch('/api/login', {
+		if (!ErrorMsg.Email[0] && !ErrorMsg.Password[0]){
+			await fetch('/api/login', {
 				// credentials: 'same-origin',
 				method: 'POST',
 				// mode: 'cors',
 				body: JSON.stringify(LoginData)
 			})
-			
-			if (res.ok){
-				let value= await res.json()
-                console.log("🚀 ~ file: index.svelte ~ line 49 ~ OnSubmit ~ value : ", value)
-				LoginData = {
-					Email: '',
-					Password: ''
-				};
-				let s:string="/"+String(value.ID)
-                 
-				goto(s);
-			}else{
-				console.log("🚀 ~ file: index.svelte ~ line 57 ~ OnSubmit ~ err : ")
-				ErrorMsg.Email[1] = 'invalid/wrong email or password';
-				ErrorMsg.Email[0] = true;
-			}
-			
-			// .then(()=>).then(response=>response.json()).then((value) => {
-            //     // const UserURL = response.json()
-            //     // console.log("🚀🚀🚀🚀 ~ file: index.svelte ~ line 37 ~ OnSubmit ~ UserURL : ", value.UserURL)
-            //     // ErrorMsg = 'Success';
-            //     // goto(`${value.UserURL}`)
-			// 	// goto("/")
-				
-			// 	// b = true;
-			// }).catch((err)=>{
-                
-			// });
+				.then((res) => {
+					return res.json();
+				})
+				.then((resdata: any) => {
+					if (resdata.status === 'OK') {
+						LoginData = {
+							Email: '',
+							Password: ''
+							// let s:string="/"
+						};
+						goto('/')
+		// window.open(`http://${process.env.HOST}/`);
+		// Simulate an HTTP redirect:
+// window.location.replace(`http://${process.env.HOST}/`);
+						
+					} else {
+						ErrorMsg.Email[1] = resdata.status;
+						ErrorMsg.Email[0] = true;
+					}
+				});
 		}
 	}
 </script>
+
 <!-- bg-[#181818] -->
 
-<div class="grid h-screen w-full  place-items-center  " style="background-image: url('{LoginBg}');" >
+<div class="grid h-screen w-full  place-items-center  " style="background-image: url('{LoginBg}');">
 	<a
 		href="/register"
 		on:click={() => {
@@ -99,7 +93,9 @@ import { goto } from "$app/navigation";
 		</button>
 	</a>
 	<div class="">
-		<div class=" flex h-fit pb-6 w-[500px] flex-col space-y-4 rounded-xl bg-[#2d2d2d] bg-opacity-90">
+		<div
+			class=" flex h-fit w-[500px] flex-col space-y-4 rounded-xl bg-[#2d2d2d] bg-opacity-90 pb-6"
+		>
 			<div
 				class="mt-5 flex w-full items-center justify-center text-3xl font-semibold text-gray-200"
 			>
@@ -109,7 +105,7 @@ import { goto } from "$app/navigation";
 				<div class=" ml-12 mt-2 self-start text-left text-base font-semibold text-gray-300 ">
 					Email :
 				</div>
-				{#if ErrorMsg.Email[0] }
+				{#if ErrorMsg.Email[0]}
 					<!-- content here -->
 					<div class=" mt-2 ml-3 inline-flex ">
 						<svg
@@ -128,15 +124,15 @@ import { goto } from "$app/navigation";
 				{/if}
 			</div>
 			<input
-			bind:value={LoginData.Email}
+				bind:value={LoginData.Email}
 				type="text"
-				class=" self-center h-12 w-[415px] p-2 text-lg font-medium text-[#98999e] outline-none focus:border-sky-500  bg-[#303338] border-2 mx-4 my-2 border-[#24262b]  active:border-gray-800 rounded-2xl "
+				class=" mx-4 my-2 h-12 w-[415px] self-center rounded-2xl border-2  border-[#24262b] bg-[#303338]  p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 			/>
 			<div class="flex flex-row">
 				<div class=" ml-12 mt-2 self-start text-left text-base font-semibold text-gray-300 ">
 					Password :
 				</div>
-				{#if ErrorMsg.Password[0] }
+				{#if ErrorMsg.Password[0]}
 					<!-- content here -->
 					<div class=" mt-2 ml-3 inline-flex ">
 						<svg
@@ -157,8 +153,7 @@ import { goto } from "$app/navigation";
 			<input
 				bind:value={LoginData['Password']}
 				type="password"
-				class=" self-center h-12 w-[415px] p-2 text-lg font-medium text-[#98999e] outline-none focus:border-sky-500  bg-[#303338] border-2 mx-4 my-2 border-[#24262b]  active:border-gray-800 rounded-2xl "
-
+				class=" mx-4 my-2 h-12 w-[415px] self-center rounded-2xl border-2 border-[#24262b] bg-[#303338]  p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 			/>
 			<div class="mt-8 ml-4 text-center text-xs font-semibold text-gray-500">
 				By registering, you agree to Accord's <p
@@ -196,12 +191,20 @@ import { goto } from "$app/navigation";
 
 <style>
 	/* your styles go here */
-	input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px #303338 inset !important;
+	/* input:-webkit-autofill,
+	input:-webkit-autofill:hover,
+	input:-webkit-autofill:focus,
+	input:-webkit-autofill:active {
+		-webkit-box-shadow: 0 0 0 30px #303338 inset !important;
+	} */
+
+	input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px #303338 inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: #98999e;
 }
 
-
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px #303338 inset;/*your box-shadow*/
+    -webkit-text-fill-color: #98999e;
+} 
 </style>

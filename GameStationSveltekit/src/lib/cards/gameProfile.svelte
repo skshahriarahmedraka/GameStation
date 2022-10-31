@@ -69,7 +69,7 @@
                     <Apple class="h-5 w-5 fill-slate-100" />
                  {:else if  j=="linux"}
                     <Linux class="h-5 w-5 fill-slate-100" />
-                 {:else}
+                 {:else if j=="windows"}
                     <Windows class="h-5 w-5 fill-slate-100" />
                  {/if}
             {/each}

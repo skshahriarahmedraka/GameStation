@@ -1,5 +1,8 @@
 <script lang="ts">
-	export let value = 7;
+	export let value = 0;
+	$: if(value<0 || value>10 || value === null) {
+		value=0  
+	}
 </script>
 
 <div class=" flex flex-row ">

@@ -10,6 +10,3 @@
 
 <textarea bind:value  class=" {$$props.class} text-[#e7e9eb] border-gray-600  border-2 p-2 text-base font-Poppins scrol max-h-fit h-60 overflow-y-scroll scrol3 bg-inherit w-full overflow-hidden rounded-md"  placeholder="Write Here"></textarea>	
 
-<style>
-
-</style>

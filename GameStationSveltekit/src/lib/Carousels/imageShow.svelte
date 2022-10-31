@@ -14,6 +14,7 @@
     Price: string;
     Rating: number;
     NumberOfPlayers: number;
+    Moto:string 
 }[]
     // const images = [anthem,forbiddenwest,fifa,war]
     let activeImage=0
@@ -59,12 +60,20 @@ import {elasticIn, elasticOut } from 'svelte/easing';
 <div class="carousel aspect-[16/9] h-[600px]">
     <!-- content here -->
 
-    <div  transition:slide="{{ duration: 1000, easing:elasticOut}}"   id="slide1" class="carousel-item relative w-full">
+    <div  transition:slide="{{ duration: 1000, easing:elasticOut}}"   id="slide1" class="carousel-item  w-full relative">
         <img    src="{liObj[ActiveIndex].Image}" alt="" class="w-full object-cover rounded-xl transition-all ease-linear duration-200" />
         <!-- <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
             <button on:click={()=>{ChangeActiveImageNagative()}} class="btn btn-circle">❮</button>
             <button on:click={()=>{ChangeActiveImagePositive()}} class="btn btn-circle">❯</button>
         </div> -->
+        <div class=" absolute left-10 bottom-10 flex flex-col gap-3">
+            <p class="text-xl w-[40%] line-clamp-3 text-white v">{liObj[ActiveIndex].Moto}</p>
+            <div class="flex flex-row gap-3">
+                <button class=" w-fit px-4 py-2 object-center hover:font-semibold bg-slate-200 text-gray-900 font-Poppins rounded-lg text-xl">Buy Now</button>
+                <button class="w-fit px-4 py-2 object-center bg-transparent hover:font-semibold backdrop-blur-lg text-white border-2 border-transparent hover:border-2 hover:border-white font-Poppins rounded-lg text-xl">Add to WishList</button>
+            </div>
+        </div>
+
     </div>
 
 </div>

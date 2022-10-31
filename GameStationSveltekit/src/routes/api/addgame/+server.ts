@@ -1,9 +1,11 @@
 import { json } from '@sveltejs/kit';
 
-export async function POST({ request }) {
+import type { RequestHandler } from './$types';
+
+export const POST: RequestHandler = async({ request })=> {
 	const data = await request.json();
 	let resData:any;
-	await fetch('http://localhost:8001/admin/addproduct', {
+	await fetch(`http://${process.env.GO_HOST}/admin/addproduct`, {
 		// credentials: 'same-origin',
 		method: 'POST',
 		mode: 'no-cors',

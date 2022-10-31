@@ -9,12 +9,12 @@
 	const RegBg = new URL(Bg1, import.meta.url).href;
 
 	let RegisterData = {
-		UserName: '',
+		Name: '',
 		Email: '',
 		Password: ''
 	};
 	let ErrorMsg = {
-		UserName: [false, 'UserName is not Valid'],
+		Name: [false, 'Name is not Valid'],
 		Email: [false, 'invalid/wrong email'],
 		Password: [false, 'Password is too short']
 	};
@@ -26,19 +26,19 @@
 				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 			)
 	}
-	function ValidateUserName(e: string) {
+	function ValidateName(e: string) {
 		return e.match(/^[a-zA-Z\s]*$/);
 	}
 
 	async function OnSubmit() {
-		if (RegisterData.UserName.trim() === '') {
-			ErrorMsg.UserName[1] = 'User Name is empty';
-			ErrorMsg.UserName[0] = true;
-		} else if (!ValidateUserName(RegisterData.UserName)) {
-			ErrorMsg.UserName[1] = 'invalid/wrong User Name';
-			ErrorMsg.UserName[0] = true;
+		if (RegisterData.Name.trim() === '') {
+			ErrorMsg.Name[1] = 'User Name is empty';
+			ErrorMsg.Name[0] = true;
+		} else if (!ValidateName(RegisterData.Name)) {
+			ErrorMsg.Name[1] = 'invalid/wrong User Name';
+			ErrorMsg.Name[0] = true;
 		} else {
-			ErrorMsg.UserName[0] = false;
+			ErrorMsg.Name[0] = false;
 		}
 		if (RegisterData.Email.trim() === '') {
 			ErrorMsg.Email[1] = 'Email is Empty';
@@ -58,7 +58,7 @@
 		} else {
 			ErrorMsg.Password[0] = false;
 		}
-		if (!ErrorMsg.UserName[0] && !ErrorMsg.Email[0] && !ErrorMsg.Password[0]) {
+		if (!ErrorMsg.Name[0] && !ErrorMsg.Email[0] && !ErrorMsg.Password[0]) {
 			await fetch('/api/register', {
 				// credentials: 'same-origin',
 				method: 'POST',
@@ -69,27 +69,37 @@
 				.then((value) => {
 					// console.log("🚀 ~ file: index.svelte ~ line 71 ~ .then ~ value : ", value)
 					// console.log("🚀 ~ file: index.svelte ~ line 71 ~ .then ~ value.ID : ", value.ID)
-					ErrorMsg.UserName[1] = 'Success';
-					ErrorMsg.UserName[0] = true;
-					RegisterData = {
-						UserName: '',
-						Email: '',
-						Password: ''
-					};
-					let s:string="/"+String(value.ID)
-                    // console.log("🚀 ~ file: index.svelte ~ line 73 ~ .then ~ s : ", s)
-                    // console.log("🚀 ~ file: index.svelte ~ line 73 ~ .then ~ s typeof : ", typeof(s))
-					goto(s);
+					if (value.status === "OK"){
+
+						ErrorMsg.Name[1] = 'Success';
+						ErrorMsg.Name[0] = true;
+						RegisterData = {
+							Name: '',
+							Email: '',
+							Password: ''
+						};
+						let s:string="/"
+						goto("/");
+					}else {
+						ErrorMsg.Name[1] = value.status;
+						ErrorMsg.Name[0] = true;
+						RegisterData = {
+							Name: '',
+							Email: '',
+							Password: ''
+						};
+					}
 				});
 		}
 	}
+	
 </script>
 <!-- bg-[#181818] -->
 <div class="grid h-screen w-full  place-items-center  " style="background-image: url('{RegBg}');">
 	<a
 		href="/login"
 		on:click={() => {
-			RegisterData['UserName'] = '';
+			RegisterData['Name'] = '';
 			RegisterData['Email'] = '';
 			RegisterData['Password'] = '';
 		}}
@@ -112,7 +122,7 @@
 				<div class=" ml-12 mt-2 self-start text-left text-base font-semibold text-gray-300 ">
 					User Name :
 				</div>
-				{#if ErrorMsg.UserName[0]}
+				{#if ErrorMsg.Name[0]}
 					<div class=" mt-2 ml-3 inline-flex ">
 						<svg
 							class="h-5 w-5  fill-red-500"
@@ -125,14 +135,14 @@
 								clip-rule="evenodd"
 							/></svg
 						>
-						<p class="text-sm text-red-300 ">{ErrorMsg.UserName[1]}</p>
+						<p class="text-sm text-red-300 ">{ErrorMsg.Name[1]}</p>
 					</div>
 				{:else}
 					<!-- else content here -->
 				{/if}
 			</div>
 			<input
-				bind:value={RegisterData['UserName']}
+				bind:value={RegisterData['Name']}
 				type="text"
 				class=" mx-4 mt-2 h-12 w-[415px] self-center rounded-2xl border-2 border-[#24262b] bg-[#303338]  p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 			/>
@@ -228,11 +238,19 @@
 
 <style>
 	/* your styles go here */
-	input:-webkit-autofill,
+	/* input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px #303338 inset !important;
+} */
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px #303338 inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: #98999e;
 }
 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px #303338 inset;/*your box-shadow*/
+    -webkit-text-fill-color: #98999e;
+} 
 </style>

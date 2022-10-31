@@ -36,7 +36,7 @@ func main() {
 	r := gin.New()
 	r.Use(gin.Logger())
 	conf := cors.DefaultConfig()
-	conf.AllowOrigins = []string{"http://localhost:5173"}
+	conf.AllowOrigins = []string{"http://127.0.0.1:5173"}
 	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
 	// config.AllowAllOrigins = true
 

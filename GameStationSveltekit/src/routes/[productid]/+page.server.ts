@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ params,locals }) => {
 
 	let mydata
 	console.log("🚀 ~ file: +page.server.ts ~ line 13 ~ GET ~ params.productid", params.productid)
-	await fetch(`http://localhost:8001/game/${params.productid}`,{
+	await fetch(`http://${process.env.GO_HOST}/game/${params.productid}`,{
 		mode:"no-cors"
 	}).then((res)=>{
 	 return res.json()
@@ -30,5 +30,5 @@ export const load: PageServerLoad = async ({ params,locals }) => {
 	// }
 	// else {
 	// 	throw error(404, 'Not found');
-	// }
+	// }result
 }

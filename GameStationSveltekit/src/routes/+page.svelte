@@ -2,6 +2,15 @@
 
 <script lang="ts">
     // 
+    import type { PageData } from './$types';
+	import { UserProData } from '$lib/Store/store';
+
+
+	export let data: PageData;
+
+	let { Userdata } = data;
+	console.log('🚀 ~ file: +layout.svelte ~ line 26 ~ Userdata', Userdata);
+	UserProData.update((d) => (d = Userdata));
 
 	import ImageShow from "$lib/Carousels/imageShow.svelte";
 import Showcase from "$lib/Carousels/showcase.txt";
@@ -16,6 +25,14 @@ import Nav from "$lib/navbar/nav.svelte";
 	import TopRated from "$lib/HomeCatagoris/TopRated.svelte";
 	import TopSeller from "$lib/HomeCatagoris/TopSeller.svelte";
 
+//     import type { PageData } from './$types';
+// 	import { UserProData } from "$lib/Store/store";
+
+// export let data: PageData;
+
+// let {Userdata}=data
+// 	console.log("🚀 ~ file: +page.svelte ~ line 25 ~ Userdata", Userdata)
+// 	UserProData.update((d)=>d=Userdata)
 
 </script>
 

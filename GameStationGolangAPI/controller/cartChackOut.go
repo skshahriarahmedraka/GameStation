@@ -6,8 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (H *DatabaseCollections)Cartcheckout() gin.HandlerFunc{
+func (H *DatabaseCollections) Cartcheckout() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.JSON(http.StatusOK,"Cartcheckout ok !!!!")
+
+		//c.BindJSON()
+		c.JSON(http.StatusOK, "Cartcheckout ok !!!!")
+
 	}
 }

@@ -1,19 +1,21 @@
 import { json } from '@sveltejs/kit';
-import axios from 'axios';
+// import axios from 'axios';
 import minio from 'minio';
 import * as fs from 'fs';
 
 import { v4 as uuidv4 } from 'uuid';
 
 const minioClient = new minio.Client({
-	endPoint: '127.0.0.1',
-	port: 9000,
+	endPoint: String(process.env.MINIO_HOST),
+	port: Number(process.env.MINIO_PORT),
 	useSSL: false,
-	accessKey: 'admin',
-	secretKey: 'miniosecret'
+	accessKey: String(process.env.MINIO_ROOT_USER),
+	secretKey: String(process.env.MINIO_ROOT_PASSWORD)
 });
+console.log("🚀 ~ file: +server.ts ~ line 15 ~ minioClient", minioClient)
+import type { RequestHandler } from './$types';
 
-export async function POST({ request }) {
+export const POST: RequestHandler = async ( {request} ) =>{
 	const data = await request.json();
 	// console.log('🚀 ~ file: +server.ts ~ line 45 ~ POST ~ data', data);
 
@@ -30,17 +32,17 @@ export async function POST({ request }) {
 	const f = `static/avatar`;
 	const metaData = fs.statSync(f);
 	const fileName= myuuid+extention
-	minioClient.fPutObject('myimg', fileName, f, metaData, function (err, etag) {
+	minioClient.fPutObject("myimg", fileName, f, metaData, function (err, etag) {
 		return console.log(err, etag); // err should be null
 	});
 
-	const mydata = {
-		Link: '',
-		Name: fileName,
-		BucketName: 'myimg'
-	};
+	// const mydata = {
+	// 	Link: '',
+	// 	Name: fileName,
+	// 	BucketName: 'myimg'
+	// };
 	const ResData= {
-		Link: "http://127.0.0.1:9000/"+"myimg"+"/"+fileName,
+		Link: `http://${process.env.MINIO_HOST}:${process.env.MINIO_PORT}/`+`${process.env.MINIO_IMGBUCKET}`+"/"+fileName,
 		Name: fileName,
 		BucketName: 'myimg'
 	};
@@ -72,6 +74,7 @@ export async function POST({ request }) {
 }
 
 // import * as fs from 'fs/promises';
+// import { MINIO_USESSL } from '../../../../.svelte-kit/ambient';
 // export async function POST({ request }) {
 // 	const data = await request.formData();
 // 	const file = data.get('img') as File;

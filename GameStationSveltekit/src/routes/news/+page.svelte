@@ -1,4 +1,10 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+     import type { PageData } from './$types';
+
+export let data: PageData;
+
+    let NewsDataList:any =data.NewsDataList 
     let liNews=[
         {
             ID:"8745",
@@ -43,13 +49,13 @@
 </style>
 
 <div class=" flex flex-col gap-0 items-center">
-    {#each liNews  as i}
-        <div class="flex flex-row justify-center hover:cursor-pointer items-center max-w-[1420px] h-[133.5px] hover:bg-slate-900  border-y-[1px] border-gray-700">
-            <img src="{i.Image}" alt="" class=" ml-4 h-[112.5px] w-[200px]">
+    {#each NewsDataList  as i}
+        <div on:click={()=> goto(`/news/${i.NewsID}`)} on:keypress={()=>{}}  class="flex flex-row justify-center hover:cursor-pointer items-center max-w-[1420px] h-[133.5px] hover:bg-slate-900  border-y-[1px] border-gray-700">
+            <img src="{i.BannerImg}" alt="" class=" ml-4 h-[112.5px] w-[200px]">
             <div class="flex flex-col gap-1 ml-2 font-Poppins text-slate-100 ">
                 <p class=" text-sm ">{i.Date}</p>
                 <p class="text-base font-semibold">{i.Title}</p>
-                <p class=" text-sm line-clamp-2">{i.Content}</p>
+                <p class=" text-sm line-clamp-2">{i.Detail}</p>
             </div>
         </div>
     {/each}

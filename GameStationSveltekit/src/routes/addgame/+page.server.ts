@@ -10,8 +10,23 @@ export const load: PageServerLoad = async ({ locals }) => {
 		console.log("🚀 ~ file: +page.server.ts ~ line 7 ~ constload:PageServerLoad= ~ locals.user", locals.user)
 		throw redirect(302, '/login')
 	  }
+	// else if (){
 
+	// }
 
+	//   ONLY FOR ADMIN	
+	// const MyCookie = cookies.get('Auth1') || '';
+	// const JWT_Auth_KEY: string = process.env.JWT_SECRET as string;
+	// let Userdata:any 
+	// if (MyCookie!= ''){
+		
+	// 	const decoded = jwt.verify(MyCookie, JWT_Auth_KEY);
+	// 	console.log("decoded: ",decoded);
+	//   //   let resdata
+	// 	if (decoded.Accounttype != "admin"){
+	// 	  throw redirect(302,"/")
+	// 	}
+	// }
 	
 	
 	return {}

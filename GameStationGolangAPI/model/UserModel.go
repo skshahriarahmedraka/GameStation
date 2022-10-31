@@ -5,8 +5,8 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 type UserData struct {
 	ID     primitive.ObjectID `json:"_id" bson:"_id"`
 	UserID string             `json:"UserID" bson:"UserID"`
-	Image  string             `json:"Image" bson:"Image"`
-	Name   string             `json:"Name" validate:"required,min=3,max=30" bson:"Name"`
+	//Image  string             `json:"Image" bson:"Image"`
+	Name string `json:"Name" validate:"required,min=3,max=30" bson:"Name"`
 	//LastName  string             `json:"LastName" validate:"required,min=2,max=30"`
 	Email    string `json:"Email" validate:"required,min=2,max=40" bson:"Email"`
 	Password string `json:"Password" validate:"required,min=3,max=50" bson:"Password"`

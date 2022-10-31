@@ -2,12 +2,13 @@ import { json } from "@sveltejs/kit";
 // import * as cookie from 'cookie';
 
 
-
-export async function POST({ cookies , request }) {
+import type { RequestHandler } from './$types';
+ 
+export const POST: RequestHandler = async ({ cookies , request }) =>{
 	const data = await request.json();
     console.log("🚀 ~ file: +server.ts ~ line 8 ~ POST ~ data", data)
     let resData:any
-    await fetch('http://localhost:8001/sveltekit/login', {
+    await fetch(`http://${process.env.GO_HOST}/sveltekit/login`, {
 			// credentials: 'same-origin',
 				credentials: 'include',
 
@@ -38,9 +39,9 @@ export async function POST({ cookies , request }) {
                     // set cookie to expire after a month
                     maxAge: 60 * 60 * 24 * 30,
                   })
-                  return json({status:"OK"})
+                  return json({"status":"OK"})
         }else {
-            return json({status:"error"})
+            return json({"status":resData.error})
         }
         
 
