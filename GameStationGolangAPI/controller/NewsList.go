@@ -11,6 +11,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func (H *DatabaseCollections) NewsList() gin.HandlerFunc {
@@ -20,7 +21,8 @@ func (H *DatabaseCollections) NewsList() gin.HandlerFunc {
 		ctx, cancel := context.WithTimeout(context.Background(), time.Second*20)
 		defer cancel()
 		filter := bson.D{{"NewsID", bson.D{{"$ne", ""}}}}
-		cursor, err := H.Mongo.Collection(os.Getenv("NEWSDATA_COL")).Find(ctx, filter)
+		opts:=options.Find().SetSort(bson.D{{"Date", 1}})
+		cursor, err := H.Mongo.Collection(os.Getenv("NEWSDATA_COL")).Find(ctx, filter,opts)
 		fmt.Println("🚀 ~ file: NewsList.go ~ line 24 ~ returnfunc ~ cursor : ", cursor)
 		if err != nil {
 			LogError.LogError("🚀 ~ file: NewsList.go ~ line 25 ~ returnfunc ~ err : ", err)

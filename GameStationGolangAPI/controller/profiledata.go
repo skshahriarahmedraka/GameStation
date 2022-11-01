@@ -21,8 +21,8 @@ func (H *DatabaseCollections) UserData() gin.HandlerFunc {
 		var UserDataDB model.UserData
 		//options.FindOne()
 		err := H.Mongo.Collection(os.Getenv("USERDATA_COL")).FindOne(ctx, bson.M{"UserID": c.Param("profileid")}).Decode(&UserDataDB)
-		LogError.LogError("profiledata mongo find one error", err)
 		if err != nil {
+			LogError.LogError("profiledata mongo find one error", err)
 			c.JSON(http.StatusNotFound, gin.H{"error": "user not found"})
 		} else {
 			objID, _ := primitive.ObjectIDFromHex("")

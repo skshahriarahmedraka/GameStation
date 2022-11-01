@@ -26,7 +26,7 @@ The sale is live now and ends on Nov. 1, 2022, 11 AM ET. But that’s not the en
 <!-- markup (zero or more items) goes here -->
 
 <div class=" w-full h-fit flex flex-col items-center gap-2  ">
-    <p class=" text-4xl font-Poppins font-semibold text-slate-200">{NewsData.Title}</p>
+    <p class=" text-4xl font-Poppins font-semibold text-slate-200 w-[60%] text-center">{NewsData.Title}</p>
     <img src="{NewsData.BannerImg}" alt="banner" class="w-[60%] h-fit object-cover">
     <div class="w-[70%] flex flex-col items-start">
         <p class=" font-mono text-sm text-slate-300">Published At : {NewsData.Date}</p>

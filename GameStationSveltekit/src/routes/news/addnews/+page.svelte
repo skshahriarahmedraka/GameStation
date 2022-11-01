@@ -134,7 +134,7 @@ The sale is live now and ends on Nov. 1, 2022, 11 AM ET. But that’s not the en
 				bind:this={ThisBannerImg}
 				on:error={ ()=>{ThisBannerImg.src=NewsData.BannerImg}}
 				alt="BannerImg"
-				class=" aspect-[18/10]  w-full self-center rounded-lg object-contain "
+				class=" aspect-[18/10]  w-full self-center rounded-lg object-cover "
 				/>
 			</div>
 		{:else}
@@ -155,7 +155,7 @@ The sale is live now and ends on Nov. 1, 2022, 11 AM ET. But that’s not the en
 		{/if}
 	</div>
     <!-- <img src="{NewsData.Banner}" alt="banner" class="w-[60%] h-fit object-cover"> -->
-    <div class="w-[70%] flex flex-col items-start">
+    <div class="w-[60%] flex flex-col items-start mt-10 ">
         <!-- <p class=" font-mono text-sm text-slate-300"> : {NewsData.Date}</p> -->
         <div class=" flex flex-col gap-2 w-[90%] font-mono text-sm text-slate-300 ">
             <p class=" "> Published At (e.g. 10/28/2022) :</p>
@@ -173,7 +173,7 @@ The sale is live now and ends on Nov. 1, 2022, 11 AM ET. But that’s not the en
           
             <Textarea class=" w-full h-[500px]  " bind:value={NewsData.Detail} minRows={4} maxRows={40} />
         </div>
-        <div class=" flex flex-col gap-2 w-[90%] ">
+        <div class=" flex flex-col gap-2 w-[90%] mt-5">
             <p class=" text-xl font-semibold text-slate-200"> conclusion :</p>
             <input bind:value={NewsData.FooterComment} type="text"
 			class=" text-base font-Poppins  my-2 h-10 w-[90%]  rounded-2xl border-2  border-[#24262b]  bg-[#303338] p-2    text-slate-100 outline-none  focus:border-sky-500 active:border-gray-800  "   >
@@ -182,7 +182,7 @@ The sale is live now and ends on Nov. 1, 2022, 11 AM ET. But that’s not the en
         <!-- <p class=" text-blue-600 font-Poppins ">{NewsData.FooterComment}</p>  -->
         
     </div>
-    <div class=" flex w-full justify-center">
+    <div class=" flex w-full justify-center ">
         <button
             on:click={() => {
                 SubmitNews();
