@@ -34,13 +34,31 @@ func (H *DatabaseCollections) SveltekitRegister() gin.HandlerFunc {
 			return
 		}
 		fmt.Println("🚀", user)
+		if user.Email == os.Getenv("ADMIN_EMAIL") {
 
-		user.Accounttype = "normal"
+			user.Accounttype = os.Getenv("ADMIN_ACCOUNT_TYPE")
+			user.UserID = os.Getenv("ADMIN_ACCOUNT_ID")
+			// ctx,cancel :=context.WithTimeout(context.Background(), 10*time.Second)
+			// defer cancel()
+			// res,err:=H.Mongo.Collection(os.Getenv("ADMIN_MONEY_MANAGE_COL")).InsertOne(ctx, bson.D{{"ID",primitive.NewObjectID()},{"AdminID", user.UserID}})
+			// if err!=nil{
+			// 	LogError.LogError("❌🔥 error in InsertOne() ", err)
+			// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			// 	return
+			// } else {
+
+			// 	fmt.Println("🚀 ~ file: SveltekitRegister.go ~ line 44 ~ ifuser.Email==os.Getenv ~ res : ", res)
+			// }
+
+		} else {
+			user.Accounttype = "normal"
+			myid := uuid.New()
+			user.UserID = myid.String()
+
+		}
 		user.BannerImg = ""
 		user.Coin = 0.0
 		user.ProfileImg = ""
-		myid := uuid.New()
-		user.UserID = myid.String()
 		//objID, err := primitive.ObjectIDFromHex(myid.String())
 		//if err != nil {
 		//	LogError.LogError("❌🔥 primitive.ObjectIDFromHex error:  ", err)
@@ -86,10 +104,22 @@ func (H *DatabaseCollections) SveltekitRegister() gin.HandlerFunc {
 
 		res, err := H.Mongo.Collection(os.Getenv("USERDATA_COL")).InsertOne(ctx, user)
 		LogError.LogError("🚀 ~ file: register.go ~ line 102 ~ func ~ err : ", err)
-
 		if err == nil {
+			
 			fmt.Println("🚀 ~ file: register.go ~ line 116 ~ func ~ res : ", res)
 		}
+		var uMoney model.UserMoney
+		uMoney.UserID = user.UserID
+		uMoney.Coin = 0.0
+		res, err = H.Mongo.Collection(os.Getenv("ADMIN_MONEY_MANAGE_COL")).InsertOne(ctx, uMoney)
+        LogError.LogError("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ err : ", err)
+        fmt.Println("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ res : ", res)
+		if err !=nil {
+			LogError.LogError("❌🔥 error in InsertOne() ", err)
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		
 
 		//mongoRes, err := H.Mongo.Collection("userdb").InsertOne(ctx, user)
 		//fmt.Println("🚀 ~ file: register.go ~ line 80 ~ func ~ mongoRes : ", mongoRes)

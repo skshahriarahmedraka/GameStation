@@ -69,6 +69,29 @@ func ValidateJWT(s string) (claims *model.TokenClaims, msg string) {
 
 }
 
+func ValidateMoneyJWT(s string) (claims *model.TokenClaims, msg string) {
+	token, err := jwt.ParseWithClaims(s, &model.TokenClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return []byte(os.Getenv("JWT_MONEY")), nil
+	})
+	LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 45 ~ token,err:=jwt.ParseWithClaims ~ err : ", err)
+
+	if err != nil {
+		msg = err.Error()
+		return
+	}
+	claims, ok := token.Claims.(*model.TokenClaims)
+	if !ok {
+		msg = "token is invalid"
+		return
+	}
+	//if claims.ExpiresAt < time.Now().Local().Unix() {
+	//	msg = "token is expired"
+	//	return
+	//}
+	return claims, msg
+
+}
+
 func ValidateRefreshJWT(s string) (claims *model.TokenClaims, msg string) {
 	token, err := jwt.ParseWithClaims(s, &model.TokenClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(os.Getenv("JWT_REFRESH_SECRET")), nil

@@ -57,7 +57,7 @@
 		{/each}
 	</div>
 	<div
-		class=" flex h-fit min-h-[300px] w-[880px] flex-col rounded-lg  bg-slate-700 bg-opacity-30 font-Poppins sm:bg-white "
+		class=" flex h-fit min-h-[300px] w-[880px] flex-col rounded-lg  bg-slate-700 bg-opacity-30 font-Poppins  "
 	>
 		{#if active === 'General'}
 			<General />

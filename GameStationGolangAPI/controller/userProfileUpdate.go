@@ -28,6 +28,7 @@ func (H *DatabaseCollections) ProfileUpdate() gin.HandlerFunc {
 		count, err := H.Mongo.Collection(os.Getenv("USERDATA_COL")).CountDocuments(ctx, bson.M{"UserID": ReqUserData.UserID})
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "mongodb Count Document error"})
+			return
 		}
 		if count > 0 {
 			opts := options.Update().SetUpsert(true)

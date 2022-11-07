@@ -45,9 +45,9 @@
 					<p>Careers</p>
 					{#if $UserProData.Accounttype==="admin"}
 					<!--  -->
-					{/if}
-
+					
 					<button class="hover:font-bold underline hover:cursor-pointer " on:click="{()=>{goto('/addgame')}}">Add Game</button>
+					{/if}
 				</div>
 				<div class=" flex flex-col">
 					<p>Fan Art Policy</p>
@@ -55,9 +55,9 @@
 					<p>Store EULA</p>
 					{#if $UserProData.Accounttype==="admin"}
 					<!--  -->
-					{/if}
-
+					
 					<button class="hover:font-bold underline hover:cursor-pointer " on:click="{()=>{goto('/news/addnews')}}">Add News</button>
+					{/if}
 				</div>
 				<div class="flex flex-col">
 					<p>Online Services</p>
@@ -65,8 +65,8 @@
 					<p>Epic Newsroom</p>
 					{#if $UserProData.Accounttype==="admin"}
 					<!--  -->
-					{/if}
 					<button class="hover:font-bold underline hover:cursor-pointer " on:click="{()=>{goto('/userrequest')}}">User Request</button>
+					{/if}
 				</div>
 			</div>
 		</div>

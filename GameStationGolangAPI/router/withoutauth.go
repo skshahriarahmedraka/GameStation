@@ -37,6 +37,7 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.POST("/user/login", H.Login())
 	r.POST("/user/register", H.Register())
 	r.POST("/user/profileupdate", H.ProfileUpdate())
+	// r.GET("/user/moneyreq", H.ProfileMoneyReq())
 	r.GET("/user/:profileid", H.UserData())
 
 	r.POST("/admin/addproduct", H.AdminAddProduct())
@@ -48,9 +49,14 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.GET("/news/:newsid", H.GetNewsByID())
 	r.GET("/news", H.NewsList())
 
+
+	r.GET("/user/moneytokenreq", H.Profilemoneytokenreq())
+
+
+
 	//r.GET("/product/:productid", H.ViewProduct())
 	r.GET("/user/search", H.UserSearch())
 	r.POST("/imgupload", H.ImgUpload())
 	r.POST("/imglink", H.ImgLink())
-
+	r.GET("/ws", H.Ws())
 }

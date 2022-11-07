@@ -3,9 +3,9 @@ module app
 go 1.18
 
 require (
-	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-gonic/gin v1.8.1
 	github.com/google/uuid v1.3.0
+	github.com/gorilla/websocket v1.5.0
 	github.com/joho/godotenv v1.4.0
 	github.com/minio/minio-go/v7 v7.0.39
 )
@@ -27,6 +27,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rs/xid v1.4.0 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
+	github.com/stretchr/testify v1.8.0 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.1.1 // indirect
 	github.com/xdg-go/stringprep v1.0.3 // indirect

@@ -13,7 +13,7 @@ import (
 	"github.com/gin-gonic/gin"
 	// "github.com/gobuffalo/packr/v2"
 	// "github.com/joho/godotenv"
-	"github.com/gin-contrib/cors"
+	// "github.com/gin-contrib/cors"
 )
 
 func init() {
@@ -32,15 +32,19 @@ func main() {
 	// fmt.Println("environment var :", os.Getenv("POSTGRES_TIMEZONE"))
 	// fmt.Println("environment var :", os.Getenv("POSTGRES_TIMEZONE")=="Asia/Dhaka")
 	fmt.Println("🚀✨ Api is started")
+	// r := gin.Default()
 
 	r := gin.New()
+	
+	r.Use(middleware.CORSMiddleware())
 	r.Use(gin.Logger())
-	conf := cors.DefaultConfig()
-	conf.AllowOrigins = []string{"http://127.0.0.1:5173"}
+
+	// conf := cors.DefaultConfig()
+	// conf.AllowOrigins = []string{"http://127.0.0.1:5173"}
 	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
 	// config.AllowAllOrigins = true
 
-	r.Use(cors.New(conf))
+	// r.Use(cors.New(conf))
 	// ROUTE WITHOUT AUTHENTICATION
 	router.RouteWithoutAuth(r)
 

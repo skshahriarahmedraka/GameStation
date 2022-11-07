@@ -4,10 +4,10 @@ import { json } from "@sveltejs/kit";
 
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ( {request} ) => {
+export const POST: RequestHandler = async ( {request} ) =>{
 	const data = await request.json();
     let resData
-    await fetch(`http://${process.env.GO_HOST}/user/`, {
+    await fetch(`http://${process.env.GO_HOST}/user/moneytokenreq`, {
 			// credentials: 'same-origin',
 			method: 'POST',
 			mode: 'no-cors',

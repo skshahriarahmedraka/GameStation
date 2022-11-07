@@ -185,7 +185,7 @@
 		{#if $UserProData.ProfileImg!= ""}
 			 <!-- content here -->
 			<img src={$UserProData.ProfileImg} alt="U" 
-			class="  h-6 w-6 scale-125   cursor-pointer   rounded-xl"
+			class="  h-6 w-6 scale-125   cursor-pointer object-cover rounded-xl"
 			>
 		{:else}
 			 <Profile
