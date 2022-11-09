@@ -2,6 +2,15 @@
 
 
 <script lang="ts">
+	import type { PageData } from './$types';
+	import { UserProData } from '$lib/Store/store';
+
+	export let data: PageData;
+	
+	let { Userdata } = data;
+	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
+	UserProData.update((d) => (d = Userdata));
+	
 	import { goto } from '$app/navigation';
 	import Textarea from '$lib/otherComponents/textarea.svelte';
     // your script goes here

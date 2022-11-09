@@ -4,9 +4,8 @@
 	import { UserProData } from '$lib/Store/store';
 
 	export let data: PageData;
-
+	
 	let { Userdata } = data;
-	console.log('🚀 ~ file: +layout.svelte ~ line 26 ~ Userdata', Userdata);
 	UserProData.update((d) => (d = Userdata));
 
 	import ImageShow from '$lib/Carousels/imageShow.svelte';
@@ -48,7 +47,7 @@
 	// }
 
 	// sub()
-
+	
 	
 	
 </script>

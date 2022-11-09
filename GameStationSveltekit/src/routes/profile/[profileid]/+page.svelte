@@ -1,7 +1,16 @@
 <script lang="ts">
+	  import type { PageData } from './$types';
+	import { UserProData } from '$lib/Store/store';
+
+	export let data: PageData;
+	
+	let { Userdata } = data;
+	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
+	UserProData.update((d) => (d = Userdata));
+
 	import { goto } from '$app/navigation';
 
-	import { UserProData,UserSettingSelect } from '$lib/Store/store';
+	import { UserSettingSelect } from '$lib/Store/store';
 	import CameraPlus from '$lib/svgs/cameraPlus.svelte';
 	import Profile from '$lib/svgs/profile.svelte';
 	import WalpaperLogo from '$lib/svgs/walpaperLogo.svelte';

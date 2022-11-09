@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Coin2 from '$lib/svgs/coin2.svelte';
-	import {UserProData} from '$lib/Store/store';
+	import { UserProData } from '$lib/Store/store';
 	// your script goes here
 	let MoneyReqList = [
 		{ Amount: '10', Details: 'Your Request is Pending for Admin Acceptance', Status: 'pending' },
@@ -18,22 +18,20 @@
 		}
 	];
 
-	let inputJWT=""
+	let inputJWT = '';
 
-	let ErrorMsg ={
-		Err:false, 
-		Msg:""
-	}
+	let ErrorMsg = {
+		Err: false,
+		Msg: ''
+	};
 
 	async function SubmitReq() {
-		console.log("🚀 ~ file: PaymentManagement.svelte ~ line 30 ~ SubmitReq ~ inputJWT", inputJWT)
+		console.log('🚀 ~ file: PaymentManagement.svelte ~ line 30 ~ SubmitReq ~ inputJWT', inputJWT);
 		if (inputJWT === '') {
 			ErrorMsg.Err = true;
 			ErrorMsg.Msg = 'Please Enter Your JWT';
 			return;
 		}
-
-		
 
 		let resdata = await fetch('/api/profile/requestMoney', {
 			method: 'POST',
@@ -88,12 +86,14 @@
 				{/if}
 			</div>
 			<input
-			bind:value={inputJWT}
+				bind:value={inputJWT}
 				type="text"
 				class=" mx-4 my-2 h-12 w-[95%] self-center rounded-2xl border-2  border-[#24262b] bg-[#303338]  p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 			/>
 			<button
-			on:click={()=>{SubmitReq()}}
+				on:click={() => {
+					SubmitReq();
+				}}
 				class="m-3 h-10 w-fit self-center rounded-xl bg-blue-500 p-2 px-4 font-semibold text-white hover:bg-green-600 active:bg-green-700 "
 				>Recharge</button
 			>

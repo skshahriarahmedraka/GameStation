@@ -1,4 +1,15 @@
 <script lang="ts">
+
+import type { PageData } from './$types';
+	import { UserProData } from '$lib/Store/store';
+
+	export let data: PageData;
+	
+	let { Userdata } = data;
+	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
+	UserProData.update((d) => (d = Userdata));
+
+	
 	import Twitter from '$lib/foot/icons/twitter.svelte';
 	import ContractAdimin from '$lib/settingsCom/ContractAdimin.svelte';
 	import ContractGameDev from '$lib/settingsCom/ContractGameDev.svelte';

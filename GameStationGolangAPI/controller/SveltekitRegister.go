@@ -105,21 +105,21 @@ func (H *DatabaseCollections) SveltekitRegister() gin.HandlerFunc {
 		res, err := H.Mongo.Collection(os.Getenv("USERDATA_COL")).InsertOne(ctx, user)
 		LogError.LogError("🚀 ~ file: register.go ~ line 102 ~ func ~ err : ", err)
 		if err == nil {
-			
+
 			fmt.Println("🚀 ~ file: register.go ~ line 116 ~ func ~ res : ", res)
 		}
 		var uMoney model.UserMoney
 		uMoney.UserID = user.UserID
 		uMoney.Coin = 0.0
+		uMoney.ReqList = []model.UserMoneyReq{}
 		res, err = H.Mongo.Collection(os.Getenv("ADMIN_MONEY_MANAGE_COL")).InsertOne(ctx, uMoney)
-        LogError.LogError("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ err : ", err)
-        fmt.Println("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ res : ", res)
-		if err !=nil {
+		LogError.LogError("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ err : ", err)
+		fmt.Println("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ res : ", res)
+		if err != nil {
 			LogError.LogError("❌🔥 error in InsertOne() ", err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		
 
 		//mongoRes, err := H.Mongo.Collection("userdb").InsertOne(ctx, user)
 		//fmt.Println("🚀 ~ file: register.go ~ line 80 ~ func ~ mongoRes : ", mongoRes)

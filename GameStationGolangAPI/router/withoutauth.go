@@ -49,10 +49,11 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.GET("/news/:newsid", H.GetNewsByID())
 	r.GET("/news", H.NewsList())
 
+	r.POST("/user/moneytokenreq", H.ProfileTokenReq())
+	r.POST("/user/moneytokenreqlist", H.ProfileTokenReqList())
+	r.GET("/user/moneyreq", H.ProfileMoneyReq())
 
-	r.GET("/user/moneytokenreq", H.Profilemoneytokenreq())
-
-
+	r.GET("/admin/adminmoneymanagement", H.AdminMoneyManagement())
 
 	//r.GET("/product/:productid", H.ViewProduct())
 	r.GET("/user/search", H.UserSearch())

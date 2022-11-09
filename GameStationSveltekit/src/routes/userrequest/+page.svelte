@@ -1,7 +1,14 @@
 <script lang="ts">
 	// your script goes here
 	import Coin2 from '$lib/svgs/coin2.svelte';
+	import type { PageData } from './$types';
+	import { UserProData } from '$lib/Store/store';
 
+	export let data: PageData;
+	
+	let { Userdata } = data;
+	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
+	UserProData.update((d) => (d = Userdata));
 	let UserReqList = [
 		{
 			UserID: 'skraka',
@@ -36,11 +43,11 @@
 <!-- markup (zero or more items) goes here -->
 
 <div class="flex flex-col transition-all duration-200 ease-linear  w-[80%]  self-center">
-	<p class="">All User Money request</p>
-	<div class="flex flex-col">
+	<p class="text-3xl text-white self-center ">All User Money request</p>
+	<div class="flex flex-col gap-2">
 		{#each UserReqList as req}
 			<!-- content here -->
-			<p class="">UserID : {req.UserID}</p>
+			<p class=" text-white text-xl ">UserID : {req.UserID}</p>
 			<div class="flex flex-row flex-wrap gap-2 ">
 				{#each req.ReqList as i}
 					<!-- content here -->
@@ -49,10 +56,10 @@
 					>
 						<div class=" flex flex-row items-center gap-2 ">
 							<Coin2 class="h-8 w-8 stroke-yellow-400" />
-							<p class=" text-xl">{i.Amount}</p>
+							<p class=" text-xl text-white">{i.Amount}</p>
 						</div>
 						<p
-							class=" cursor-pointer break-words text-sm line-clamp-4 hover:text-blue-400 active:text-blue-600"
+							class=" text-slate-300 cursor-pointer break-words text-sm line-clamp-4 hover:text-blue-400 active:text-blue-600"
 						>
 							{i.JWT}
 						</p>

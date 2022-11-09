@@ -7,7 +7,7 @@ import type { RequestHandler } from './$types';
 export const POST: RequestHandler = async ( {request} ) =>{
 	const data = await request.json();
     let resData
-    await fetch(`http://${process.env.GO_HOST}/user/moneytokenreq`, {
+    await fetch(`http://${process.env.GO_HOST}/user/moneytokenreqlist`, {
 			// credentials: 'same-origin',
 			method: 'POST',
 			mode: 'no-cors',

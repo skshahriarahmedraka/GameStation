@@ -1,8 +1,16 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-     import type { PageData } from './$types';
+      import type { PageData } from './$types';
+	import { UserProData } from '$lib/Store/store';
 
-export let data: PageData;
+	export let data: PageData;
+	
+	let { Userdata } = data;
+	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
+	UserProData.update((d) => (d = Userdata));
+
+
+	import { goto } from '$app/navigation';
+
 
     let NewsDataList:any =data.NewsDataList 
     // let liNews=[
@@ -53,6 +61,7 @@ export let data: PageData;
 <div class=" flex flex-col gap-0 items-center">
     {#if NewsDataList===null}
          <div class=" h-full w-full justify-center items-center flex flex-row gap-3 ">
+            <!-- svelte-ignore a11y-img-redundant-alt -->
             <img src="{SadImg}" alt="Sad Image" class=" h-44">
             <p class="text-2xl text-slate-200 font-Poppins">Empty News Feed </p>
          </div>

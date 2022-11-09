@@ -1,5 +1,13 @@
 <script lang="ts">
-	export let data;
+	  import type { PageData } from './$types';
+	import { UserProData } from '$lib/Store/store';
+
+	export let data: PageData;
+	
+	let { Userdata } = data;
+	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
+	UserProData.update((d) => (d = Userdata));
+
 	console.log('🚀 ~ file: +page.svelte ~ line 3 ~ data', data.mydata);
 
 	let Gamedata : {
@@ -48,7 +56,6 @@
 		};
 	} = data.mydata;
 	import GameProfile from '$lib/cards/gameProfile.svelte';
-	import {UserProData} from "$lib/Store/store"
 	import Showcase from '$lib/Carousels/showcase.txt';
 	// import Showcase from "$lib/Carousels/showcase.svelte";
 	import Daisyui1 from '$lib/Carousels/daisyui1.svelte';

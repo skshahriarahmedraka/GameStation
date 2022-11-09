@@ -6,7 +6,8 @@ declare namespace App {
 	interface Locals {
 		user: {
 			Authenticated : boolean 
-		}
+		},
+		UserID:""
 	}
 
 	// interface PageData {}

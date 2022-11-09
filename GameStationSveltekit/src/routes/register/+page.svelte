@@ -1,5 +1,8 @@
 
 <script lang="ts">
+	
+
+
 	import { goto } from '$app/navigation';
 	import Amazon from "$lib/svgs/Amazon.svelte";
 	import Github from "$lib/svgs/Github.svelte";
@@ -236,7 +239,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="css">
 	/* your styles go here */
 	/* input:-webkit-autofill,
 input:-webkit-autofill:hover, 

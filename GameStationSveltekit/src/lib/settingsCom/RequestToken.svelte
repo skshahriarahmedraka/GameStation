@@ -5,7 +5,7 @@
 	import { UserProData } from '$lib/Store/store';
 	let AllowedReq = [10, 20, 50, 100, 200, 500, 1000, 10000];
 
-	let MoneyReqList = [
+	let MoneyReqList2 = [
 		{ Amount: '10', Details: 'Your Request is Pending for Admin Acceptance', Status: 'pending' },
 		{
 			Amount: '1000',
@@ -35,6 +35,34 @@
 		{ Amount: '10000', Details: 'Your Request is Pending for Admin Acceptance', Status: 'pending' }
 	];
 
+	let MoneyReqList: {
+    Amount: string;
+    Details: string;
+    Status: string;
+}[] =[]
+
+	async function GetReqList(){
+		let resdata = await fetch('/api/profile/moneytokenreqlist', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				UserID: $UserProData.UserID
+			})
+		})
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				console.log('🚀 ~ file: RequestToken.svelte ~ line 22 ~ requestMoney ~ data', data);
+				MoneyReqList=data
+				return data;
+			});
+		console.log('🚀 ~ file: RequestToken.svelte ~ line 26 ~ requestMoney ~ resdata', resdata);
+	}
+	GetReqList()
+
 	async function requestMoney(amount: number) {
 		// let resdata
 		let resdata = await fetch('/api/profile/moneytokenreq', {
@@ -57,6 +85,7 @@
 			});
 		console.log('🚀 ~ file: RequestToken.svelte ~ line 26 ~ requestMoney ~ resdata', resdata);
 		// let data = await response.json()
+		GetReqList()
 	}
 
 	let showUserid = {

@@ -45,7 +45,7 @@ type Gamedata struct {
 }
 
 type CommentModel struct {
-	Name        string `json:"Name"`
-	Rating      int    `json:"Rating"`
-	Description string `json:"Description"`
+	Name        string `json:"Name" bson:"Name"`
+	Rating      int    `json:"Rating" bson:"Rating"`
+	Description string `json:"Description" bson:"Description"`
 }
