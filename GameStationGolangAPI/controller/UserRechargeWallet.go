@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-func (H *DatabaseCollections) ProfileUpdate() gin.HandlerFunc {
+func (H *DatabaseCollections) ProfileRechargeWallet() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Request.Header.Set("Access-Control-Allow-Origin", "*")
 		c.Request.Header.Set("Content-Type", "application/json")

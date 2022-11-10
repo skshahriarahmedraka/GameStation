@@ -15,6 +15,11 @@ import (
 
 func (H *DatabaseCollections) ProfileMoneyReq() gin.HandlerFunc {
 	return func(c *gin.Context) {
+		c.Request.Header.Set("Access-Control-Allow-Origin", "*")
+		c.Request.Header.Set("Content-Type", "application/json")
+		c.Request.Header.Set("Access-Control-Allow-Credentials", "true")
+
+		
 		type ReqStruct struct {
 			UserID string `json:"UserID" bson:"UserID"`
 			JWT    string `json:"JWT" bson:"JWT"`

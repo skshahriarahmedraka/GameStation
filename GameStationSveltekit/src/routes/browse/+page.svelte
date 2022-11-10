@@ -5,11 +5,12 @@ import type { PageData } from './$types';
 
 	export let data: PageData;
 	
-	let { Userdata } = data;
+	let { Userdata ,DefaultGameList } = data;
+	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ DefaultGameList", DefaultGameList)
 	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
 	UserProData.update((d) => (d = Userdata));
 
-	
+
 	import GameProfile from '$lib/cards/gameProfile.svelte';
 	import Showcase from '$lib/Carousels/showcase.txt';
 	// import Showcase from "$lib/Carousels/showcase.svelte";
@@ -439,6 +440,8 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 		Platform: {}
 	}
 	}
+
+	
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -448,19 +451,18 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 >
 	<div class="h-fit w-[1178px] ">
 		<p class="">Filtered Games</p>
-		<div class=" flex flex-row  flex-wrap gap-4">
+		<div class=" flex flex-row  flex-wrap gap-4 ">
 
 			{#each ListOfGameData as i}
 			<EmidGameCom  Obj={i} />
-			<!-- content here -->
 			{/each}
 		</div>
 		<!--  -->
 	</div>
 
-	<div class=" flex h-screen w-[245px] flex-col gap-1">
+	<div class=" flex h-screen w-[245px] flex-col gap-1 ">
 		<button on:click={()=>{OnclickRestFiler()}} class="h-6  w-fit border-[1px] flex flex-row bg-gray-800 text-sm rounded-md self-end text-center pb-1 px-2">Reset Filter</button>
-		<div class="flex h-fit w-full flex-row flex-wrap">
+		<div class="flex h-fit w-full flex-row flex-wrap ">
 			{#each Object.entries(SelectedField) as [Name, obj]}
 				{#each Object.entries(obj) as [fieldname, value]}
 					{#if value}
@@ -518,6 +520,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 					<div
 						on:click={() => {
 							SelectedField[filter.Name][i] = !SelectedField[filter.Name][i];
+							console.log("🚀 ~ file: +page.svelte ~ line 523 ~ SelectedField", SelectedField)
 						}}
 						on:keypress={() => {}}
 						class=" relative h-8 w-full rounded-lg p-2 hover:cursor-pointer hover:bg-slate-700 hover:bg-opacity-25"

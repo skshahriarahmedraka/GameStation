@@ -49,11 +49,18 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.GET("/news/:newsid", H.GetNewsByID())
 	r.GET("/news", H.NewsList())
 
-	r.POST("/user/moneytokenreq", H.ProfileTokenReq())
-	r.POST("/user/moneytokenreqlist", H.ProfileTokenReqList())
-	r.GET("/user/moneyreq", H.ProfileMoneyReq())
+	r.POST("/user/moneytokenreq", H.ProfileTokenReq())// completed user send token request
+	r.POST("/user/moneytokenreqlist", H.ProfileTokenReqList())// complete: user get token request list
+	r.POST("/user/rechargewallet", H.ProfileRechargeWallet())// complete: user accept token request
+	// r.GET("/user/moneyreq", H.ProfileMoneyReq())
+
 
 	r.GET("/admin/adminmoneymanagement", H.AdminMoneyManagement())
+	r.POST("/admin/moneyreqaccept", H.AdminMoneyReqAccept())
+
+
+
+	r.GET("/user/browse", H.BrowseGames())
 
 	//r.GET("/product/:productid", H.ViewProduct())
 	r.GET("/user/search", H.UserSearch())

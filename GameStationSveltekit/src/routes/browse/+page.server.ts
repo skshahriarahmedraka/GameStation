@@ -4,6 +4,7 @@ import { redirect } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 import * as jwt from 'jsonwebtoken';
+// import { GET } from '../api/logout/+server';
 
 /** @type {import('./$types').PageServerLoad} */
 export const load: PageServerLoad = async ({ cookies, locals }) => {
@@ -88,8 +89,40 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
 				  Userdata = da;
 			  });
 	  }
+
+
+	  const DefaultGameList: {
+		Name: string;
+		UserID: string;
+		Accounttype: string;
+		ProfileImg: string;
+		BannerImg: string;
+		Email: string;
+		Mobile: string;
+		Address: string;
+		Country: string;
+		City: string;
+		ZipCode: string;
+		Coin: number;
+		TransactionHistory: string[];
+		WishList: string[];
+		ContactAdminMsg: string[];
+		ContactDevMsg: string[];
+		UserCart: string[];
+	}[] = [] 
+	//   await fetch(`http://${process.env.GO_HOST}/user/browse`,{
+	// 	  method: "GET",
+	// 	  mode: "no-cors",
+
+	//   }).then((res)=>{
+	// 	  return res.json()
+	//   }).then((data)=>{
+	// 	DefaultGameList=data
+	//   console.log("🚀 ~ file: +page.server.ts ~ line 103 ~ constload:PageServerLoad= ~ DefaultGameList", DefaultGameList)
+	//   })
 	  return {
-		  Userdata
+		  Userdata,
+		  DefaultGameList
 	  };
 	
 	
