@@ -94,8 +94,28 @@ export const load: PageServerLoad = async ({ cookies,locals }) => {
 				  Userdata = da;
 			  });
 	  }
+
+	let UserReqList: {
+		UserID: string;
+		Coin: number;
+		ReqList: {
+			Amount: number;
+			JWT: string;
+			Status: string;
+		}[]
+	}[]= []
+	  await fetch(`http://${process.env.GO_HOST}/admin/adminmoneymanagement`, {
+	  		method: 'GET',
+	  		mode: 'no-cors',
+
+	  }).then((res)=>{return res.json()}).then((data)=>{
+	  console.log("🚀 ~ file: +page.server.ts ~ line 112 ~ constload:PageServerLoad= ~ data", data)
+	  UserReqList=data
+	  })
+
 	  return {
-		  Userdata
+		  Userdata,
+		  UserReqList
 	  };
 
 	//   const MyCookie = cookies.get('Auth1') || '';

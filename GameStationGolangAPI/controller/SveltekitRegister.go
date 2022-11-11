@@ -113,7 +113,6 @@ func (H *DatabaseCollections) SveltekitRegister() gin.HandlerFunc {
 		uMoney.Coin = 0.0
 		uMoney.ReqList = []model.UserMoneyReq{}
 		res, err = H.Mongo.Collection(os.Getenv("ADMIN_MONEY_MANAGE_COL")).InsertOne(ctx, uMoney)
-		LogError.LogError("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ err : ", err)
 		fmt.Println("🚀 ~ file: SveltekitRegister.go ~ line 115 ~ returnfunc ~ res : ", res)
 		if err != nil {
 			LogError.LogError("❌🔥 error in InsertOne() ", err)

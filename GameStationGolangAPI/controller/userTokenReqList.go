@@ -3,6 +3,7 @@ package controller
 import (
 	"app/LogError"
 	"app/model"
+	"fmt"
 
 	// "app/model"
 	"context"
@@ -58,7 +59,7 @@ func (H *DatabaseCollections) ProfileTokenReqList() gin.HandlerFunc {
 		for _, r := range result {
 			Umoney = r
 		}
-
+		fmt.Println("🚀 ~ file: userTokenReq.go ~ line 100 ~ returnfunc ~ Umoney.ReqList", Umoney.ReqList)
 		c.JSON(http.StatusOK, Umoney.ReqList)
 
 	}

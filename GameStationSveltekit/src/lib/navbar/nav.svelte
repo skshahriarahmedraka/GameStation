@@ -173,7 +173,7 @@
 		class="  flex flex-row gap-2 justify-center items-center bg-blue-500 bg-opacity-30 hover:bg-opacity-40 hover:cursor-pointer p-2 rounded-2xl  sm:hidden md:hidden lg:hidden xl:flex xs:hidden xxl:flex "
 	>
 		<Coin class="storke-[1px] h-8 w-8 stroke-yellow-300" />
-		<p class="text-slate-200 ">{826753}</p>
+		<p class="text-slate-200 ">{$UserProData.Coin}</p>
 	</div>
 	<div
 		on:click={() => {

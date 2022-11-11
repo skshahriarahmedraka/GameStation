@@ -1,22 +1,28 @@
 <script lang="ts">
 	import Coin2 from '$lib/svgs/coin2.svelte';
 	import { UserProData } from '$lib/Store/store';
+	import Nop from '$lib/logo/nop.svelte';
 	// your script goes here
-	let MoneyReqList = [
-		{ Amount: '10', Details: 'Your Request is Pending for Admin Acceptance', Status: 'pending' },
-		{
-			Amount: '1000',
-			Details: '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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',
-			Status: 'used'
-		},
-		{ Amount: '10', Details: 'Your Request is Pending for Admin Acceptance', Status: 'used' },
-		{ Amount: '1000', Details: 'Your Request is Pending for Admin Acceptance', Status: 'pending' },
-		{
-			Amount: '10',
-			Details: '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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',
-			Status: 'used'
-		}
-	];
+	let MoneyReqList : {
+		Amount: string;
+		JWT: string;
+		Status: string;
+	}[] = [];
+	// = [
+	// 	{ Amount: '10', Details: 'Your Request is Pending for Admin Acceptance', Status: 'pending' },
+	// 	{
+	// 		Amount: '1000',
+	// 		Details: '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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',
+	// 		Status: 'used'
+	// 	},
+	// 	{ Amount: '10', Details: 'Your Request is Pending for Admin Acceptance', Status: 'used' },
+	// 	{ Amount: '1000', Details: 'Your Request is Pending for Admin Acceptance', Status: 'pending' },
+	// 	{
+	// 		Amount: '10',
+	// 		Details: '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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',
+	// 		Status: 'used'
+	// 	}
+	// ];
 
 	let inputJWT = '';
 
@@ -24,8 +30,29 @@
 		Err: false,
 		Msg: ''
 	};
-
-	async function SubmitReq() {
+	let NumOfReq = {
+		accepted: 0,
+		pending: 0,
+		used: 0
+	};
+	$: console.log("🚀 ~ file: PaymentManagement.svelte ~ line 38 ~ NumOfReq", NumOfReq)
+	function SeeThroughMoneyReqList() {
+		NumOfReq = {
+			accepted: 0,
+			pending: 0,
+			used: 0
+		};
+		for (let i of MoneyReqList) {
+			if (i.Status === 'accepted') {
+				NumOfReq.accepted++;
+			} else if (i.Status === 'pending') {
+				NumOfReq.pending++;
+			} else if (i.Status === 'used') {
+				NumOfReq.used++;
+			}
+		}
+	}
+	async function RechargeWallet() {
 		console.log('🚀 ~ file: PaymentManagement.svelte ~ line 30 ~ SubmitReq ~ inputJWT', inputJWT);
 		if (inputJWT === '') {
 			ErrorMsg.Err = true;
@@ -33,13 +60,13 @@
 			return;
 		}
 
-		let resdata = await fetch('/api/profile/requestMoney', {
+		let resdata = await fetch('/api/profile/rechargewallet', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				UserID: $UserProData,
+				UserID: $UserProData.UserID,
 				JWT: inputJWT
 			})
 		})
@@ -53,7 +80,31 @@
 			});
 		console.log('🚀 ~ file: RequestToken.svelte ~ line 26 ~ requestMoney ~ resdata', resdata);
 		// let data = await response.json()
+		SeeThroughMoneyReqList()
 	}
+	async function GetReqList() {
+		let resdata = await fetch('/api/profile/moneytokenreqlist', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				UserID: $UserProData.UserID
+			})
+		})
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				MoneyReqList = data;
+				return data;
+			});
+	
+		SeeThroughMoneyReqList()
+	
+	}
+	GetReqList()
+	SeeThroughMoneyReqList()
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -92,7 +143,7 @@
 			/>
 			<button
 				on:click={() => {
-					SubmitReq();
+					RechargeWallet();
 				}}
 				class="m-3 h-10 w-fit self-center rounded-xl bg-blue-500 p-2 px-4 font-semibold text-white hover:bg-green-600 active:bg-green-700 "
 				>Recharge</button
@@ -102,6 +153,10 @@
 	<div class=" flex flex-col">
 		<p class=" m-3 font-Poppins text-2xl text-slate-200">Used Request :</p>
 		<div class="flex flex-row flex-wrap justify-around gap-2 ">
+			{#if NumOfReq.used === 0}
+				<Nop class=" h-20 w-20 stroke-slate-400  " />
+			{:else}
+
 			{#each MoneyReqList as req}
 				<!-- content here -->
 				{#if req.Status == 'used'}
@@ -116,17 +171,18 @@
 						<p
 							class=" cursor-pointer break-words text-sm text-slate-300 line-clamp-4 hover:text-blue-400 active:text-blue-600"
 						>
-							{req.Details}
+							{req.JWT}
 						</p>
 						<button
-							class="h-10 w-fit self-center rounded-xl bg-green-500 p-2 px-4 font-semibold text-gray-700 hover:bg-green-600 active:bg-green-700 "
+							class="h-10 w-fit self-center rounded-xl bg-transparent text-slate-400 border-2 border-slate-400  p-2 px-4 font-semibold  "
 							>Used</button
 						>
 					</div>
 				{/if}
-			{:else}
+				{:else}
 				<!-- empty list -->
-			{/each}
+				{/each}
+				{/if}
 		</div>
 	</div>
 </div>

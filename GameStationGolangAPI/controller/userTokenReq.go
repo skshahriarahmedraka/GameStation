@@ -4,6 +4,7 @@ import (
 	"app/LogError"
 	"app/model"
 	"context"
+	"fmt"
 	"net/http"
 	"os"
 	"time"
@@ -30,6 +31,7 @@ func (H *DatabaseCollections) ProfileTokenReq() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "bad request userid or  amount is empty"})
 			return
 		}
+		fmt.Println("🚀 ~ file: userTokenReq.go ~ line 36 ~ returnfunc ~ ReqData : ", ReqData)
 		ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 		defer cancel()
 		count, err := H.Mongo.Collection(os.Getenv("ADMIN_MONEY_MANAGE_COL")).CountDocuments(ctx, bson.M{"UserID": ReqData.UserID})
@@ -69,7 +71,7 @@ func (H *DatabaseCollections) ProfileTokenReq() gin.HandlerFunc {
 			// }
 			SendJwt.JWT = "Your Request is Pending for Admin Acceptance"
 			SendJwt.Amount = ReqData.Amount
-			SendJwt.Status = false
+			SendJwt.Status = "pending"
 
 			//inserting token in db
 			opts := options.FindOneAndUpdate().SetUpsert(true)
