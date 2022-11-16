@@ -23,6 +23,8 @@ func (H *DatabaseCollections) AddGameComment() gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err})
 			return
 		}
+
+		
 		fmt.Println("ReqComment : ", ReqComment)
 		ctx, cancel := context.WithTimeout(context.Background(), time.Second*20)
 		defer cancel()

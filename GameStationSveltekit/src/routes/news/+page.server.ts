@@ -90,9 +90,7 @@ export const load: PageServerLoad = async ({  cookies,locals }) => {
 			
 	
 			const decoded = jwt.verify(MyCookie, JWT_Auth_KEY);
-			if ((decoded as tokeninterface).Accounttype != "admin"){
-			  throw redirect(302,"/")
-			}
+			
 			interface tokeninterface{
 				Email: string 
 				Name: string,

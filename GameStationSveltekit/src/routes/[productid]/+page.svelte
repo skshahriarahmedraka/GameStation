@@ -55,6 +55,20 @@
 			Site: string;
 		};
 	} = data.mydata;
+
+	async function FetchGameData() {
+		await fetch(`/api/getgamedata`,{
+			method:"POST",
+		mode:"no-cors",
+		body: JSON.stringify(Gamedata)
+		
+	}).then((res)=>{
+	 return res.json()
+	}).then((d)=>{
+		Gamedata=d
+		console.log("🚀 ~ file: +page.server.ts ~ line 14 ~ load ~ mydata", Gamedata)
+	})
+	}
 	import GameProfile from '$lib/cards/gameProfile.svelte';
 	import Showcase from '$lib/Carousels/showcase.txt';
 	// import Showcase from "$lib/Carousels/showcase.svelte";
@@ -84,6 +98,8 @@
 
 	import Twitter from '$lib/foot/icons/twitter.svelte';
 	// import Game from '$lib/logo/game.svelte';
+
+	let CommentErr =[false,""]
 
 	const images = [
 		{
@@ -280,6 +296,13 @@
 					GameID : Gamedata.GameID as string, 
 					Comment : TempComment 
 				}
+
+		if (TempComment.Rating===0 || TempComment.Description==="") {
+			CommentErr[0]=true
+			CommentErr[1]="Please fill all the fields"
+			return 
+		}
+	CommentErr =[false,""]
 		
 		await fetch('/api/productid/postcomment', {
 				// credentials: 'same-origin',
@@ -295,7 +318,10 @@
 					Gamedata.Comment.push(TempComment)
 					console.log("🚀 ~ file: +page.svelte ~ line 242 ~ .then ~ Gamedata", Gamedata)
 					console.log("🚀 ~ file: +page.svelte ~ line 242 ~ .then ~ Gamedata commnet", Gamedata.Comment)
+					// goto(`/${Gamedata.GameID}`)
 				});
+				FetchGameData()
+			
 	}
 
 	let mydata = {
@@ -410,7 +436,7 @@
 	];
 </script>
 
-<div class=" flex h-fit w-full flex-row justify-center  gap-6  text-slate-100">
+<div class=" flex h-fit w-full flex-row  justify-center  gap-6  text-slate-100">
 	<div class="flex flex-col gap-3 ">
 		<p class=" text-5xl text-slate-100">{Gamedata.Name}</p>
 		<div class=" flex flex-row gap-4">
@@ -418,8 +444,8 @@
 			<Peoples class="h-6 w-6 stroke-blue-400" />
 			<p class=" -ml-2 text-lg">{RoundNumOfPeople(Gamedata.Players)}</p>
 		</div>
-		<div class="flex flex-row gap-3 ">
-			<div class="flex w-[1080px] flex-col gap-4">
+		<div class="flex flex-row gap-3 md:flex-col-reverse md:m-4 xs:m-4 ">
+			<div class="flex w-[1080px] md:w-fit xs:w-fit  flex-col  gap-4">
 				<!-- image show case -->
 				<Daisyui1 OtherImages={Gamedata.OtherImages} />
 				<p class=" text-2xl  ">{Gamedata.Moto}</p>
@@ -564,9 +590,9 @@
 				Discount={Gamedata.Discount}
 			/>
 		</div>
-		<p class=" text-2xl font-Poppins">Reviews : </p>
+		<p class=" text-2xl font-Poppins md:m-4 xs:m-4 ">Reviews : </p>
 		<!-- show COMMENT -->
-		<div class=" flex flex-col gap-3">
+		<div class=" flex flex-col gap-3 md:m-4 xs:m-4 ">
 			{#if Gamedata.Comment != null}
 				{#each Gamedata.Comment as comment}
 				<div class=" flex flex-col gap-1">
@@ -580,8 +606,28 @@
 			{/if}
 		</div>
 		<!-- COMMENT -->
-		<div class=" flex flex-col gap-2">
+		<div class=" flex flex-col gap-2 md:m-4 xs:m-4 ">
+			
+				
 			<p class=" text-2xl  ">Leave Your Review :</p>
+			{#if CommentErr[0]}
+				<div class=" mt-2 ml-3 inline-flex ">
+					<svg
+						class="h-5 w-5  fill-red-500"
+						fill="currentColor"
+						viewBox="0 0 20 20"
+						xmlns="http://www.w3.org/2000/svg"
+						><path
+							fill-rule="evenodd"
+							d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+							clip-rule="evenodd"
+						/></svg
+					>
+					<p class="text-sm text-red-300">{CommentErr[1]}</p>
+				</div>
+			{:else}
+				<!-- else content here -->
+			{/if}
 			<div class=" gap-2 flex flex-row">
 
 				<Rating3 value={TempComment.Rating} />
@@ -605,7 +651,7 @@
 					}}
 					class="h-10 w-fit rounded-xl bg-blue-600 px-3 font-Poppins font-semibold text-white hover:bg-sky-500 active:bg-blue-800  "
 				>
-					Post Comment 
+					Post Review 
 				</button>
 			</div>
 		</div>

@@ -13,18 +13,18 @@
 
 
     let NewsData =data.NewsData 
-    let NewsDatax ={
-        Title:"The Epic Games Store Halloween Sale Ending Soon for 2022",
-        Banner:"https://cdn2.unrealengine.com/epic-games-halloween-sale-ending-soon-1920x1080-2267b349b6e1.jpg",
-        Date:"10/28/2022",
-        WrittenBy:"Craig Pearson",
-        Detail:`You thought you could get away, didn’t you? Well, we’ve caught you, and now it’s time for you to pay … less for your games. Oh no, PLEASE STOP SCREAMING! We’re just trying to remind you that the Epic Games Store Halloween Sale is still allllliiivveee, with prices slashed. And there’s a horde of ongoing in-game events for you to enjoy.
+//     let NewsDatax ={
+//         Title:"The Epic Games Store Halloween Sale Ending Soon for 2022",
+//         Banner:"https://cdn2.unrealengine.com/epic-games-halloween-sale-ending-soon-1920x1080-2267b349b6e1.jpg",
+//         Date:"10/28/2022",
+//         WrittenBy:"Craig Pearson",
+//         Detail:`You thought you could get away, didn’t you? Well, we’ve caught you, and now it’s time for you to pay … less for your games. Oh no, PLEASE STOP SCREAMING! We’re just trying to remind you that the Epic Games Store Halloween Sale is still allllliiivveee, with prices slashed. And there’s a horde of ongoing in-game events for you to enjoy.
 
-We’ve already covered a number of games and events in the previous Halloween Sale blog, but the discount virus has spread all over the store. You’ll find a second list of highlights below, including the classic Fallout franchise’s debut on the Epic Games Store.
+// We’ve already covered a number of games and events in the previous Halloween Sale blog, but the discount virus has spread all over the store. You’ll find a second list of highlights below, including the classic Fallout franchise’s debut on the Epic Games Store.
 
-The sale is live now and ends on Nov. 1, 2022, 11 AM ET. But that’s not the end. With Halloween in-game events in full swing, now’s the perfect time to find out just what the ‘Pumpkintiles’ are capable of in Dying Light 2: Stay Human and to work out what all that screaming is about in Dauntless. `,
-        FooterComment:"Ghostbusters: Spirits Unleashed is available now on the Epic Games Store. "
-    }
+// The sale is live now and ends on Nov. 1, 2022, 11 AM ET. But that’s not the end. With Halloween in-game events in full swing, now’s the perfect time to find out just what the ‘Pumpkintiles’ are capable of in Dying Light 2: Stay Human and to work out what all that screaming is about in Dauntless. `,
+//         FooterComment:"Ghostbusters: Spirits Unleashed is available now on the Epic Games Store. "
+//     }
 </script>
 
 <style>

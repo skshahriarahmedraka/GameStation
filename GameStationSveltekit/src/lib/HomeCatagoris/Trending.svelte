@@ -1,5 +1,128 @@
 <script lang="ts">
 	import MidGameCom from '$lib/cards/midGameCom.svelte';
+	import Plus from '$lib/svgs/plus.svelte';
+
+	export let TrendingList: {
+		GameID: string;
+		Name: string;
+		Moto: string;
+		LogoImage: string;
+		BigPosterImage: string;
+		SmallPosterImage: string;
+		OtherImages: string[];
+		Genres: string[];
+		Feature: string[];
+		Description: string;
+		Rating: number;
+		RatingGivenBy: {
+			'PC Gamer': string;
+			IGN: string;
+			'Game Informer': string;
+		};
+		Minspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Recomendedspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Discount: number;
+		Price: number;
+		Developer: string;
+		Publisher: string;
+		Released: string;
+		Platform: string[];
+		Players: number;
+		Comment: {
+			Name: string;
+			Rating: number;
+			Description: string;
+		}[];
+		FollowUs: {
+			Facebook: string;
+			Discord: string;
+			Youtube: string;
+			Twitter: string;
+			Site: string;
+		};
+	}[] = [] as {
+		GameID: '';
+		Name: '';
+		Moto: '';
+		LogoImage: '';
+		BigPosterImage: '';
+		SmallPosterImage: '';
+		OtherImages: [];
+		Genres: [''];
+		Feature: [''];
+		Description: '';
+		FollowUs: {
+			Facebook: '';
+			Discord: '';
+			Youtube: '';
+			Twitter: '';
+			Site: '';
+		};
+		Rating: 0;
+		RatingGivenBy: {
+			'PC Gamer': '';
+			IGN: '';
+			'Game Informer': '';
+		};
+		Minspec: [
+			{
+				Name: 'OS';
+				Value: '';
+			},
+			{
+				Name: 'Storage';
+				Value: '';
+			},
+			{
+				Name: 'Memory';
+				Value: '';
+			},
+			{
+				Name: 'CPU';
+				Value: '';
+			},
+			{
+				Name: 'GPU';
+				Value: '';
+			}
+		];
+		Recomendedspec: [
+			{
+				Name: 'OS';
+				Value: '';
+			},
+			{
+				Name: 'Storage';
+				Value: '';
+			},
+			{
+				Name: 'Memory';
+				Value: '';
+			},
+			{
+				Name: 'GPU';
+				Value: '';
+			},
+			{
+				Name: 'CPU';
+				Value: '';
+			}
+		];
+		Price: 0;
+		Discount: 0;
+		Developer: '';
+		Publisher: '';
+		Released: '';
+		Platform: ['', '', ''];
+		Players: 0;
+		Comment: [];
+	}[];
 	let Obj = {
 		Name: "Assassin's Creed Syndicate Standard Edition",
 		Price: 87.43,
@@ -70,18 +193,20 @@
 	];
 </script>
 
+
+
 <div class="flex h-fit w-full flex-col justify-center ">
-	<div class="mx-40 flex h-16 flex-row">
-		<button class=" text-xl text-slate-100">Trending</button>
+	<div class="mx-24 flex h-16 flex-row">
+		<button class=" text-xl text-slate-200 hover:text-white">Trending</button>
 		<div class="grow" />
-		<button class=" mr-28 text-lg text-slate-100">See more</button>
+		<button class=" mr-28 text-lg text-slate-400  hover:text-white"
+			><Plus class="inline-flex h-7 w-7" /> See more</button
+		>
 	</div>
-	<div class=" mx-40 flex flex-row flex-wrap space-x-4 space-y-4   ">
-		{#each LiObj as Obj}
-			 <!-- content here -->
-			 <MidGameCom {Obj} />
+	<div class=" mx-24 flex flex-row flex-wrap space-x-4 space-y-4   ">
+		{#each TrendingList as Obj}
+			<MidGameCom {Obj} />
 		{/each}
-	
 	</div>
 </div>
 

@@ -11,7 +11,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: secret
       MONGO_INITDB_DATABASE: userdb 
     volumes:
-      - /docker/mongodb:/data/db
+      - /docker/gamestationmongodb:/data/db
     ports:
       - "27017:27017"
     networks:
@@ -27,7 +27,7 @@ services:
       - '9000:9000'
       - '9001:9001'
     volumes:
-      - /docker/minio:/data
+      - /docker/gamestationminio:/data
     
     networks:
       - gamestation_network

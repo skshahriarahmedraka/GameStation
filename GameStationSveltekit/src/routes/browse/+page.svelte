@@ -6,7 +6,7 @@ import type { PageData } from './$types';
 	export let data: PageData;
 	
 	let { Userdata ,DefaultGameList } = data;
-	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ DefaultGameList", DefaultGameList)
+	// console.log("🚀 ~ file: +page.svelte ~ line 10 ~ DefaultGameList", DefaultGameList)
 	console.log("🚀 ~ file: +page.svelte ~ line 10 ~ Userdata", Userdata)
 	UserProData.update((d) => (d = Userdata));
 
@@ -327,7 +327,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 
 
 
-	let ListOfGameData=[Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata]
+	// let ListOfGameData=[Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata,Gamedata]
 
 	function RoundNumOfPeople(x: number) {
 		if (x >= 1000000000) {
@@ -344,7 +344,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 		}
 	}
 	let filterCatagories = [
-		{ Name: 'Event', Show: false, List: ['Halloween Sale', 'Holyday sale', 'Eid Sale'] },
+		{ Name: 'Event', Show: false, List: ['Halloween-Sale', 'Holyday-Sale', 'Eid-Sale'] },
 		{
 			Name: 'Price',
 			Show: false,
@@ -365,19 +365,19 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 				'Action',
 				'Adventure',
 				'Application',
-				'Card Game',
+				'Card-Game',
 				'Casual',
-				'City Builder',
+				'City-Builder',
 				'Comedy',
-				'Dungeon Crawler',
+				'Dungeon-Crawler',
 				'Exploration',
 				'Fighting',
-				'First Person',
+				'First-Person',
 				'Horror',
 				'Indie',
 				'Music',
 				'Narration',
-				'Open World',
+				'Open-World',
 				'Party',
 				'Platformer',
 				'Puzzle',
@@ -392,7 +392,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 				'Stealth',
 				'Strategy',
 				'Survival',
-				'Tower Defense',
+				'Tower-Defense',
 				'Trivia',
 				'Turn-Based'
 			]
@@ -402,22 +402,22 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 			Show: false,
 			List: [
 				'Achievements',
-				'Challenging Combat',
-				'Cloud Saves',
+				'Challenging-Combat',
+				'Cloud-Saves',
 				'Co-op',
 				'Competitive',
-				'Controller Support',
-				'Cross Platform',
+				'Controller-Support',
+				'Cross-Platform',
 				'MMO',
 				'Multiplayer',
-				'Single Player',
+				'Single-Player',
 				'VR'
 			]
 		},
 		{
 			Name: 'Types',
 			Show: false,
-			List: ['Apps', 'Editor', 'Game', 'Game Add-On', 'Game Bundle', 'Game Demo', 'Game Edition']
+			List: ['Apps', 'Editor', 'Game', 'Game-Add-On', 'Game-Bundle', 'Game-Demo', 'Game-Edition']
 		},
 		{ Name: 'Platform', Show: false, List: ['mac', 'windows', 'linux'] }
 	];
@@ -429,6 +429,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 		Types: {},
 		Platform: {}
 	};
+	$: console.log("🚀 ~ file: +page.svelte ~ line 432 ~ SelectedField", SelectedField)
 
 	function OnclickRestFiler(){
 		SelectedField= {
@@ -447,20 +448,20 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 <!-- markup (zero or more items) goes here -->
 
 <div
-	class=" flex max-h-fit min-h-screen w-[1440px]  flex-row justify-center  gap-6  text-slate-100"
+	class=" flex max-h-fit min-h-screen w-[1440px]  flex-row justify-center md:flex-col-reverse md:justify-evenly sm:justify-evenly xs:justify-evenly md:w-full md:px-4 sm:flex-col-reverse sm:w-full sm:px-4 xs:flex-col-reverse xs:w-full xs:px-4 gap-6  text-slate-100"
 >
-	<div class="h-fit w-[1178px] ">
+	<div class="h-fit w-[1178px] md:w-full xs:w-full sm:w-full md:justify-evenly sm:justify-evenly xs:justify-evenly">
 		<p class="">Filtered Games</p>
-		<div class=" flex flex-row  flex-wrap gap-4 ">
+		<div class=" flex flex-row  flex-wrap gap-4 md:justify-evenly sm:justify-evenly xs:justify-evenly">
 
-			{#each ListOfGameData as i}
+			{#each DefaultGameList as i}
 			<EmidGameCom  Obj={i} />
 			{/each}
 		</div>
 		<!--  -->
 	</div>
 
-	<div class=" flex h-screen w-[245px] flex-col gap-1 ">
+	<div class=" flex h-fit w-[245px] flex-col gap-1  ">
 		<button on:click={()=>{OnclickRestFiler()}} class="h-6  w-fit border-[1px] flex flex-row bg-gray-800 text-sm rounded-md self-end text-center pb-1 px-2">Reset Filter</button>
 		<div class="flex h-fit w-full flex-row flex-wrap ">
 			{#each Object.entries(SelectedField) as [Name, obj]}
@@ -482,7 +483,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 					filter.Show = !filter.Show;
 				}}
 				on:keypress={() => {}}
-				class="relative flex h-10 w-full flex-row justify-around rounded-lg border-2 border-gray-300 border-opacity-50 bg-gray-800 py-1 text-center font-Poppins hover:cursor-pointer hover:bg-opacity-80"
+				class="relative flex h-10 w-full flex-row  justify-around rounded-lg border-2 border-gray-300 border-opacity-50 bg-gray-800 py-1 text-center font-Poppins hover:cursor-pointer hover:bg-opacity-80"
 			>
 				<p class=" ">{filter.Name}</p>
 				{#if filter.Show}
@@ -523,7 +524,7 @@ As a gang leader, strengthen your stronghold and rally rival gang members to you
 							console.log("🚀 ~ file: +page.svelte ~ line 523 ~ SelectedField", SelectedField)
 						}}
 						on:keypress={() => {}}
-						class=" relative h-8 w-full rounded-lg p-2 hover:cursor-pointer hover:bg-slate-700 hover:bg-opacity-25"
+						class=" relative  h-8 w-full rounded-lg p-2 hover:cursor-pointer hover:bg-slate-700 hover:bg-opacity-25"
 					>
 						<p class=" text-sm">{i}</p>
 						{#if SelectedField[filter.Name][i]}

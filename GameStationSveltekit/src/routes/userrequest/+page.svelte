@@ -65,16 +65,16 @@
 	<p class="self-center text-3xl text-white ">All User Money request</p>
 	<div class="flex flex-col gap-2">
 		{#each UserReqList as req}
-			<!-- content here -->
+			
 			<p class=" text-xl text-white ">UserID : {req.UserID}</p>
 			<div class="flex flex-row flex-wrap gap-2 ">
 				{#if req.ReqList.length === 0}
-					<!-- content here -->
+					
 					<Nop class=" ml-10 h-20 w-20" />
 				{:else}
-					<!-- else content here -->
+					
 					{#each req.ReqList as i}
-						<!-- content here -->
+					
 						<div
 							class=" flex h-44 w-72 flex-col justify-center gap-1 rounded-lg border-2 border-slate-400 p-3"
 						>

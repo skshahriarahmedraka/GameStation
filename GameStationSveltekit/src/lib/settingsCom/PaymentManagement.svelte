@@ -159,7 +159,7 @@
 
 			{#each MoneyReqList as req}
 				<!-- content here -->
-				{#if req.Status == 'used'}
+				{#if req.Status === 'used'}
 					<!-- content here -->
 					<div
 						class=" flex h-44 w-72 flex-col justify-center gap-1 rounded-lg border-2 border-slate-400 p-3"

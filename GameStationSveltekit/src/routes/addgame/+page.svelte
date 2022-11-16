@@ -705,7 +705,7 @@
 		/>
 		<!-- <p class=" text-5xl text-slate-100">{GameFormData.Name}</p> -->
 		<div class=" flex flex-row gap-4 ">
-			<Rating3 value={FormData.Rating} />
+			<Rating3 bind:value={FormData.Rating} />
 			<input
 				bind:value={FormData.Rating}
 				type="number"

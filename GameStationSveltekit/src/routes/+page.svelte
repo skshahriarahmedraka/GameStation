@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 	
-	let { Userdata } = data;
+	let { Userdata,MostPopularList,NewReleaseList,TopRatedList, TopSoledList,TrendingList } = data;
 	UserProData.update((d) => (d = Userdata));
 
 	import ImageShow from '$lib/Carousels/imageShow.svelte';
@@ -63,11 +63,11 @@
 	</div>
 
 	<div class="flex flex-col items-center justify-center ">
-		<MostPopular />
-		<Trending />
-		<NewRelease />
-		<TopRated />
-		<TopSeller />
+		<MostPopular {MostPopularList} />
+		<Trending {TrendingList} />
+		<NewRelease {NewReleaseList} />
+		<TopRated {TopRatedList} />
+		<TopSeller {TopSoledList} />
 	</div>
 	<Footer />
 </div>

@@ -17,10 +17,9 @@ export const load: PageServerLoad = async ({ cookies,locals }) => {
 	  const MyCookie = cookies.get('Auth1') || '';
 	  const JWT_Auth_KEY: string = process.env.JWT_SECRET as string;
   
-	  let Userdata
-	  : {
-		  Name: string;
-		  UserID: string;
+	  let Userdata: {
+		  Name: string
+		  UserID: string
 		  Accounttype: string;
 		  ProfileImg: string;
 		  BannerImg: string;

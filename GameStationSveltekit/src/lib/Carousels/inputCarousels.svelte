@@ -109,11 +109,20 @@
 		console.log("🚀 ~ file: inputCarousels.svelte ~ line 110 ~ RemoveImage ~ ActiveIndex", ActiveIndex)
 		if (ActiveIndex === 0) {
 			// delete OtherImages[0];
-			var filtered = OtherImages.filter(function (value, index, arr) {
-				return value != BigPosterImage;
-			});
-			BigPosterImage = '';
-			OtherImages = filtered;
+			if (OtherImages.length > 1) {
+				OtherImages = OtherImages.slice(1);
+				ActiveIndex = 0;
+				BigPosterImage = OtherImages[0]
+
+			} else {
+				OtherImages = [];
+				ActiveIndex = 0;
+				BigPosterImage = '';
+			}
+			// var filtered = OtherImages.filter(function (value, index, arr) {
+			// 	return value != BigPosterImage;
+			// });
+			// OtherImages = filtered;
 		} else {
 			// delete OtherImages[ActiveIndex];
 			const s=OtherImages[ActiveIndex]
