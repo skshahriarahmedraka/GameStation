@@ -157,10 +157,8 @@
 
 		UpdateProfileData()
 
-		// UserSettingSelect.update((n) => {
-		// 	n = 'Transaction';
-		// });
-		goto(`/purchased`);
+		UserSettingSelect.set('Transaction');
+		goto(`/profile/settings`);
 	}
 
 	// function RemoveFromCar(id: number) {
@@ -284,7 +282,7 @@
 			<div class="flex flex-row">
 				<p class="">Sale Discount</p>
 				<div class=" grow " />
-				<p class="">-${Math.round((total.price - total.discount) * 100) / 100}</p>
+				<p class="">-${Math.round((total.discount) * 100) / 100}</p>
 			</div>
 			<div class="flex flex-row">
 				<p class="">Taxes</p>

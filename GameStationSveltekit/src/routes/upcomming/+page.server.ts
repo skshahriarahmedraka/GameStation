@@ -90,6 +90,8 @@ export const load: PageServerLoad = async ({ cookies,locals }) => {
 				  Userdata = da;
 			  });
 	  }
+
+	  
 	  return {
 		  Userdata
 	  };

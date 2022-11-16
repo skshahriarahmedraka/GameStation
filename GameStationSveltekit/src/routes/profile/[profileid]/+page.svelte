@@ -28,7 +28,7 @@
 
 <!-- markup (zero or more items) goes here -->
 
-<div class=" flex min-h-fit w-full  flex-col items-center   gap-3  ">
+<div class=" flex min-h-fit w-full   flex-col items-center   gap-3  ">
 	<!-- <p class=" text-white ">{printdata.profile}</p> -->
 	{#if $UserProData.BannerImg.trim() != ''}
 		<!-- content here -->
@@ -36,11 +36,11 @@
 		<img
 			src={$UserProData.BannerImg}
 			alt="banner logo"
-			class=" aspect-[16/9] h-[500px]  rounded-lg object-cover "
+			class=" aspect-[16/9] h-[500px] sm:w-full sm:h-fit sm:m-4 xs:w-full xs:h-fit xs:m-4  rounded-lg object-cover "
 		/>
 	{:else}
 		<div
-			class=" flex aspect-[16/9]  h-[500px]  items-center justify-center rounded-lg border-2   border-slate-200 stroke-slate-200 stroke-[1px] transition-all duration-150 ease-linear hover:cursor-pointer hover:border-slate-500 hover:stroke-slate-500"
+			class=" flex aspect-[16/9]  h-[500px] sm:w-full sm:h-fit sm:m-4 xs:w-full xs:h-fit xs:m-4 items-center justify-center rounded-lg border-2   border-slate-200 stroke-slate-200 stroke-[1px] transition-all duration-150 ease-linear hover:cursor-pointer hover:border-slate-500 hover:stroke-slate-500"
 		>
 			<WalpaperLogo
 				class="aspect-[16/9] h-[300px]  stroke-slate-200  stroke-[1px] transition-all duration-150 ease-linear hover:cursor-pointer hover:border-slate-500 hover:stroke-slate-500"
@@ -51,7 +51,7 @@
 		/> -->
 	{/if}
 
-	<div class=" flex   min-h-fit flex-row justify-center gap-8 ">
+	<div class=" flex  w-[70%] min-h-fit flex-row sm:flex-col xs:flex-col justify-center gap-8 ">
 		{#if $UserProData.ProfileImg.trim() != ''}
 			<img
 				src={$UserProData.ProfileImg}

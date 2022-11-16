@@ -62,7 +62,7 @@
 			});
 	}
 	function AddToCart(){
-		if ($UserProData.UserCart ===null){
+		if ($UserProData.UserCart === null){
 			UserProData.update((data)=>{
 			data.UserCart=[GameID];
 			return data;
@@ -127,7 +127,9 @@
 		<del class=" text-slate-400">${Price}</del>
 		<p class=" text-slate-100">${(Price - (Price * Discount) / 100).toFixed(2)}</p>
 	</div>
-	{#if $UserProData.TransactionHistory.includes(GameID)}
+	{#if $UserProData.TransactionHistory!==null}
+		 <!-- content here -->
+		 {#if $UserProData.TransactionHistory.includes(GameID)}
 		 <!-- content here -->
 		 <button
 		 on:click={()=>{goto("/purchased")}}
@@ -147,7 +149,8 @@
 			 class=" ml-4 h-[50px] w-[320px] rounded-lg border-2 border-white hover:bg-gray-600 hover:bg-opacity-70 hover:text-white font-Poppins text-lg font-semibold hover:border-slate-300  text-white "
 			 >Add To Cart</button
 		 >
-	{/if}
+		 {/if}
+		 {/if}
 	<button
 		class=" ml-4 flex h-[30px] w-[320px] flex-row  items-center justify-center rounded-lg border-2 hover:bg-gray-600 hover:bg-opacity-70 hover:text-white border-white hover:border-slate-300 font-Poppins font-semibold  text-white"
 	>
