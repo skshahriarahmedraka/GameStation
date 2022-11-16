@@ -2,8 +2,6 @@
 
 Clone of  Epic Game Store
 
-
-
     GENRE
 
 Halloween-Sale
@@ -48,7 +46,7 @@ Party
 
 Platformer
 
-Puzzle
+`Puzzle`
 
 Racing
 

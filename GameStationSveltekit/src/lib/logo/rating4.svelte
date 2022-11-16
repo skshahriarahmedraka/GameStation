@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let value:number ;
+	export let value:number=0 ;
 	$: if(value<0 || value>10 || value === null) {
 		value=0  
 	}

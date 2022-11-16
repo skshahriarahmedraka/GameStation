@@ -11,7 +11,7 @@ import (
 	"time"
 
 	// "fmt"
-	"app/LogError"
+	// "app/LogError"
 	"app/model"
 	// "errors"
 	"net/http"
@@ -20,7 +20,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	// "go.mongodb.org/mongo-driver/mongo/options"
 	// "go.mongodb.org/mongo-driver/mongo/options"
 )
 
@@ -28,16 +28,19 @@ func (H *DatabaseCollections) GetCarousel() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Request.Header.Set("Access-Control-Allow-Origin", "*")
 
+		// ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+		// defer cancel()
+
+		var results []model.Gamedata
 
 		ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 		defer cancel()
 
-		var result []model.Gamedata
-		filter := bson.D{}
-		opts := options.Find().SetSort(bson.D{{"Discount", -1}})
-		cursor, err := H.Mongo.Collection(os.Getenv("GAMEDATA_COL")).Find(ctx, filter, opts)
+		// 1
+		var result model.Gamedata
+		err := H.Mongo.Collection(os.Getenv("GAMEDATA_COL")).FindOne(ctx, bson.D{{"GameID", os.Getenv("CAROUSEL_GAMEID_1")}}).Decode(&result)
+        fmt.Println("🚀 ~ file: GameGetCarousel.go ~ line 42 ~ returnfunc ~ err : ", err)
 		if err != nil {
-        LogError.LogError("🚀 ~ file: GameMostPopular.go ~ line 48 ~ returnfunc ~ err : ", err)
 			if err == mongo.ErrNoDocuments {
 				c.JSON(http.StatusBadRequest, gin.H{"error": " Game not Found"})
 				return
@@ -45,27 +48,77 @@ func (H *DatabaseCollections) GetCarousel() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Game not found & other error"})
 			return
 		}
-		
 
-		var x int =0
-		for cursor.Next(ctx) {
-			var temp model.Gamedata
-			err := cursor.Decode(&temp)
-
-			if err != nil {
-            LogError.LogError("🚀 ~ file: GameMostPopular.go ~ line 70 ~ forcursor.Next ~ err : ", err)
-				c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		results = append(results, result)
+		//2
+		err = H.Mongo.Collection(os.Getenv("GAMEDATA_COL")).FindOne(ctx, bson.D{{"GameID", os.Getenv("CAROUSEL_GAMEID_2")}}).Decode(&result)
+        fmt.Println("🚀 ~ file: GameGetCarousel.go ~ line 55 ~ returnfunc ~ err : ", err)
+		if err != nil {
+			if err == mongo.ErrNoDocuments {
+				c.JSON(http.StatusBadRequest, gin.H{"error": " Game not Found"})
 				return
 			}
-			result = append(result, temp)
-			if x >13 {
-				break
-			}else { x+=1}
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Game not found & other error"})
+			return
 		}
 
-	
+		results = append(results, result)
 
-        fmt.Println("🚀 ~ file: GameMostPopular.go ~ line 94 ~ returnfunc ~ result : ", result)
-		c.JSON(http.StatusOK, result)
+		//3
+		err = H.Mongo.Collection(os.Getenv("GAMEDATA_COL")).FindOne(ctx, bson.D{{"GameID", os.Getenv("CAROUSEL_GAMEID_3")}}).Decode(&result)
+        fmt.Println("🚀 ~ file: GameGetCarousel.go ~ line 69 ~ returnfunc ~ err : ", err)
+		if err != nil {
+			if err == mongo.ErrNoDocuments {
+				c.JSON(http.StatusBadRequest, gin.H{"error": " Game not Found"})
+				return
+			}
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Game not found & other error"})
+			return
+		}
+
+		results = append(results, result)
+
+		// 4
+		err = H.Mongo.Collection(os.Getenv("GAMEDATA_COL")).FindOne(ctx, bson.D{{"GameID", os.Getenv("CAROUSEL_GAMEID_4")}}).Decode(&result)
+        fmt.Println("🚀 ~ file: GameGetCarousel.go ~ line 83 ~ returnfunc ~ err : ", err)
+		if err != nil {
+			if err == mongo.ErrNoDocuments {
+				c.JSON(http.StatusBadRequest, gin.H{"error": " Game not Found"})
+				return
+			}
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Game not found & other error"})
+			return
+		}
+
+		results = append(results, result)
+		// 5
+		err = H.Mongo.Collection(os.Getenv("GAMEDATA_COL")).FindOne(ctx, bson.D{{"GameID", os.Getenv("CAROUSEL_GAMEID_5")}}).Decode(&result)
+        fmt.Println("🚀 ~ file: GameGetCarousel.go ~ line 96 ~ returnfunc ~ err : ", err)
+		if err != nil {
+			if err == mongo.ErrNoDocuments {
+				c.JSON(http.StatusBadRequest, gin.H{"error": " Game not Found"})
+				return
+			}
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Game not found & other error"})
+			return
+		}
+
+		results = append(results, result)
+		// 6
+		err = H.Mongo.Collection(os.Getenv("GAMEDATA_COL")).FindOne(ctx, bson.D{{"GameID", os.Getenv("CAROUSEL_GAMEID_6")}}).Decode(&result)
+        fmt.Println("🚀 ~ file: GameGetCarousel.go ~ line 109 ~ returnfunc ~ err : ", err)
+		if err != nil {
+			if err == mongo.ErrNoDocuments {
+				c.JSON(http.StatusBadRequest, gin.H{"error": " Game not Found"})
+				return
+			}
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Game not found & other error"})
+			return
+		}
+
+		results = append(results, result)
+
+		// fmt.Println("🚀 ~ file: GameMostPopular.go ~ line 94 ~ returnfunc ~ result : ", results)
+		c.JSON(http.StatusOK, results)
 	}
 }

@@ -45,6 +45,11 @@ func (H *DatabaseCollections) ProfileUpdate() gin.HandlerFunc {
 				{"$set", bson.D{{"City", ReqUserData.City}}},
 				{"$set", bson.D{{"Country", ReqUserData.Country}}},
 				{"$set", bson.D{{"ZipCode", ReqUserData.ZipCode}}},
+				{"$set", bson.D{{"UserCart", ReqUserData.UserCart}}},
+				{"$set", bson.D{{"WishList", ReqUserData.WishList}}},
+				{"$set", bson.D{{"ContactAdminMsg", ReqUserData.ContactAdminMsg}}},
+				{"$set", bson.D{{"ContactDevMsg", ReqUserData.ContactDevMsg}}},
+				{"$set", bson.D{{"TransactionHistory", ReqUserData.TransactionHistory}}},
 			}
 			res, err := H.Mongo.Collection(os.Getenv("USERDATA_COL")).UpdateOne(ctx, filter, update, opts)
 			if err != nil {

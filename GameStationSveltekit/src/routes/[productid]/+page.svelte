@@ -513,11 +513,11 @@
 				<div class=" flex flex-row justify-around gap-2">
 					{#each Object.entries(Gamedata.RatingGivenBy) as [title, Value]}
 						<!-- content here -->
-						<div class="h-[300px] w-[250px] rounded-xl bg-[#262626] p-4  ">
+						<div class="h-[300px] w-[250px] rounded-xl bg-[#262626] p-4 overflow-hidden ">
 							<p class="border-b-[1px] border-gray-500  border-opacity-10 pb-2 text-lg ">
 								{title}
 							</p>
-							<p class=" pt-2 text-sm text-slate-400">{Value}</p>
+							<p class=" pt-2 text-sm text-slate-400 ">{Value}</p>
 						</div>
 					{/each}
 				</div>
@@ -581,6 +581,7 @@
 				</div>
 			</div>
 			<GameProfile
+				GameID={Gamedata.GameID}
 				LogoImage={Gamedata.LogoImage}
 				Released={Gamedata.Released}
 				Price={Gamedata.Price}
@@ -589,6 +590,7 @@
 				Develper={Gamedata.Developer}
 				Discount={Gamedata.Discount}
 			/>
+			
 		</div>
 		<p class=" text-2xl font-Poppins md:m-4 xs:m-4 ">Reviews : </p>
 		<!-- show COMMENT -->

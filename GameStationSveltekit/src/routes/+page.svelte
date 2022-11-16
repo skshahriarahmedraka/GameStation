@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 	
-	let { Userdata,MostPopularList,NewReleaseList,TopRatedList, TopSoledList,TrendingList } = data;
+	let { Userdata,MostPopularList,NewReleaseList,TopRatedList, TopSoledList,TrendingList,CarouselList } = data;
 	UserProData.update((d) => (d = Userdata));
 
 	import ImageShow from '$lib/Carousels/imageShow.svelte';
@@ -59,7 +59,7 @@
 		class=" flex h-fit w-full flex-row justify-center gap-2 md:flex-col md:flex-wrap xl:flex-row  "
 	>
 		<!-- showcase Images and small game cards -->
-		<HomeShocase />
+		<HomeShocase {CarouselList} />
 	</div>
 
 	<div class="flex flex-col items-center justify-center ">

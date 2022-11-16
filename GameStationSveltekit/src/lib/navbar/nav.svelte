@@ -213,11 +213,18 @@
 			goto('/carts');
 		}}
 		on:keydown={() => {}}
-		class="sm:hidden md:hidden lg:hidden xl:hidden xs:hidden xxl:contents"
+		class="sm:hidden md:hidden lg:hidden xl:hidden xs:hidden xxl:contents  "
 	>
 		<CartIcon
 			class=" h-6 w-6 scale-150 cursor-pointer  rounded-xl stroke-1  hover:bg-sky-200 hover:bg-opacity-25 hover:fill-sky-300 active:fill-sky-500 "
 		/>
+		{#if $UserProData.UserCart.length > 0}
+					<div
+						class=" -ml-4 rounded-full border-2 border-[#202225] bg-red-500  px-1 text-xs font-semibold text-white "
+					>
+						{$UserProData.UserCart.length}
+					</div>
+				{/if}
 	</div>
 
 	<div class=" xl:contents xs:h-6  xs:w-6 xxl:hidden ">

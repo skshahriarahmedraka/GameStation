@@ -42,7 +42,7 @@ import type { PageData } from './$types';
 		{ name: 'Contact Admin', link: '', icon: Message },
 		{ name: 'Contact Game Developer', link: '', icon: Message }
 	];
-	let active = $UserSettingSelect
+	let active = "Transaction"
 </script>
 
 <!-- markup (zero or more items) goes here -->

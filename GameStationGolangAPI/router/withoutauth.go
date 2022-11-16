@@ -37,6 +37,8 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.POST("/user/login", H.Login())
 	r.POST("/user/register", H.Register())
 	r.POST("/user/profileupdate", H.ProfileUpdate())
+	r.POST("/user/cart", H.ProfileCartData())// not complete
+	r.POST("/user/transactiondata", H.ProfileTransactionData())// not complete
 	// r.GET("/user/moneyreq", H.ProfileMoneyReq())
 	r.GET("/user/:profileid", H.UserData())
 
@@ -67,6 +69,7 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.GET("/game/toprated", H.TopRated())
 
 	r.GET("/game/carousel", H.GetCarousel())
+	// r.GET("/game/carousel", H.GetCarousel())
 
 
 

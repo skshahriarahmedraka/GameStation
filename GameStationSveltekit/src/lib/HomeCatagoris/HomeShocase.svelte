@@ -11,79 +11,200 @@
 	const forbiddenwest = new URL('../images/forbiddenwest.jpg', import.meta.url).href;
 	const war = new URL('../images/GodOfWar.jpg', import.meta.url).href;
 
+	export let CarouselList: {
+		GameID: string;
+		Name: string;
+		Moto: string;
+		LogoImage: string;
+		BigPosterImage: string;
+		SmallPosterImage: string;
+		OtherImages: string[];
+		Genres: string[];
+		Feature: string[];
+		Description: string;
+		Rating: number;
+		RatingGivenBy: {
+			'PC Gamer': string;
+			IGN: string;
+			'Game Informer': string;
+		};
+		Minspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Recomendedspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Discount: number;
+		Price: number;
+		Developer: string;
+		Publisher: string;
+		Released: string;
+		Platform: string[];
+		Players: number;
+		Comment: {
+			Name: string;
+			Rating: number;
+			Description: string;
+		}[];
+		FollowUs: {
+			Facebook: string;
+			Discord: string;
+			Youtube: string;
+			Twitter: string;
+			Site: string;
+		};
+	}[] = [] as {
+		GameID: '';
+		Name: '';
+		Moto: '';
+		LogoImage: '';
+		BigPosterImage: '';
+		SmallPosterImage: '';
+		OtherImages: [];
+		Genres: [''];
+		Feature: [''];
+		Description: '';
+		FollowUs: {
+			Facebook: '';
+			Discord: '';
+			Youtube: '';
+			Twitter: '';
+			Site: '';
+		};
+		Rating: 0;
+		RatingGivenBy: {
+			'PC Gamer': '';
+			IGN: '';
+			'Game Informer': '';
+		};
+		Minspec: [
+			{
+				Name: 'OS';
+				Value: '';
+			},
+			{
+				Name: 'Storage';
+				Value: '';
+			},
+			{
+				Name: 'Memory';
+				Value: '';
+			},
+			{
+				Name: 'CPU';
+				Value: '';
+			},
+			{
+				Name: 'GPU';
+				Value: '';
+			}
+		];
+		Recomendedspec: [
+			{
+				Name: 'OS';
+				Value: '';
+			},
+			{
+				Name: 'Storage';
+				Value: '';
+			},
+			{
+				Name: 'Memory';
+				Value: '';
+			},
+			{
+				Name: 'GPU';
+				Value: '';
+			},
+			{
+				Name: 'CPU';
+				Value: '';
+			}
+		];
+		Price: 0;
+		Discount: 0;
+		Developer: '';
+		Publisher: '';
+		Released: '';
+		Platform: ['', '', ''];
+		Players: 0;
+		Comment: [];
+	}[];
 	// let Obj = {
 	// 	ID: '1321432',
 	// 	Name: "Assassin's Creed® Mirage",
 	// 	Image: mirage,
 	// 	Price: '43.65'
 	// };
-	let listOfImage = [war,forbiddenwest,anthem,fifa]
-	let liObj = [
-		{
-			ID: '1321432',
-			Name: "Assassin's Creed® Mirage",
-			Image: mirage,
-			Price: '43.65',
-			Rating: 9.7,
-			NumberOfPlayers: 34821571533,
-			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns."
-		},
-		{
-			ID: '1321432',
-			Name: "Assassin's Creed® Mirage",
-			Image: anthem,
-			Rating: 9.7,
-			NumberOfPlayers: 34821571533,
-			Price: '43.65',
-			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+	// let listOfImage = [war,forbiddenwest,anthem,fifa]
+	// let liObj = [
+	// 	{
+	// 		ID: '1321432',
+	// 		Name: "Assassin's Creed® Mirage",
+	// 		Image: mirage,
+	// 		Price: '43.65',
+	// 		Rating: 9.7,
+	// 		NumberOfPlayers: 34821571533,
+	// 		Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns."
+	// 	},
+	// 	{
+	// 		ID: '1321432',
+	// 		Name: "Assassin's Creed® Mirage",
+	// 		Image: anthem,
+	// 		Rating: 9.7,
+	// 		NumberOfPlayers: 34821571533,
+	// 		Price: '43.65',
+	// 		Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
 
-		},
-		{
-			ID: '1321432',
-			Name: "Assassin's Creed® Mirage",
-			Image: fifa,
-			Rating: 9.7,
-			NumberOfPlayers: 34821571533,
-			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+	// 	},
+	// 	{
+	// 		ID: '1321432',
+	// 		Name: "Assassin's Creed® Mirage",
+	// 		Image: fifa,
+	// 		Rating: 9.7,
+	// 		NumberOfPlayers: 34821571533,
+	// 		Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
 
-			Price: '43.65'
-		},
-		{
-			ID: '1321432',
-			Name: "Assassin's Creed® Mirage",
-			Image: forbiddenwest,
-			Rating: 9.7,
-			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
-			NumberOfPlayers: 34821571533,
-			Price: '43.65'
-		},
-		{
-			ID: '1321432',
-			Name: "Assassin's Creed® Mirage",
-			Image: anthem,
-			Rating: 9.7,
-			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
-			NumberOfPlayers: 34821571533,
-			Price: '43.65'
-		},
-		{
-			ID: '1321432',
-			Name: "Assassin's Creed® Mirage",
-			Image: fifa,
-			Rating: 9.7,
-			Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
-			NumberOfPlayers: 34821571533,
-			Price: '43.65'
-		}
-	];
+	// 		Price: '43.65'
+	// 	},
+	// 	{
+	// 		ID: '1321432',
+	// 		Name: "Assassin's Creed® Mirage",
+	// 		Image: forbiddenwest,
+	// 		Rating: 9.7,
+	// 		Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+	// 		NumberOfPlayers: 34821571533,
+	// 		Price: '43.65'
+	// 	},
+	// 	{
+	// 		ID: '1321432',
+	// 		Name: "Assassin's Creed® Mirage",
+	// 		Image: anthem,
+	// 		Rating: 9.7,
+	// 		Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+	// 		NumberOfPlayers: 34821571533,
+	// 		Price: '43.65'
+	// 	},
+	// 	{
+	// 		ID: '1321432',
+	// 		Name: "Assassin's Creed® Mirage",
+	// 		Image: fifa,
+	// 		Rating: 9.7,
+	// 		Moto:"In Marvel’s Spider-Man Remastered, the worlds of Peter Parker and Spider-Man collide in an original, action-packed story. Play as an experienced Peter Parker, fighting big crime and iconic villains in Marvel’s New York. Web-swing through vibrant neighborhoods and defeat villains with epic takedowns.",
+	// 		NumberOfPlayers: 34821571533,
+	// 		Price: '43.65'
+	// 	}
+	// ];
 </script>
 
 <!-- markup (zero or more items) goes here -->
 
 <!-- <Daisyui1 OtherImages={listOfImage}/> -->
-<ImageShow {liObj} />
+<ImageShow {CarouselList} />
 <div class="flex flex-col gap-2 overflow-hidden md:flex-row xl:flex-col lg:flex-row   h-fit">
-	{#each liObj as Obj}
+	{#each CarouselList as Obj}
 		<Smallcard {Obj} />
 	{/each}
 </div>

@@ -58,7 +58,7 @@ func (H *DatabaseCollections) TopSold() gin.HandlerFunc {
 				return
 			}
 			result = append(result, temp)
-			if x >13 {
+			if x >12 {
 				break
 			}else { x+=1}
 		}
