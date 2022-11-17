@@ -33,7 +33,7 @@ class=" w-[215px] min-h-fit hover:scale-125 max-h-fit mt-4 mb-4 pb-2 gap-1 hover
 	<p class=" text-sm text-start ml-2 inline-flex font-Poppins  ">{Obj.Rating}/10 <Star class="inline-flex h-4 w-4 stroke-yellow-200" /> <Dot class=" self-center mx-2"/> {RoundNumOfPeople(Obj.Players)} <Users class="ml-1 inline-flex h-4 w-4 " /> </p>
 	<p class=" text-start text-base ml-1 font-Poppins line-clamp-2">{Obj.Name}</p>
 	<p class=" font-thin ml-2 text-sm text-start font-Poppins ">${Obj.Price}</p>
-	<div class=" text-white p-1 rounded-lg ml-2 text-sm text-start font-Poppins bg-red-500 w-fit font-semibold ">UpComming</div>
+	<div class=" text-white p-1 rounded-lg ml-2 text-sm text-start font-Poppins bg-green-500 w-fit font-semibold "> Discount {Obj.Discount}%</div>
 </button>
 
 <style>

@@ -37,14 +37,16 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.POST("/user/login", H.Login())
 	r.POST("/user/register", H.Register())
 	r.POST("/user/profileupdate", H.ProfileUpdate())
-	r.POST("/user/cart", H.ProfileCartData())// not complete
-	r.POST("/user/transactiondata", H.ProfileTransactionData())// not complete
+	r.POST("/user/cart", H.ProfileCartData())//  complete
+	r.POST("/user/transactiondata", H.ProfileTransactionData())//  complete
+	r.POST("/user/wishlist", H.ProfileTransactionData())// not complete
 	// r.GET("/user/moneyreq", H.ProfileMoneyReq())
 	r.GET("/user/:profileid", H.UserData())
 
 	r.POST("/admin/addproduct", H.AdminAddProduct())
 
 	r.GET("/game/:gameid", H.GetGameData())
+	r.GET("/search/:search", H.GetSearchData())
 	r.POST("/game/addcomment", H.AddGameComment())
 	//r.GET("/game/:gameid", H.GetGameData())
 	r.POST("/news/addnews", H.AddNews())
@@ -67,6 +69,8 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.GET("/game/newrelease", H.NewRelease())
 	r.GET("/game/topsold", H.TopSold())
 	r.GET("/game/toprated", H.TopRated())
+	r.GET("/game/upcomming", H.UpcommingGames())
+	r.GET("/game/offers", H.OffersGames())
 
 	r.GET("/game/carousel", H.GetCarousel())
 	// r.GET("/game/carousel", H.GetCarousel())
@@ -74,7 +78,7 @@ func RouteWithoutAuth(r *gin.Engine) {
 
 
 	//r.GET("/product/:productid", H.ViewProduct())
-	r.GET("/user/search", H.UserSearch())
+	// r.GET("/user/search", H.UserSearch())
 	r.POST("/imgupload", H.ImgUpload())
 	r.POST("/imglink", H.ImgLink())
 	r.GET("/ws", H.Ws())

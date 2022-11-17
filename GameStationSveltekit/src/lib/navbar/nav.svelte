@@ -23,7 +23,11 @@
 
 	let ShowSearchBar = false;
 	let ShowProfile = false;
+	let SearchVar=""
 	// console.log('myval.UserID', myval.UserID);
+	function SearchGame(){
+		goto(`/search/${SearchVar}`)
+	}
 </script>
 
 <div
@@ -86,8 +90,10 @@
 
 				<!-- content here -->
 				<input
+					bind:value={SearchVar}
+					on:keyup={e=>{e.key==='Enter' ? SearchGame() : "" }}
 					type="search"
-					class=" form-control relative mx-1 block h-12 w-full min-w-0 flex-auto rounded-lg border-2  border-solid border-gray-700  bg-slate-600 px-3   py-1 text-base font-normal transition ease-in-out focus:border-blue-600  focus:bg-gray-700 focus:outline-none sm:hidden xs:hidden"
+					class=" form-control relative mx-1  block h-12 w-full min-w-0 flex-auto rounded-lg border-2  border-solid border-gray-700  bg-slate-600 px-3   py-1 text-base font-normal transition ease-in-out focus:border-blue-600  focus:bg-gray-700 focus:outline-none sm:hidden xs:hidden"
 					placeholder="Search"
 					aria-label="Search"
 					style=" background-color: rgb(71 85 105 / var(--tw-bg-opacity));"
@@ -133,6 +139,8 @@
 							ShowSearchBar = true;
 							
 						}
+						SearchGame()
+
 						// console.log("🚀 ~ file: nav.svelte ~ line 132 ~ window.matchMedia('screen and (max-width: 897px)').matches", window.matchMedia('screen and (max-width: 897px)').matches)
 						// console.log("🚀 ~ file: nav.svelte ~ line 132 ~ screen.width", window.outerWidth)
 					}}
@@ -173,7 +181,7 @@
 		class="  flex flex-row gap-2 justify-center items-center bg-blue-500 bg-opacity-30 hover:bg-opacity-40 hover:cursor-pointer p-2 rounded-2xl  sm:hidden md:hidden lg:hidden xl:flex xs:hidden xxl:flex "
 	>
 		<Coin class="storke-[1px] h-8 w-8 stroke-yellow-300" />
-		<p class="text-slate-200 ">{$UserProData.Coin}</p>
+		<p class="text-slate-200 ">{Math.round(($UserProData.Coin) * 100) / 100 }</p>
 	</div>
 	<div
 		on:click={() => {

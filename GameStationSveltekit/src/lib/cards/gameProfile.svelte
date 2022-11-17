@@ -85,6 +85,30 @@
 		// $UserProData.UserCart.push(GameID);
 		console.log("🚀 ~ file: gameProfile.svelte ~ line 20 ~ AddToCart ~ UserProData", $UserProData)
 	}
+	function AddToWishlist(){
+		if ($UserProData.WishList === null){
+			UserProData.update((data)=>{
+			data.WishList=[GameID];
+			return data;
+		})
+		}else {
+			for (let i = 0; i < $UserProData.WishList.length; i++) {
+				if ($UserProData.WishList[i] === GameID) {
+					console.log(" Already addled game GameID", GameID)
+					
+					return;
+				}
+			}
+			UserProData.update((data)=>{
+				data.WishList.push(GameID);
+				return data;
+			})
+		}
+		GeneralData.WishList=$UserProData.WishList;
+		UpdateProfileData()
+		// $UserProData.UserCart.push(GameID);
+		console.log("🚀 ~ file: gameProfile.svelte ~ line 20 ~ AddToCart ~ UserProData", $UserProData)
+	}
 	function BuyNow(){
 		if ($UserProData.UserCart ===null){
 			UserProData.update((data)=>{
@@ -152,6 +176,7 @@
 		 {/if}
 		 {/if}
 	<button
+	on:click={()=>{AddToWishlist()}}
 		class=" ml-4 flex h-[30px] w-[320px] flex-row  items-center justify-center rounded-lg border-2 hover:bg-gray-600 hover:bg-opacity-70 hover:text-white border-white hover:border-slate-300 font-Poppins font-semibold  text-white"
 	>
 		<Plus class="h-4 w-4" />

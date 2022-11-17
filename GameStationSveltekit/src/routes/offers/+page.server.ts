@@ -90,8 +90,142 @@ export const load: PageServerLoad = async ({ cookies,locals }) => {
 				  Userdata = da;
 			  });
 	  }
+
+
+	  let OfferGameList: {
+		GameID: string;
+		Name: string;
+		Moto: string;
+		LogoImage: string;
+		BigPosterImage: string;
+		SmallPosterImage: string;
+		OtherImages: string[];
+		Genres: string[];
+		Feature: string[];
+		Description: string;
+		Rating: number;
+		RatingGivenBy: {
+			'PC Gamer': string;
+			IGN: string;
+			'Game Informer': string;
+		};
+		Minspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Recomendedspec: {
+			Name: string;
+			Value: string;
+		}[];
+		Discount: number;
+		Price: number;
+		Developer: string;
+		Publisher: string;
+		Released: string;
+		Platform: string[];
+		Players: number;
+		Comment: {
+			Name: string;
+			Rating: number;
+			Description: string;
+		}[];
+		FollowUs: {
+			Facebook: string;
+			Discord: string;
+			Youtube: string;
+			Twitter: string;
+			Site: string;
+		};
+	}[] = [] as  {
+		GameID: '',
+		Name: '',
+		Moto: '',
+		LogoImage: '',
+		BigPosterImage: '',
+		SmallPosterImage: '',
+		OtherImages: [],
+		Genres: [''],
+		Feature: [''],
+		Description: '',
+		FollowUs: {
+			Facebook: '',
+			Discord: '',
+			Youtube: '',
+			Twitter: '',
+			Site: ''
+		},
+		Rating: 0,
+		RatingGivenBy: {
+			'PC Gamer': '',
+			IGN: '',
+			'Game Informer': ''
+		},
+		Minspec: [
+			{
+				Name: 'OS',
+				Value: ''
+			},
+			{
+				Name: 'Storage',
+				Value: ''
+			},
+			{
+				Name: 'Memory',
+				Value: ''
+			},
+			{
+				Name: 'CPU',
+				Value: ''
+			},
+			{
+				Name: 'GPU',
+				Value: ''
+			}
+		],
+		Recomendedspec: [
+			{
+				Name: 'OS',
+				Value: ''
+			},
+			{
+				Name: 'Storage',
+				Value: ''
+			},
+			{
+				Name: 'Memory',
+				Value: ''
+			},
+			{
+				Name: 'GPU',
+				Value: ''
+			},
+			{
+				Name: 'CPU',
+				Value: ''
+			}
+		],
+		Price: 0,
+		Discount: 0,
+		Developer: '',
+		Publisher: '',
+		Released: '',
+		Platform: ['', '', ''],
+		Players: 0,
+		Comment: []
+	}[]
+	  await fetch(`http://${process.env.GO_HOST}/game/offers`,{
+		  method: "GET",
+		  mode: "no-cors",
+	  }).then((res)=>{
+		  return res.json()
+	  }).then((data)=>{
+		OfferGameList=data
+	  console.log("🚀 ~ file: +page.server.ts ~ line 224 ~ constload:PageServerLoad= ~ OfferGameList", OfferGameList)
+	  })
+
 	  return {
-		  Userdata
+		  Userdata,
+		  OfferGameList
 	  };
 	
 }

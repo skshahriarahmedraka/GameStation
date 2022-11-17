@@ -160,46 +160,109 @@
 				</div>
 			</div>
 
-            <div class=" flex flex-row gap-2 w-full items-center">
+            <div class=" flex flex-row gap-2 w-full items-center ">
 				<p class=" text-xl text-white"> Transaction History:</p>
 				<div
-					class=" mx-4 my-2 h-12 w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
+					class=" mx-4 my-2 h-fit w-fit self-center flex flex-col rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 				>
-                {$UserProData.TransactionHistory ? $UserProData.TransactionHistory : "No History"}   
+				{#if $UserProData.TransactionHistory!=null}
+					 <!-- content here -->
+					 {#each $UserProData.TransactionHistory as i}
+					 <p class="">
+					 {i}
+					 </p>
+					 {/each}
+				{:else}
+					 <!-- else content here -->
+					 <p class="">
+						 No History
+					 </p>
+				{/if}
 				</div>
 			</div>
 
             <div class=" flex flex-row gap-2 w-full items-center">
 				<p class=" text-xl text-white"> Contract Admin message:</p>
 				<div
-					class=" mx-4 my-2 h-12 w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
+					class=" mx-4 my-2 h-fit w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 				>
-                {$UserProData.ContactAdminMsg ? $UserProData.ContactAdminMsg : "No History" }
+				{#if $UserProData.ContactAdminMsg!=null}
+					 <!-- content here -->
+					 {#each $UserProData.ContactAdminMsg as i}
+					 <p class="">
+					 {i}
+					 </p>
+					 {/each}
+				{:else}
+					 <!-- else content here -->
+					 <p class="">
+						 No History
+					 </p>
+				{/if}
 				</div>
 			</div>
             <div class=" flex flex-row gap-2 w-full items-center">
 				<p class=" text-xl text-white"> WishList:</p>
 				<div
-					class=" mx-4 my-2 h-12 w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
+					class=" mx-4 my-2 h-fit w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 				>
-                {$UserProData.WishList ? $UserProData.WishList : "No wish List" }
+				{#if $UserProData.WishList!=null}
+					 <!-- content here -->
+					 {#each $UserProData.WishList as i}
+					 <p class="">
+					 {i}
+					 </p>
+					 {/each}
+				{:else}
+					 <!-- else content here -->
+					 <p class="">
+						 No wish List
+					 </p>
+				{/if}
+                <!-- {$UserProData.WishList ? $UserProData.WishList : "" } -->
 		            
 				</div>
 			</div>
             <div class=" flex flex-row gap-2 w-full items-center">
 				<p class=" text-xl text-white">Contract Developer Message  :</p>
 				<div
-					class=" mx-4 my-2 h-12 w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
+					class=" mx-4 my-2 h-fit w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 				>
-                {$UserProData.ContactDevMsg ? $UserProData.ContactDevMsg : "No History"}
+				{#if $UserProData.ContactDevMsg!=null}
+					 <!-- content here -->
+					 {#each $UserProData.ContactDevMsg as i}
+					 <p class="">
+					 {i}
+					 </p>
+					 {/each}
+				{:else}
+					 <!-- else content here -->
+					 <p class="">
+						 No History
+					 </p>
+				{/if}
+                <!-- {$UserProData.ContactDevMsg ? $UserProData.ContactDevMsg : "No History"} -->
 				</div>
 			</div>
             <div class=" flex flex-row gap-2 w-full items-center">
 				<p class=" text-xl text-white"> User Cart:</p>
 				<div
-					class=" mx-4 my-2 h-12 w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
+					class=" mx-4 my-2 h-fit w-fit self-center rounded-lg border-0 border-[#24262b] bg-transparent   p-2 text-lg font-medium text-[#98999e] outline-none  focus:border-sky-500 active:border-gray-800 "
 				>
-                {$UserProData.UserCart ? $UserProData.UserCart : "No Product In Cart" }
+				{#if $UserProData.UserCart!=null}
+					 <!-- content here -->
+					 {#each $UserProData.UserCart as i}
+					 <p class="">
+					 {i}
+					 </p>
+					 {/each}
+				{:else}
+					 <!-- else content here -->
+					 <p class="">
+						 No Product In Cart"
+					 </p>
+				{/if}
+                <!-- {$UserProData.UserCart ? $UserProData.UserCart : " } -->
 				</div>
 			</div>
 			
