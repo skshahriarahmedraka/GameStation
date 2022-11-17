@@ -148,9 +148,9 @@
 
 <!-- markup (zero or more items) goes here -->
 <div class="flex flex-col transition-all duration-200 ease-linear ">
-	<p class=" m-5 self-center text-2xl">Bookmark Games</p>
+	<p class=" m-5 self-center text-2xl text-slate-200">Bookmark Games</p>
 
-	{#if WishList.length != 0}
+	{#if WishList != null}
 		<!-- content here -->
 		{#each WishList as i}
 			<!-- content here -->
@@ -200,7 +200,7 @@
 		{/each}
 	{:else}
 		<!-- else content here -->
-		<p class="  self-center text-4xl text-slate-200">NO Transaction history</p>
+		<p class="  self-center text-4xl text-slate-200">NO WishList</p>
 	{/if}
 </div>
 

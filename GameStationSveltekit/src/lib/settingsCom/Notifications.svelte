@@ -147,8 +147,8 @@
 </script>
 
 <!-- markup (zero or more items) goes here -->
-<div class="flex flex-col transition-all duration-200 ease-linear ">
-	<p class=" m-5 self-center text-2xl">Game Notification</p>
+<div class="flex flex-col transition-all duration-200 ease-linear text-slate-200 ">
+	<p class=" m-5 self-center text-2xl text-slate-200">Game Notification</p>
 
 	{#if NotificationGameList != null}
 		<!-- content here -->
