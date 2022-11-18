@@ -24,6 +24,21 @@
 		'../../../lib/images/AC_Syndicate_Portrait-1280x1420-b74c2aa94670d9e97cc6ddab0a5d4dd0.jpeg',
 		import.meta.url
 	).href;
+	async function LogoutReq() {
+		await fetch('/api/logout', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+			.then((res) => {
+				return res.json();
+			})
+			.then((d) => {
+				console.log('🚀 ~ file: index.svelte ~ line 43 ~ LogoutReq ~ d', d);
+				goto('/login');
+			});
+	}
 </script>
 
 <!-- markup (zero or more items) goes here -->
@@ -268,7 +283,7 @@
 			
 			
 			
-            <div class=" self-end" >
+            <div class=" self-end flex flex-row gap-2" >
                 <button
                     on:click={() => {
 		UserSettingSelect.update((n)=>n="General");
@@ -279,6 +294,16 @@
                 >
                     Go to Settings
                 </button>
+				<button
+				on:click={() => {
+	
+
+					LogoutReq();
+				}}
+				class="h-12 w-fit rounded-xl bg-red-500 px-6 font-Poppins font-semibold text-white hover:bg-red-600 active:bg-red-800  "
+			>
+				LogOut
+			</button>
             </div>
 		</div>
 	</div>
