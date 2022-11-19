@@ -635,7 +635,7 @@
 				);
 				if (data.GameID) {
 					console.log('🚀 ~ file: +page.svelte ~ line 627 ~ .then ~ data.GameID', data.GameID);
-					// goto(`/${data.GameID}`);
+					goto(`/${data.GameID}`);
 				} else {
 					throw error(404, 'Not Found');
 				}
