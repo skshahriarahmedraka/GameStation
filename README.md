@@ -2,126 +2,38 @@
 
 Clone of  Epic Game Store
 
-    GENRE
+- Front-end :  svelte, sveltekit, tailwindcss, typescript 
 
-Halloween-Sale
+- Backend : Golang , Gin framework
 
-Holyday-sale
 
-Eid-Sale
 
-Action
+[http://localhost:5173/](http://localhost:5173/)
 
-Adventure
 
-Application
-
-Card-Game
-
-Casual
-
-City-Builder
-
-Comedy
-
-Dungeon-Crawler
-
-Exploration
-
-Fighting
-
-First-Person
-
-Horror
-
-Indie
-
-Music
-
-Narration
-
-Open-World
-
-Party
-
-Platformer
-
-`Puzzle`
-
-Racing
-
-Retro
-
-Rogue
-
-RPG
-
-Shooter
-
-Simulation
-
-Space
-
-Sports
-
-Stealth
-
-Strategy
-
-Survival
-
-Tower-Defense
-
-Trivia
-
-Turn-Based
-
-    FEATURE
-
-Achievements
-
-Challenging-Combat
-
-Cloud-Saves
-
-Co-op
-
-Competitive
-
-Controller-Support
-
-Cross-Platform
-
-MMO
-
-Multiplayer
-
-Single-Player
-
-VR
-
-Apps
-
-Editor
-
-Game
-
-Game-Add-On
-
-Game-Bundle
-
-Game-Demo
-
-Game-Edition
-
-```
-![image info](./pictures/image.png)
-```
 
 ![image info](./screenshot/homepage.png)
 
+
+
+### Browse all Game and Search
+
+http://localhost:5173/browse
+
 ![image info](./screenshot/browse.png)
 
+
+
+## Upcomming Games
+
+http://localhost:5173/upcomming
+
 ![image info](./screenshot/upcomming.png)
+
+
+
+## Offer games
+
+http://localhost:5173/offer
 
 ![image info](./screenshot/offers.png)
