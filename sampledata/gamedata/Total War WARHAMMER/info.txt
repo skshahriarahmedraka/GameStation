@@ -1,0 +1,87 @@
+{
+    GameID: '',
+    Name: "Total War: WARHAMMER",
+    Moto: 'The critically-acclaimed Total War: WARHAMMER combines a turn-based campaign of epic empire-building with colossal and explosive real-time battles, set within the incredible world of Warhammer Fantasy Battles.',
+
+    LogoImage:
+      '',
+    BigPosterImage:
+      '',
+    SmallPosterImage:
+      '',
+
+    OtherImages: ["",""],
+    Genres: ['Action', 'Strategy'],
+    Feature: ['Challenging Combat', 'Co-op', 'Multiplayer', 'Competitive', 'Single Player'],
+    Description: `Total War: WARHAMMER
+Hundreds of hours of gameplay await you at the dawn of a new era. Total War: WARHAMMER brings to life a world of legendary heroes, towering monsters, flying creatures, storms of magical power and regiments of nightmarish warriors.
+Embark on campaigns of conquest as the valiant men of the Empire, the vengeful Dwarfs, the murderous Vampire Counts and the brutal Orcs and Goblins of the Greenskin tribes. Each Race is wholly different with its own unique characters, campaign mechanics, battlefield units and play style.`,
+    FollowUs: {
+      Facebook: 'https://www.facebook.com/epicgames',
+      Discord: 'https://discord.com/app',
+      Youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
+      Twitter: 'https://twitter.com/epicgames',
+      Site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
+    },
+    Rating: 9.5,
+    RatingGivenBy: {
+      'PC Gamer':
+        'With the most exciting unit roster yet, Creative Assembly's latest is a godly blend of franchises.',
+      IGN: 'Deep hero progression and a well-executed Chaos invasion round out a campaign that, while it has some flaws in set-up and pacing, fulfilled all of my deepest fantasies of seeing giant, impossible armies clashing amidst the shrieking of griffins and the glow of flaming meteors summoned from the sky. It's just a damn good time.',
+      'Game Informer':
+        "If you find real history a bit bland compared to glorious nonsense made up by strange British people then Warhammer is the Total War for you."
+    },
+    Minspec: [
+      { Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '35 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '3 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'AMD Radeon HD 5770 1024MB | NVIDIA GTS 450 1024MB | Intel HD4000 @720P'
+      },
+      {
+        Name: 'CPU',
+        Value: 'Intel® Core™ 2 Duo 3.0Ghz'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Recomendedspec: [
+      { Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '35 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '8 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'AMD Radeon R9 270X 2048MB | NVIDIA GeForce GTX 760 2048MB @1080P'
+      },
+      {
+        Name: 'CPU',
+        Value: '*PC Integrated graphics chipsets require 4 GB RAM, e.g. Intel HD series.'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Price: 46.99,
+    Discount: 25,
+    Developer: 'CREATIVE ASSEMBLY',
+    Publisher: 'SEGA',
+    Released: '11/22/21',
+    Platform: ['windows'],
+    Players: 
+  };

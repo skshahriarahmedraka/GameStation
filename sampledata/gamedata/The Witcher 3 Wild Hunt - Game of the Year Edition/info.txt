@@ -1,0 +1,102 @@
+{
+    GameID: '',
+    Name: "The Witcher 3: Wild Hunt - Game of the Year Edition",
+    Moto: 'As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world.',
+
+    LogoImage:
+      '',
+    BigPosterImage:
+      '',
+    SmallPosterImage:
+      '',
+
+    OtherImages: ["",""],
+    Genres: ['RPG', 'Open World', 'Adventure'],
+    Feature: [-],
+    Description: `The Witcher 3: Wild Hunt - Game of the Year Edition
+Now available with all expansions and additional content.
+Become a professional monster slayer and embark on an adventure of epic proportions! Upon its release, The Witcher 3: Wild Hunt became an instant classic, claiming over 250 Game of the Year awards. Now you can enjoy this huge, over 100-hour long, open-world adventure along with both its story-driven expansions worth an extra 50 hours of gameplay. This edition includes all additional content - new weapons, armor, companion outfits, new game mode and side quests.
+Play as a Highly Trained Monster Slayer for Hire
+Trained from early childhood and mutated to have superhuman skills, strength, and reflexes, witchers are a socially ostracized counterbalance to the monster-infested world in which they live.
+Gruesomely destroy foes as a professional monster hunter armed with a range of upgradeable weapons, mutating potions, and combat magic.
+Hunt down a wide variety of exotic monsters, from savage beasts prowling mountain passes to cunning supernatural predators lurking in the shadowy back alleys of densely populated cities.
+Invest your rewards to upgrade your weaponry and buy custom armor, or spend them on horse races, card games, fist fighting and other pleasures life brings.
+Track Down the Child of Prophecy in a Morally Ambiguous Fantasy Open World
+Built for endless adventure, the massive open world of The Witcher sets new standards in terms of size, depth and complexity.
+Traverse a fantastical open world: explore forgotten ruins, caves and shipwrecks, trade with merchants and dwarven smiths in cities, and hunt across open plains, amidst mountains and at sea.
+In a time of war, track down the child of prophecy, a living weapon of great power whose coming was foretold in ancient elven legends.
+Make choices that go beyond good and evil and face their far-reaching consequences.
+Game of the Year Edition
+The Witcher 3: Wild Hunt Game of the Year Edition brings together the base game and all the additional content released to date.
+Includes the Hearts of Stone and Blood & Wine expansions, which offer a massive 50 hours of additional storytelling as well as new features and new areas that expand the explorable world by over a third!
+Affords access to all additional content released so far, including weapons, armor, side quests, game modes and new GWENT cards!
+Features all technical and visual updates as well as a new user interface completely redesigned on the basis of feedback from members of the Witcher Community.`,
+    FollowUs: {
+      Facebook: 'https://www.facebook.com/epicgames',
+      Discord: 'https://discord.com/app',
+      Youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
+      Twitter: 'https://twitter.com/epicgames',
+      Site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
+    },
+    Rating: 9.8,
+    RatingGivenBy: {
+      'PC Gamer':
+        '',
+      IGN: '',
+      'Game Informer':
+        ""
+    },
+    Minspec: [
+      { Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '77 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '6 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'NVIDIA GeForce GTX 660 / AMD Radeon R9 270 (2GB VRAM with Shader Model 5.0)'
+      },
+      {
+        Name: 'CPU',
+        Value: 'Intel Core i5 2400s @ 2.5 GHz / AMD FX 6350 @ 3.9 GHz'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Recomendedspec: [
+      { Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '77 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '8 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'NVIDIA GeForce GTX 660 / AMD Radeon R9 270 (2GB VRAM with Shader Model 5.0)'
+      },
+      {
+        Name: 'CPU',
+        Value: 'Intel Core i5 2400s @ 2.5 GHz / AMD FX 6350 @ 3.9 GHz'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Price: 49.96,
+    Discount: 25,
+    Developer: 'Ubisoft',
+    Publisher: 'Ubisoft',
+    Released: '05/14/20',
+    Platform: ['windows'],
+    Players: 23478238
+  };

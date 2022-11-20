@@ -1,0 +1,98 @@
+{
+    GameID: '',
+    Name: "Grand Theft Auto V",
+    Moto: 'The Grand Theft Auto V: Premium Edition includes the complete GTAV story, Grand Theft Auto Online and all existing gameplay upgrades and content. You’ll also get the Criminal Enterprise Starter Pack, the fastest way to jumpstart your criminal empire in GTA Online.',
+
+    LogoImage:
+      '',
+    BigPosterImage:
+      '',
+    SmallPosterImage:
+      '',
+
+    OtherImages: ["",""],
+    Genres: ['Action', 'Adventure'],
+    Feature: ['Competitive'],
+    Description: `Grand Theft Auto V: Premium Edition
+The Grand Theft Auto V: Premium Edition includes the complete Grand Theft Auto V story experience, free access to the ever evolving Grand Theft Auto Online and all existing gameplay upgrades and content including The Doomsday Heist, Gunrunning, Smuggler’s Run, Bikers and much more. You’ll also get the Criminal Enterprise Starter Pack, the fastest way to jumpstart your criminal empire in Grand Theft Auto Online.
+GRAND THEFT AUTO V
+When a young street hustler, a retired bank robber and a terrifying psychopath land themselves in trouble, they must pull off a series of dangerous heists to survive in a city in which they can trust nobody, least of all each other.
+GRAND THEFT AUTO ONLINE
+Discover an ever-evolving world of choices and ways to play as you climb the criminal ranks of Los Santos and Blaine County in the ultimate shared Online experience.
+THE CRIMINAL ENTERPRISE STARTER PACK
+The Criminal Enterprise Starter Pack is the fastest way for new GTA Online players to jumpstart their criminal empires with the most exciting and popular content plus $1,000,000 bonus cash to spend in GTA Online - all content valued at over GTA $10,000,000 if purchased separately.
+LAUNCH YOUR CRIMINAL EMPIRE
+Launch business ventures from your Maze Bank West Executive Office, research powerful weapons technology from your underground Gunrunning Bunker and use your Counterfeit Cash Factory to start a lucrative counterfeiting operation.
+A FLEET OF POWERFUL VEHICLES
+Tear through the streets with a range of 10 high performance vehicles including a Supercar, Motorcycles, the weaponized Dune FAV, a Helicopter, a Rally Car and more. You’ll also get properties including a 10 car garage to store your growing fleet.
+WEAPONS, CLOTHING & TATTOOS
+You’ll also get access to the Compact Grenade Launcher, Marksman Rifle and Compact Rifle along with Stunt Racing Outfits, Biker Tattoos and more.`,
+    FollowUs: {
+      Facebook: 'https://www.facebook.com/epicgames',
+      Discord: 'https://discord.com/app',
+      Youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
+      Twitter: 'https://twitter.com/epicgames',
+      Site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
+    },
+    Rating: 9.2,
+    RatingGivenBy: {
+      'PC Gamer':
+        'A sandbox of extraordinary scope created with a masterful attention to detail. A patchy campaign doesn't spoil this wonderful, evocative city. ',
+      IGN: 'It's one of the best games available today.',
+      'Game Informer':
+        "Grand Theft Auto V is one of the most expansive and impressive games I've ever played."
+    },
+    Minspec: [
+      { Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '100 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '4 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'NVIDIA GeForce GTX 660 / AMD Radeon R9 270 (2GB VRAM with Shader Model 5.0)'
+      },
+      {
+        Name: 'CPU',
+        Value: 'Intel Core i5 2400s @ 2.5 GHz / AMD FX 6350 @ 3.9 GHz'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Recomendedspec: [
+      { Name: 'OS', Value: 'Windows 7 SP1 or Windows 8.1 or Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '100 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '8 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'NVIDIA GeForce GTX 660 / AMD Radeon R9 270 (2GB VRAM with Shader Model 5.0)'
+      },
+      {
+        Name: 'CPU',
+        Value: 'Intel Core i5 2400s @ 2.5 GHz / AMD FX 6350 @ 3.9 GHz'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Price: 34.55,
+    Discount: 25,
+    Developer: 'Ubisoft',
+    Publisher: 'Ubisoft',
+    Released: '02/20/20',
+    Platform: ['windows', 'linux', 'mac'],
+    Players: 23478238
+  };

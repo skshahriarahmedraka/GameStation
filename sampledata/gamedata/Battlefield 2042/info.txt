@@ -1,0 +1,101 @@
+{
+    GameID: '',
+    Name: "Battlefield™ 2042",
+    Moto: 'Battlefield™ 2042 marks the return to the iconic all-out warfare of the franchise. Squad up and bring a cutting-edge arsenal into massive-scale battlegrounds, set in a near-future world transformed by disorder.',
+
+    LogoImage:
+      '',
+    BigPosterImage:
+      '',
+    SmallPosterImage:
+      '',
+
+    OtherImages: ["",""],
+    Genres: ['Shooter', 'First Person'],
+    Feature: ['Multiplayer', 'Cross Platform'],
+    Description: `WELCOME TO 2042
+Battlefield™ 2042 is a first-person shooter that marks the return to the iconic all-out warfare of the franchise. Adapt and overcome in a near-future world transformed by disorder. Squad up and bring a cutting-edge arsenal into dynamically-changing battlegrounds supporting 128 players, unprecedented scale, and epic destruction.
+Battlefield™ 2042 – Season 2: Master of Arms
+
+Play your cards right with Battlefield™ 2042 – Season 2: Master of Arms. Fight on a drained Panamanian lake on the new map Stranded and reap the benefits of the Dark Market. Deploy as new Specialist Charlie Crawford and make good use of his Mounted Vulcan stationary minigun and teamwork skills, as supporting your squad is more crucial than ever.
+ALL-OUT WARFARE
+The next generation of fan-favorites Conquest and Breakthrough features the largest Battlefield maps ever and up to 128 players. Experience the intensity of all-out warfare on maps filled with dynamic weather and spectacular world events.
+Conquest
+Battlefield's massive, iconic sandbox mode returns – this time supporting 128 players on PC. The maps have been specifically designed for this vast scale, with action divided into "clusters" of various kinds. Also, the action now centers around sectors consisting of several flags instead of individual control points.
+Breakthrough
+The return of Breakthrough sees two teams – Attackers and Defenders – battle over larger-scale sectors as the Attackers push towards the final objective. Each sector is designed to house a larger number of players, enabling more strategic choice and more flanking opportunities. Approach the capture areas from multiple locations and take advantage of more types of tactical possibilities.
+BATTLEFIELD PORTAL
+Discover unexpected battles and enter the wide universe of Battlefield in a community-driven platform that gives you the power to change the rules of war. The possibilities are endless when you can customize weapons, gear, rules, and more in this creative sandbox mode. Replay classic experiences with select content from Battlefield 1942, Battlefield 3, and Battlefield: Bad Company 2, or leverage the modern content from the world of Battlefield 2042 to discover, create, and share something completely new.
+BATTLEFIELD HAZARD ZONE
+A tense, squad-focused survival experience, Battlefield Hazard Zone combines edge-of-your-seat gameplay with the best of the Battlefield sandbox. Inserted as a four-member squad, you must locate and retrieve critical Data Drives, while competing against opposing squads. Every bullet, every skirmish, and every decision counts.
+This game includes optional in-game purchases of virtual currency that can be used to acquire virtual in-game items.`,
+    FollowUs: {
+      Facebook: 'https://www.facebook.com/epicgames',
+      Discord: 'https://discord.com/app',
+      Youtube: 'https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A',
+      Twitter: 'https://twitter.com/epicgames',
+      Site: 'https://store.epicgames.com/en-US/p/assassins-creed-syndicate'
+    },
+    Rating: 8.5,
+    RatingGivenBy: {
+      'PC Gamer':
+        'Battlefield 2042 makes gutsy changes to a series that needed them and sets a new standard for built-in custom mode support.',
+      'Game Informer':
+        "It's not without its issues, but Battlefield 2042 is off to a fantastic start for DICE's beloved series. All-Out Warfare modes are immersive, Hazard Zone is enjoyable while Battlefield Portal steals the show. There's a lot to love here, and I'm excited to see where the game goes."
+      'IGN' :
+         'Full of worthwhile multiplayer content, Battlefield 2042 brings the long-running shooter franchise to new heights.'
+    },
+    Minspec: [
+      { Name: 'OS', Value: 'Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '100 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '8 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'AMD Radeon RX 560, Nvidia GeForce GTX 1050 Ti'
+      },
+      {
+        Name: 'CPU',
+        Value: 'AMD Ryzen 5 1600, Core i5 6600K'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Recomendedspec: [
+      { Name: 'OS', Value: 'Windows 10 (64bit versions)' },
+      {
+        Name: 'Storage',
+        Value: '100 GB'
+      },
+      {
+        Name: 'Memory',
+        Value: '16 GB RAM'
+      },
+      {
+        Name: 'GPU',
+        Value: 'AMD Radeon RX 6600 XT, Nvidia GeForce RTX 3060'
+      },
+      {
+        Name: 'CPU',
+        Value: 'AMD Ryzen 7 2700X, Intel Core i7 4790'
+      },
+      {
+        Name: 'Sound Card',
+        Value: 'DirectX Compatible Sound Card with latest drivers'
+      }
+    ],
+    Price: 59.99,
+    Discount: ,
+    Developer: 'DICE',
+    Publisher: 'Electronic Arts',
+    Released: '11/19/21',
+    Platform: ['windows', 'linux', 'mac'],
+    Players: 
+  };
