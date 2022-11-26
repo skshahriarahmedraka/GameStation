@@ -2,7 +2,7 @@
 
 Clone of  Epic Game Store
 
-#### almost complete project , still many things to upgrade
+#### Complete project , still many things to upgrade
 
 - Front-end :  Svelte, Sveltekit, Tailwindcss, Typescript 
 
