@@ -193,9 +193,6 @@
 	// ];
 </script>
 
-
-
-
 <div class="flex h-fit w-full flex-col justify-center ">
 	<div class="mx-24 flex h-16 flex-row">
 		<button class=" text-xl text-slate-200 hover:text-white">Most Sold</button>
@@ -205,12 +202,20 @@
 		>
 	</div>
 	<div class=" mx-24 flex flex-row flex-wrap space-x-4 space-y-4   ">
-		{#each TopSoledList as Obj}
+		{#if TopSoledList != null}
+			{#each TopSoledList as Obj}
+				<MidGameCom {Obj} />
+			{/each}
+		{:else}
+			{#each Array(10) as _, i}
+				<MidGameCom />
+			{/each}
+		{/if}
+		<!-- {#each TopSoledList as Obj}
 			<MidGameCom {Obj} />
-		{/each}
+		{/each} -->
 	</div>
 </div>
-
 
 <style>
 	/* your styles go here */

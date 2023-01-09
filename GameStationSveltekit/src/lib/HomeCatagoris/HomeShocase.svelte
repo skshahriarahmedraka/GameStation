@@ -204,9 +204,21 @@
 <!-- <Daisyui1 OtherImages={listOfImage}/> -->
 <ImageShow {CarouselList} />
 <div class="flex flex-col gap-2 overflow-hidden md:flex-row xl:flex-col lg:flex-row   h-fit">
-	{#each CarouselList as Obj}
-		<Smallcard {Obj} />
-	{/each}
+	{#if CarouselList.length > 0}
+		<!-- {#each CarouselList as Obj}
+			<Smallcard {Obj} />
+		{/each} -->
+	{:else}
+		<div class="flex flex-col gap-2 overflow-hidden md:flex-row xl:flex-col lg:flex-row   h-fit">
+			<Smallcard  />
+			<Smallcard  />
+			<Smallcard  />
+			<Smallcard  />
+			<Smallcard />
+			<Smallcard />
+		</div>
+	{/if}
+	
 </div>
 
 <style>

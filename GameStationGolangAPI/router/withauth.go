@@ -12,7 +12,7 @@ func RouteWithAuth(r *gin.Engine) {
 	DB2 := database.MongodbConnection()
 	H := database.DatabaseInitialization(DB2)
 	// these routes need authentication before use
-	r.POST("/addtocart", H.AddtoCart())
+	r.GET("/home2", H.Home())
 	//r.GET("/seecartlist", H.AddtoCart())
 	//r.GET("/removeitem", H.Removeitem())
 	//r.GET("/listcart", H.GetItemFromCart())

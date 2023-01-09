@@ -32,6 +32,7 @@ func RouteWithoutAuth(r *gin.Engine) {
 	DB2 := database.MongodbConnection()
 	H := database.DatabaseInitialization(DB2)
 	fmt.Println("🚀 ~ file: WithoutAuth.go ~ line 13 ~ funcRouteWithoutAuth ~ RouteWithoutAuth  ", H)
+	r.GET("/home", H.Home())
 	r.POST("/sveltekit/login", H.SveltekitLogin())
 	r.POST("/sveltekit/register", H.SveltekitRegister())
 	r.POST("/user/login", H.Login())

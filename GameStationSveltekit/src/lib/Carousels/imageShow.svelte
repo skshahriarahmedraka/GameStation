@@ -179,12 +179,14 @@ import {elasticIn, elasticOut } from 'svelte/easing';
     /* your styles go here */
 </style>
 
+{#if CarouselList.length>0}
+
 
 <div class="carousel aspect-[16/9] h-[600px]">
     <!-- content here -->
-
+	
     <div on:click={()=>{
-        goto(`/${CarouselList[ActiveIndex].GameID}`)
+		goto(`/${CarouselList[ActiveIndex].GameID}`)
         
     }} 
     on:keypress={()=>{}}
@@ -195,16 +197,43 @@ import {elasticIn, elasticOut } from 'svelte/easing';
             <button on:click={()=>{ChangeActiveImagePositive()}} class="btn btn-circle">❯</button>
         </div> -->
         <div class=" absolute left-10 bottom-10 flex flex-col gap-3">
-            <p class="text-xl w-[40%] line-clamp-3 text-white v">{CarouselList[ActiveIndex].Moto}</p>
+			<p class="text-xl w-[40%] line-clamp-3 text-white v">{CarouselList[ActiveIndex].Moto}</p>
             <div class="flex flex-row gap-3">
-                <button class=" w-fit px-4 py-2 object-center hover:font-semibold bg-slate-200 text-gray-900 font-Poppins rounded-lg text-xl">Buy Now</button>
+				<button class=" w-fit px-4 py-2 object-center hover:font-semibold bg-slate-200 text-gray-900 font-Poppins rounded-lg text-xl">Buy Now</button>
                 <button class="w-fit px-4 py-2 object-center bg-transparent hover:font-semibold backdrop-blur-lg text-white border-2 border-transparent hover:border-2 hover:border-white font-Poppins rounded-lg text-xl">Add to WishList</button>
             </div>
         </div>
-
+		
     </div>
-
+	
 </div>
+{:else}
+
+
+<div class="carousel aspect-[16/9] h-[600px]">
+    <!-- content here -->
+	
+    <div 
+
+    transition:slide="{{ duration: 1000, easing:elasticOut}}"   id="slide1" class=" rounded-xl  bg-[#252525]  hover:opacity-90 carousel-item  w-full relative">
+        <!-- <img    src="" alt="" class="w-full object-cover rounded-xl transition-all ease-linear duration-200" /> -->
+        <!-- <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <button on:click={()=>{ChangeActiveImageNagative()}} class="btn btn-circle">❮</button>
+            <button on:click={()=>{ChangeActiveImagePositive()}} class="btn btn-circle">❯</button>
+        </div> -->
+        <div class=" absolute left-10 bottom-10 flex flex-col gap-3">
+			<!-- <p class="text-xl w-[40%] line-clamp-3 text-white v">{""}</p> -->
+            <div class="flex flex-row gap-3">
+				<button class=" w-fit px-4 py-2 object-center hover:font-semibold bg-slate-200 text-gray-900 font-Poppins rounded-lg text-xl">Buy Now</button>
+                <button class="w-fit px-4 py-2 object-center bg-transparent hover:font-semibold backdrop-blur-lg text-white border-2 border-transparent hover:border-2 hover:border-white font-Poppins rounded-lg text-xl">Add to WishList</button>
+            </div>
+        </div>
+		
+    </div>
+	
+</div>
+
+{/if}
 
 <!-- <div class="">
     <img  transition:fade src={liObj[activeImage].Image} alt="" class="max-w-[1152px] max-h-[648px] min-h-fit min-w-fit  object-cover rounded-xl transition-all ease-linear duration-200 ">

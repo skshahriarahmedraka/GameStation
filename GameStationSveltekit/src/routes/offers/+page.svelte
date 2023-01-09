@@ -24,9 +24,15 @@
 		<p class="">Filtered Games</p>
 		<div class=" flex flex-row  flex-wrap gap-4 md:justify-evenly sm:justify-evenly xs:justify-evenly">
 
+			{#if OfferGameList != null}
+
 			{#each OfferGameList as i}
 			<OffermidGameCom  Obj={i} />
 			{/each}
+
+			{:else}
+			<p class="text-2xl">No Games Found</p>
+			{/if}
 		</div>
 		<!--  -->
 	</div>
