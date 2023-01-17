@@ -41,7 +41,9 @@
 		"autoprefixer": "^10.4.13",
 		"daisyui": "^2.45.0",
 		"dotenv": "^16.0.3",
-		"jsonwebtoken": "^8.5.1",
-		"tailwindcss-question-mark": "^0.1.1"
+		"jsonwebtoken": "^9.0.0",
+		"minio": "^7.0.32",
+		"tailwindcss-question-mark": "^0.1.1",
+		"uuid": "^9.0.0"
 	}
 }

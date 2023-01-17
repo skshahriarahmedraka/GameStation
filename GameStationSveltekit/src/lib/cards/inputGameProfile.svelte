@@ -7,7 +7,7 @@
 	import Camera from '$lib/svgs/camera.svelte';
 	import CameraPlus from '$lib/svgs/cameraPlus.svelte';
 	import Checked from '$lib/svgs/checked.svelte';
-	import axios from 'axios';
+	// import axios from 'axios';
 	import  { createEventDispatcher } from 'svelte';
 
 	const dispatch= createEventDispatcher()
