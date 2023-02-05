@@ -737,7 +737,7 @@
 
 				<p class=" text-2xl  ">Game Moto :</p>
 				<textarea
-					type="text"
+					
 					placeholder="Game Moto"
 					bind:value={FormData.Moto}
 					class=" scrol3 h-20 w-full self-start rounded-xl border-2 border-[#24262b]  bg-[#303338]  p-2 font-Poppins text-lg  font-medium text-slate-100   outline-none  focus:border-sky-500 active:border-gray-800 "
