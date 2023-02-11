@@ -4,9 +4,12 @@ ENV NODE_ENV=production
 
 
 WORKDIR /app
-COPY . .
-COPY package.json package-lock.json svelte.config.js ./
-RUN npm run build 
+
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+COPY . ./
+RUN npm run build
 
 
 FROM node:19-alpine3.16
@@ -15,5 +18,6 @@ WORKDIR /app
 COPY --from=build /app .
 
 
-EXPOSE 3000
-CMD ["node", "./build/index.js"]
+ENV HOST=0.0.0.0
+EXPOSE 4173
+CMD ["npm","run", "preview","--", "--host", "0.0.0.0"]
