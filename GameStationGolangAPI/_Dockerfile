@@ -1,0 +1,16 @@
+
+
+
+FROM golang:latest AS builder 
+WORKDIR /app 
+COPY . . 
+RUN export GO111MODULE=on 
+RUN go mod download
+
+RUN go build -o main main.go 
+
+
+EXPOSE 8080 
+CMD [ "/app/main"]
+
+

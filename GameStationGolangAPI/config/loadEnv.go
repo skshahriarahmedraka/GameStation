@@ -9,7 +9,7 @@ import (
 )
 
 func LoadEnvironmentVar() {
-	box := packr.New("myBox", "../env")
+	box := packr.New("myBox", "../")
 
 	s, err := box.FindString(".env")
     // fmt.Println("🚀 ~ file: loadEnv.go ~ line 14 ~ funcLoadEnvironmentVar ~ s : ", s)

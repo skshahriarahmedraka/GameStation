@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app-dev
+    image: app-dev
+    build:
+      dockerfile: Dockerfile
+      context: .
+    env_file:
+      - ./env/.env
+    
+    ports:
+      - 8080:8080
+

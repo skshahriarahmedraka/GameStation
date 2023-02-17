@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -95,8 +96,8 @@ func (H *DatabaseCollections)Register() gin.HandlerFunc {
 		
 		// c.Writer.Header().Set("Auth1", jwtToken)
 		// c.Writer.Header().Set("Auth1Refresh", refreshToken)
-		c.SetCookie("Auth1",jwtToken,60*60*24,"/","localhost",false , true)
-		c.SetCookie("Auth1Refresh",refreshToken,60*60*24,"/","localhost",false , true)
+		c.SetCookie("Auth1",jwtToken,60*60*24,"/",os.Getenv("DOMAIN_ADDR"),false , true)
+		c.SetCookie("Auth1Refresh",refreshToken,60*60*24,"/",os.Getenv("DOMAIN_ADDR"),false , true)
 		c.JSON(http.StatusOK,"successfully signed up")
 	}
 }

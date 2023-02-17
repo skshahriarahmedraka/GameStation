@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -46,8 +47,8 @@ func (H *DatabaseCollections)Login() gin.HandlerFunc {
 			return 
 		}
 		token,refreshToken,err := token.TokenGenerate(DBUser.Email,DBUser.FirstName,DBUser.LastName,DBUser.UserID)
-		c.SetCookie("Auth1",token,60*60*24,"/","localhost",false , true)
-		c.SetCookie("Auth1Refresh",refreshToken,60*60*24,"/","localhost",false , true)
+		c.SetCookie("Auth1",token,60*60*24,"/",os.Getenv("DOMAIN_ADDR"),false , true)
+		c.SetCookie("Auth1Refresh",refreshToken,60*60*24,"/",os.Getenv("DOMAIN_ADDR"),false , true)
         LogError.LogError("❌ ~ file: login.go ~ line 48 ~ returnfunc ~ err : ", err)
         fmt.Println("🚀 ~ file: login.go ~ line 46 ~ returnfunc ~ refreshToken : ", refreshToken)
         fmt.Println("🚀 ~ file: login.go ~ line 46 ~ returnfunc ~ token : ", token)

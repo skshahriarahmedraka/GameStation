@@ -63,8 +63,8 @@ func main() {
 	// r.GET("/cartchackout", controller.Cartcheckout())
 	// r.GET("/instantbuy", controller.Instantbuy())
 
-	log.Println("Server is started in PORT 8001 ...👨‍💻 ")
-	if e := r.Run(os.Getenv("HOST") + ":" + os.Getenv("PORT")); e != nil {
+	log.Println("Server is started in PORT ",os.Getenv("HOST_ADDR")," ...👨‍💻 ")
+	if e := r.Run(os.Getenv("HOST_ADDR")); e != nil {
 		log.Fatalln("❌ ERROR when Server is start   👨‍💻 : ", e)
 	}
 
