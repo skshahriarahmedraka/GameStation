@@ -31,7 +31,7 @@ func TokenGenerate(email, firstName, lastName, UID string) (string, string, erro
 			ExpiresAt: time.Now().Local().Add(time.Hour * time.Duration(168)).Unix(),
 		},
 	}
-	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString([]byte(os.Getenv("JWT_SECRET")))
+	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString([]byte(os.Getenv("COOKIE_SECRET_JWT_AUTH1")))
 	LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 29 ~ funcTokenGenerater ~ err : ", err)
 
 	if err != nil {
@@ -48,7 +48,7 @@ func TokenGenerate(email, firstName, lastName, UID string) (string, string, erro
 
 func ValidateJWT(s string) (claims *model.TokenClaims, msg string) {
 	token, err := jwt.ParseWithClaims(s, &model.TokenClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return []byte(os.Getenv("JWT_SECRET")), nil
+		return []byte(os.Getenv("COOKIE_SECRET_JWT_AUTH1")), nil
 	})
 	LogError.LogError("🚀 ~ file: tokenGenerate.go ~ line 45 ~ token,err:=jwt.ParseWithClaims ~ err : ", err)
 

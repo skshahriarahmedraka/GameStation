@@ -27,10 +27,7 @@ func main() {
 	//  SET MODE TO RELEASE
 	gin.SetMode(gin.ReleaseMode)
 
-	//  fmt.Println("environment var :  ", os.Getenv("NAME"))
-	//  fmt.Println("environment var :  ", os.Getenv("NAME")=="SK SHAHRIAR AHMED RAKA")
-	// fmt.Println("environment var :", os.Getenv("POSTGRES_TIMEZONE"))
-	// fmt.Println("environment var :", os.Getenv("POSTGRES_TIMEZONE")=="Asia/Dhaka")
+
 	fmt.Println("🚀✨ Api is started")
 	// r := gin.Default()
 
@@ -39,10 +36,7 @@ func main() {
 	r.Use(middleware.CORSMiddleware())
 	r.Use(gin.Logger())
 
-	// conf := cors.DefaultConfig()
-	// conf.AllowOrigins = []string{"http://127.0.0.1:5173"}
-	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
-	// config.AllowAllOrigins = true
+	
 
 	// r.Use(cors.New(conf))
 	// ROUTE WITHOUT AUTHENTICATION
@@ -53,15 +47,7 @@ func main() {
 
 	// ROUTE ACCESSABLE AFTER AUTHENTICATION
 	router.RouteWithAuth(r)
-	// r.GET("/addtocart", controller.AddtoCart())
-	// r.GET("/removeitem", controller.Removeitem())
-	// r.GET("/listcart", controller.GetItemFromCart())
-	// r.POST("/addaddress", controller.Addaddress())
-	// r.POST("/edithomeaddress", controller.Edithomeaddress())
-	// r.POST("/editworkaddresss", controller.Edithomeaddress())
-	// r.GET("/deleteaddress", controller.Deleteaddress())
-	// r.GET("/cartchackout", controller.Cartcheckout())
-	// r.GET("/instantbuy", controller.Instantbuy())
+	
 
 	log.Println("Server is started in PORT ",os.Getenv("HOST_ADDR")," ...👨‍💻 ")
 	if e := r.Run(os.Getenv("HOST_ADDR")); e != nil {

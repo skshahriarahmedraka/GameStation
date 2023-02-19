@@ -32,15 +32,20 @@ func RouteWithoutAuth(r *gin.Engine) {
 	DB2 := database.MongodbConnection()
 	H := database.DatabaseInitialization(DB2)
 	fmt.Println("🚀 ~ file: WithoutAuth.go ~ line 13 ~ funcRouteWithoutAuth ~ RouteWithoutAuth  ", H)
+	r.POST("/api/login", H.Login()) // new
+	r.POST("/api/register", H.Register())//new
+	r.GET("/api/user/:profileid", H.UserData())// new
+	
+	
 	r.GET("/home", H.Home())
-	r.POST("/sveltekit/login", H.SveltekitLogin())
-	r.POST("/sveltekit/register", H.SveltekitRegister())
-	r.POST("/user/login", H.Login())
-	r.POST("/user/register", H.Register())
+	// r.POST("/sveltekit/login", H.SveltekitLogin())
+	// r.POST("/sveltekit/register", H.SveltekitRegister())
+	// r.POST("/user/login", H.Login())
+	// r.POST("/user/register", H.Register())
 	r.POST("/user/profileupdate", H.ProfileUpdate())
-	r.POST("/user/cart", H.ProfileCartData())//  complete
-	r.POST("/user/transactiondata", H.ProfileTransactionData())//  complete
-	r.POST("/user/wishlist", H.ProfileTransactionData())// not complete
+	r.POST("/user/cart", H.ProfileCartData())// 
+	r.POST("/user/transactiondata", H.ProfileTransactionData())//  
+	r.POST("/user/wishlist", H.ProfileTransactionData())// 
 	// r.GET("/user/moneyreq", H.ProfileMoneyReq())
 	r.GET("/user/:profileid", H.UserData())
 

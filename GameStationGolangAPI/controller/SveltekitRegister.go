@@ -145,7 +145,7 @@ func (H *DatabaseCollections) SveltekitRegister() gin.HandlerFunc {
 
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-		tokenString, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
+		tokenString, err := token.SignedString([]byte(os.Getenv("COOKIE_SECRET_JWT_AUTH1")))
 
 		if err != nil {
 			LogError.LogError("❌🔥 error in StatusInternalServerError token generation  ", err)

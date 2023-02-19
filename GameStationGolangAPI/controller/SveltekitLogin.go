@@ -15,34 +15,34 @@ import (
 )
 
 func (H *DatabaseCollections) SveltekitLogin() gin.HandlerFunc {
-return func(c *gin.Context) {
+	return func(c *gin.Context) {
 
-c.Request.Header.Set("Access-Control-Allow-Origin", "*")
-c.Request.Header.Set("Content-Type", "application/json")
-c.Request.Header.Set("Access-Control-Allow-Credentials", "true")
+		c.Request.Header.Set("Access-Control-Allow-Origin", "*")
+		c.Request.Header.Set("Content-Type", "application/json")
+		c.Request.Header.Set("Access-Control-Allow-Credentials", "true")
 
-var user model.LoginModel
-var dbUser model.UserData
+		var user model.LoginModel
+		var dbUser model.UserData
 
-err := c.BindJSON(&user)
-if err != nil {
-LogError.LogError("❌🔥 error in c.bindjson() ", err)
-c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		err := c.BindJSON(&user)
+		if err != nil {
+			LogError.LogError("❌🔥 error in c.bindjson() ", err)
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 
-return
-}
-fmt.Println("🚀", user)
+			return
+		}
+		fmt.Println("🚀", user)
 
-ctx, cancel := context.WithTimeout(context.Background(), time.Second*20)
-defer cancel()
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second*20)
+		defer cancel()
 
-// SEARCH EMAIL
-err = H.Mongo.Collection(os.Getenv("USERDATA_COL")).FindOne(ctx, bson.M{"Email": user.Email}).Decode(&dbUser)
-if err != nil {
-LogError.LogError("❌🔥 error in mongodb connection  ", err)
-c.JSON(http.StatusBadRequest, gin.H{"error": "No user Found"})
-return
-}
+		// SEARCH EMAIL
+		err = H.Mongo.Collection(os.Getenv("USERDATA_COL")).FindOne(ctx, bson.M{"Email": user.Email}).Decode(&dbUser)
+		if err != nil {
+			LogError.LogError("❌🔥 error in mongodb connection  ", err)
+			c.JSON(http.StatusBadRequest, gin.H{"error": "No user Found"})
+			return
+		}
 
 		// if err!=nil{
 		// 	response.WriteHeader(http.StatusInternalServerError)
@@ -82,7 +82,7 @@ return
 
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, myClaim)
 
-		tokenString, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
+		tokenString, err := token.SignedString([]byte(os.Getenv("COOKIE_SECRET_JWT_AUTH1")))
 
 		if err != nil {
 			LogError.LogError("❌🔥 error in token.SignedString ", err)
