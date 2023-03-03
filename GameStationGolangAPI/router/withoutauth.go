@@ -23,7 +23,7 @@ import (
 	// "app/controller"
 	"app/database"
 	"fmt"
-
+	
 	"github.com/gin-gonic/gin"
 )
 
@@ -35,14 +35,17 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.POST("/api/login", H.Login()) // new
 	r.POST("/api/register", H.Register())//new
 	r.GET("/api/user/:profileid", H.UserData())// new
+	r.POST("/api/user/profileupdate", H.ProfileUpdate())
 	
 	
+	r.GET("/api/game/mostpopular", H.MostPopular())
+
 	r.GET("/home", H.Home())
 	// r.POST("/sveltekit/login", H.SveltekitLogin())
 	// r.POST("/sveltekit/register", H.SveltekitRegister())
 	// r.POST("/user/login", H.Login())
 	// r.POST("/user/register", H.Register())
-	r.POST("/user/profileupdate", H.ProfileUpdate())
+	// r.POST("/user/profileupdate", H.ProfileUpdate())
 	r.POST("/user/cart", H.ProfileCartData())// 
 	r.POST("/user/transactiondata", H.ProfileTransactionData())//  
 	r.POST("/user/wishlist", H.ProfileTransactionData())// 
@@ -70,7 +73,7 @@ func RouteWithoutAuth(r *gin.Engine) {
 	r.GET("/user/browse", H.BrowseGames())
 	
 	// default filters
-	r.GET("/game/mostpopular", H.MostPopular())
+	// r.GET("/game/mostpopular", H.MostPopular())
 	r.GET("/game/trending", H.Trending())
 	r.GET("/game/newrelease", H.NewRelease())
 	r.GET("/game/topsold", H.TopSold())

@@ -1,0 +1,12 @@
+version: "3.8"
+
+
+services:
+  sveltekit-app:
+    image: shahriarraka/game_station_frontend:latest
+    container_name: sveltekit-app
+    env_file:
+      - .env
+    ports:
+      - 4173:4173
+    

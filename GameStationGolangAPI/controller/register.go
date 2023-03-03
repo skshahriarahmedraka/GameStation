@@ -149,7 +149,7 @@ func (H *DatabaseCollections)Register() gin.HandlerFunc {
 		c.SetCookie("noAuth1",tokenString2,60*60*24,"/",os.Getenv("DOMAIN_ADDR"),false , false)
 		fmt.Println("😍 Register Successfull")
 
-		c.JSON(http.StatusOK,"successfully signed up")
+		c.JSON(http.StatusOK,gin.H{"message":"successfully signed up"})
 	}
 }
 

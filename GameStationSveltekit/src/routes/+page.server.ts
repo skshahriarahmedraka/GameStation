@@ -5,13 +5,13 @@ import type { PageServerLoad } from './$types';
 import * as jwt from 'jsonwebtoken';
 
 export const load: PageServerLoad = async ({ cookies, locals }) => {
-	if (!locals.user.Authenticated) {
-		console.log(
-			'🚀 ~ file: +page.server.ts ~ line 10 ~ constload:PageServerLoad= ~ user',
-			locals.user.Authenticated
-		);
-		throw redirect(302, '/login');
-	}
+	// if (!locals.user.Authenticated) {
+	// 	console.log(
+	// 		'🚀 ~ file: +page.server.ts ~ line 10 ~ constload:PageServerLoad= ~ user',
+	// 		locals.user.Authenticated
+	// 	);
+	// 	throw redirect(302, '/login');
+	// }
 
 
 
@@ -908,11 +908,11 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
 		});
 	return {
 		Userdata,
-		MostPopularList,
-		NewReleaseList,
-		TopRatedList,
-		TopSoledList,
-		TrendingList,
-		CarouselList
+		// // MostPopularList,
+		// NewReleaseList,
+		// TopRatedList,
+		// TopSoledList,
+		// TrendingList,
+		// CarouselList
 	};
 };
