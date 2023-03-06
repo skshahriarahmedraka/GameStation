@@ -21,4 +21,4 @@ docker_build_test:
 
 docker_run:
 	sudo docker stop gamestation_sveltekit || true && sudo docker rm gamestation_sveltekit || true
-	sudo docker run --publish 8080:8080 --name gamestation_sveltekit shahriarraka/game_station_frontend:latest  
+	sudo docker run --publish 4173:4713 --name gamestation_sveltekit shahriarraka/game_station_frontend:latest  
