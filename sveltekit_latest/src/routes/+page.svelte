@@ -21,7 +21,7 @@
 	import NewRelease from '$lib/HomeCatagoris/NewRelease.svelte';
 	import TopRated from '$lib/HomeCatagoris/TopRated.svelte';
 	import TopSeller from '$lib/HomeCatagoris/TopSeller.svelte';
-	import { json } from '@sveltejs/kit';
+	// import { json } from '@sveltejs/kit';
 
 	//     import type { PageData } from './$types';
 	// 	import { UserProData } from "$lib/Store/store";
