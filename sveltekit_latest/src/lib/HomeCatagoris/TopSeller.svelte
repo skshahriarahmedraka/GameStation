@@ -83,7 +83,7 @@
 		>
 	</div>
 	<div class=" mx-24 flex flex-row flex-wrap space-x-4 space-y-4   ">
-		{#if TopSoledList != null}
+		{#if TopSoledList.length != 0}
 			{#each TopSoledList as Obj}
 				<MidGameCom {Obj} />
 			{/each}

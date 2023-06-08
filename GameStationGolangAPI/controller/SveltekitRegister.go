@@ -4,17 +4,20 @@ import (
 	"app/LogError"
 	"app/model"
 	"context"
+	"encoding/base64"
+	"encoding/json"
 	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/google/uuid"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/crypto/bcrypt"
-	"log"
-	"net/http"
-	"os"
-	"time"
 )
 
 //var Validate = validator.New()
@@ -154,10 +157,28 @@ func (H *DatabaseCollections) SveltekitRegister() gin.HandlerFunc {
 			return
 		}
 		////////////////////////////////
+		cookieData := struct {
+			Email       string `json:"Email"`
+			Name        string `json:"Name"`
+			UserID     string `json:"UserID"`
+			Accounttype string `json:"Accounttype"`
+		}{
+			Email:       user.Email,
+			Name:        user.Name,
+			UserID:      user.UserID,
+			Accounttype: user.Accounttype,
+		}
+		jsonData, _ := json.Marshal(cookieData)
+		
+	
+		base64Data := base64.StdEncoding.EncodeToString(jsonData)
+		////////////////////////
 		var SendJwt struct {
 			JWT string
+			Base64 string `json:"Base64"`
 		}
 		SendJwt.JWT = tokenString
+		SendJwt.Base64= base64Data
 
 		c.JSON(http.StatusOK, SendJwt)
 

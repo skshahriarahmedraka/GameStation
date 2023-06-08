@@ -43,7 +43,7 @@ func main() {
 	router.RouteWithoutAuth(r)
 
 	// AUTHENTICATION
-	r.Use(middleware.Authentication())
+	// r.Use(middleware.Authentication())
 
 	// ROUTE ACCESSABLE AFTER AUTHENTICATION
 	router.RouteWithAuth(r)

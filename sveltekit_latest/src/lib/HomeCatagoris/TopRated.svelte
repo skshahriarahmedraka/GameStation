@@ -83,7 +83,7 @@
 		>
 	</div>
 	<div class=" mx-24 flex flex-row flex-wrap space-x-4 space-y-4   ">
-		{#if TopRatedList != null}
+		{#if TopRatedList.length != 0}
 
 		
 		{#each TopRatedList as Obj}

@@ -453,10 +453,14 @@ import type { PageData } from './$types';
 	<div class="h-fit w-[1178px] md:w-full xs:w-full sm:w-full md:justify-evenly sm:justify-evenly xs:justify-evenly">
 		<p class="">Filtered Games</p>
 		<div class=" flex flex-row  flex-wrap gap-4 md:justify-evenly sm:justify-evenly xs:justify-evenly">
-
-			{#each DefaultGameList as i}
-			<EmidGameCom  Obj={i} />
-			{/each}
+			{#if DefaultGameList.length!=0}
+				 <!-- content here -->
+				 {#each DefaultGameList as i}
+				 <EmidGameCom  Obj={i} />
+				 {/each}
+			{:else}
+				 <!-- else content here -->
+			{/if}
 		</div>
 		<!--  -->
 	</div>
@@ -464,89 +468,99 @@ import type { PageData } from './$types';
 	<div class=" flex h-fit w-[245px] flex-col gap-1  ">
 		<button on:click={()=>{OnclickRestFiler()}} class="h-6  w-fit border-[1px] flex flex-row bg-gray-800 text-sm rounded-md self-end text-center pb-1 px-2">Reset Filter</button>
 		<div class="flex h-fit w-full flex-row flex-wrap ">
-			{#each Object.entries(SelectedField) as [Name, obj]}
-				{#each Object.entries(obj) as [fieldname, value]}
-					{#if value}
-						<!-- content here -->
-						<div class="h-6  w-fit border-[1px] flex flex-row bg-gray-600 text-sm rounded-lg text-center pb-1 px-2">
-							<p class="">{fieldname}</p>
-							<!-- <svg class="w-4 h-4 ml-1 my-1 hover:cursor-pointer" on:click={()=>{ value=false}} on:keypress={()=>{}} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> -->
-						</div>
-					{/if}
-				{/each}
-			{/each}
+			{#if DefaultGameList.length!=0}
+				 <!-- content here -->
+				 {#each Object.entries(SelectedField) as [Name, obj]}
+					 {#each Object.entries(obj) as [fieldname, value]}
+						 {#if value}
+							 <!-- content here -->
+							 <div class="h-6  w-fit border-[1px] flex flex-row bg-gray-600 text-sm rounded-lg text-center pb-1 px-2">
+								 <p class="">{fieldname}</p>
+								 <!-- <svg class="w-4 h-4 ml-1 my-1 hover:cursor-pointer" on:click={()=>{ value=false}} on:keypress={()=>{}} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> -->
+							 </div>
+						 {/if}
+					 {/each}
+				 {/each}
+			{:else}
+				 <!-- else content here -->
+			{/if}
 		</div>
 		<!--  -->
-		{#each filterCatagories as filter}
-			<div
-				on:click={() => {
-					filter.Show = !filter.Show;
-				}}
-				on:keypress={() => {}}
-				class="relative flex h-10 w-full flex-row  justify-around rounded-lg border-2 border-gray-300 border-opacity-50 bg-gray-800 py-1 text-center font-Poppins hover:cursor-pointer hover:bg-opacity-80"
-			>
-				<p class=" ">{filter.Name}</p>
-				{#if filter.Show}
-					<svg
-						class="absolute right-2 h-3  w-3 self-center "
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M5 15l7-7 7 7"
-						/></svg
-					>
-				{:else}
-					<svg
-						class="  absolute right-2 h-3 w-3 self-center"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M19 9l-7 7-7-7"
-						/></svg
-					>
-				{/if}
-			</div>
-			{#if filter.Show}
-				{#each filter.List as i}
-					<div
-						on:click={() => {
-							SelectedField[filter.Name][i] = !SelectedField[filter.Name][i];
-							console.log("🚀 ~ file: +page.svelte ~ line 523 ~ SelectedField", SelectedField)
-						}}
-						on:keypress={() => {}}
-						class=" relative  h-8 w-full rounded-lg p-2 hover:cursor-pointer hover:bg-slate-700 hover:bg-opacity-25"
-					>
-						<p class=" text-sm">{i}</p>
-						{#if SelectedField[filter.Name][i]}
-							<svg
-								class=" absolute right-2 top-2 h-4 w-4 self-center stroke-green-400 "
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-								/></svg
-							>
-						{/if}
-					</div>
-				{/each}
-			{/if}
-			<!-- content here -->
-		{/each}
+		{#if filterCatagories.length !=0}
+			 <!-- content here -->
+			 {#each filterCatagories as filter}
+				 <div
+					 on:click={() => {
+						 filter.Show = !filter.Show;
+					 }}
+					 on:keypress={() => {}}
+					 class="relative flex h-10 w-full flex-row  justify-around rounded-lg border-2 border-gray-300 border-opacity-50 bg-gray-800 py-1 text-center font-Poppins hover:cursor-pointer hover:bg-opacity-80"
+				 >
+					 <p class=" ">{filter.Name}</p>
+					 {#if filter.Show}
+						 <svg
+							 class="absolute right-2 h-3  w-3 self-center "
+							 fill="none"
+							 stroke="currentColor"
+							 viewBox="0 0 24 24"
+							 xmlns="http://www.w3.org/2000/svg"
+							 ><path
+								 stroke-linecap="round"
+								 stroke-linejoin="round"
+								 stroke-width="2"
+								 d="M5 15l7-7 7 7"
+							 /></svg
+						 >
+					 {:else}
+						 <svg
+							 class="  absolute right-2 h-3 w-3 self-center"
+							 fill="none"
+							 stroke="currentColor"
+							 viewBox="0 0 24 24"
+							 xmlns="http://www.w3.org/2000/svg"
+							 ><path
+								 stroke-linecap="round"
+								 stroke-linejoin="round"
+								 stroke-width="2"
+								 d="M19 9l-7 7-7-7"
+							 /></svg
+						 >
+					 {/if}
+				 </div>
+				 {#if filter.Show}
+					 {#each filter.List as i}
+						 <div
+							 on:click={() => {
+								 SelectedField[filter.Name][i] = !SelectedField[filter.Name][i];
+								 console.log("🚀 ~ file: +page.svelte ~ line 523 ~ SelectedField", SelectedField)
+							 }}
+							 on:keypress={() => {}}
+							 class=" relative  h-8 w-full rounded-lg p-2 hover:cursor-pointer hover:bg-slate-700 hover:bg-opacity-25"
+						 >
+							 <p class=" text-sm">{i}</p>
+							 {#if SelectedField[filter.Name][i]}
+								 <svg
+									 class=" absolute right-2 top-2 h-4 w-4 self-center stroke-green-400 "
+									 fill="none"
+									 stroke="currentColor"
+									 viewBox="0 0 24 24"
+									 xmlns="http://www.w3.org/2000/svg"
+									 ><path
+										 stroke-linecap="round"
+										 stroke-linejoin="round"
+										 stroke-width="2"
+										 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+									 /></svg
+								 >
+							 {/if}
+						 </div>
+					 {/each}
+				 {/if}
+				 <!-- content here -->
+			 {/each}
+		{:else}
+			 <!-- else content here -->
+		{/if}
 	</div>
 	<!-- <Showcase /> -->
 </div>

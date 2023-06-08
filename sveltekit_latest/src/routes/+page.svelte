@@ -5,9 +5,9 @@
 
 	export let data: PageData;
 	
-	let { MostPopularList,NewReleaseList,TopRatedList, TopSoledList,TrendingList,CarouselList } = data;
-	console.log("🚀 ~ file: +page.svelte:9 ~ MostPopularList:", MostPopularList)
-	// UserProData.update((d) => (d = Userdata));
+	let {Userdata,MostPopularList,NewReleaseList,TopRatedList, TopSoledList,TrendingList,CarouselList } = data;
+	// console.log("🚀 ~ file: +page.svelte:9 ~ MostPopularList:", MostPopularList)
+	UserProData.update((d) => (d = Userdata));
 
 	import ImageShow from '$lib/Carousels/imageShow.svelte';
 	import Showcase from '$lib/Carousels/showcase.txt';

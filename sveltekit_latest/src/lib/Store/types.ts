@@ -65,3 +65,10 @@ export type UserDataType = {
 	ContactDevMsg: string[];
 	UserCart: string[];
 }
+
+export type CookieInfo1Type=  {
+    Email    :   string 
+    Name      :  string 
+    UserID   :  string 
+    Accounttype :string 
+}

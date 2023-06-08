@@ -130,7 +130,7 @@
 	// 	}
 	// ];
 
-	let LiObj: GameDataType[] = [] as GameDataType[];
+	let LiObj: GameDataType = {} as GameDataType;
 	
 </script>
 
@@ -143,17 +143,15 @@
 		>
 	</div>
 	<div class=" mx-24 flex flex-row flex-wrap space-x-4 space-y-4   ">
-		{#if MostPopularList != null}
-
-		
-		{#each MostPopularList as Obj}
-		<MidGameCom {Obj} />
-		{/each}
+		{#if MostPopularList.length }
+			{#each MostPopularList as Obj}
+			<MidGameCom {Obj} />
+			{/each}
 
 		{:else}
-		{#each Array(10) as _,i}
-		<MidGameCom  />
-		{/each}
+			{#each Array(10) as _,i}
+			<MidGameCom  {LiObj} />
+			{/each}
 		{/if}
 	</div>
 </div>
