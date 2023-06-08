@@ -3,7 +3,7 @@ version: "3.8"
 
 
 services:
-  mongodb:
+  gamestation_mongo:
     image: mongo:latest
     container_name: gamestation_mongo
     environment:

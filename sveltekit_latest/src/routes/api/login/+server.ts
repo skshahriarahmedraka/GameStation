@@ -30,6 +30,7 @@ export const POST: RequestHandler = async ({ cookies , request }) =>{
                     // send cookie for every page
                     path: '/',
                     // server side only cookie so you can't use `document.cookie`
+                    Domain:"127.0.0.1",
                     httpOnly: true,
                     // only requests from same site can send cookies
                     // https://developer.mozilla.org/en-US/docs/Glossary/CSRF

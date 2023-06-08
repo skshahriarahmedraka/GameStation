@@ -10,51 +10,7 @@
 
 	console.log('🚀 ~ file: +page.svelte ~ line 3 ~ data', data.mydata);
 
-	let Gamedata : {
-		GameID: string;
-		Name: string;
-		Moto: string;
-		LogoImage: string;
-		BigPosterImage: string;
-		SmallPosterImage: string;
-		OtherImages: string[];
-		Genres: string[];
-		Feature: string[];
-		Description: string;
-		Rating: number;
-		RatingGivenBy: {
-			'PC Gamer': string;
-			IGN: string;
-			'Game Informer': string;
-		};
-		Minspec: {
-			Name: string;
-			Value: string;
-		}[];
-		Recomendedspec: {
-			Name: string;
-			Value: string;
-		}[];
-		Discount: number;
-		Price: number;
-		Developer: string;
-		Publisher: string;
-		Released: string;
-		Platform: string[];
-		Players: number;
-		Comment: {
-			Name: string;
-			Rating: number;
-			Description: string;
-		}[];
-		FollowUs: {
-			Facebook: string;
-			Discord: string;
-			Youtube: string;
-			Twitter: string;
-			Site: string;
-		};
-	} = data.mydata;
+	let Gamedata : GameDataType = data.mydata;
 
 	async function FetchGameData() {
 		await fetch(`/api/getgamedata`,{
@@ -426,6 +382,7 @@
 	import Textarea from '$lib/otherComponents/textarea.svelte';
 	import { UserSettingSelect } from '$lib/Store/store';
 	import { comment } from 'postcss';
+	import type { GameDataType } from '$lib/Store/types';
 	let TheGameHas = [
 		{ title: 'Amazing Characters', icon: Happysad },
 		{ title: 'Diverse Characters', icon: Globe },

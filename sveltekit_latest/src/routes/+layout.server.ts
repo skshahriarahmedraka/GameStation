@@ -14,7 +14,7 @@ export const  load: PageServerLoad = async () => {
 	//   console.log('🚀 ~ file: +layout.server.ts ~ line 4 ~ cookies', cookies.get('Auth1'));
 	//   const MyCookie = cookies.get('Auth1') || '';
 	//   const JWT_Auth_KEY: string = process.env.JWT_SECRET as string;
-	//   let Userdata:any 
+	//   let Userdata:UserDataType = {} as UserDataType 
 	//   if (MyCookie!= ''){
 		  
 	// 	  const decoded = jwt.verify(MyCookie, JWT_Auth_KEY);
@@ -33,9 +33,9 @@ export const  load: PageServerLoad = async () => {
   
 		  
 	//   }
-	// return {
-	// 	Userdata
-	// }
+	return {
+		// Userdata
+	}
 }
 
 

@@ -1,10 +1,9 @@
 version: "3.8"
 
 
-
 services:
  
-  minio:
+  gamestation_minio:
     image: quay.io/minio/minio:latest
     container_name: gamestation_minio
     command: server /data --console-address ":9001"
