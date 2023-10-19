@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-farming-backend
+  namespace: ai-farming
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: ai-farming-backend
+  template:
+    metadata:
+      labels:
+        app: ai-farming-backend
+    spec:
+      containers:
+        - name: ai-farming-backend
+          image: hsakash/ai-farming-backend:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: "500m" # 0.5 CPU cores
+              memory: "512Mi" # 512 MiB of memory
+            requests:
+              cpu: "250m" # 0.25 CPU cores
+              memory: "256Mi" # 256 MiB of memory
+          env:
+            # ________________________hemel________________________#
+            - name: PAYMENT_SERVICE_URL
+              value: https://aifarming.tech
+            - name: AI_SERVICE_URL
+              value:  http://fastapi-app-service.ai-farming:8000/predict
+              
+            # ________________________hemel________________________#
+            # - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+            #   value: com.mysql.cj.jdbc.Driver
+            # - name: SPRING_DATASOURCE_URL
+            #   value: jdbc:mysql://mysql-service.ai-farming:3306/world
+            # - name: SPRING_DATASOURCE_USERNAME
+            #   value: nayemapp
+            # - name: SPRING_DATASOURCE_PASSWORD
+            #   value: root
+            # - name: SPRING_JPA_HIBERNATE_DDL-AUTO
+            #   value: update
+            # - name: SPRING_JPA_SHOW-SQL
+            #   value: "true"
+            # - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+            #   value: org.hibernate.dialect.MySQL8Dialect
+            # - name: SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL
+            #   value: "true"
+            - name: CLOUD_NAME
+              value: "dxjdhsiyu"
+            - name: CLOUD_API_KEY
+              value: "316498961683183"
+            - name: CLOUD_API_SECRET
+              value: WSY9mDMtycQAh5_YlQaK9dZ4B4M 
+            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+              value: com.mysql.cj.jdbc.Driver
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://ai-farming-mysql.mysql.database.azure.com:3306/aifarming?useSSL=true&requireSSL=false
+            - name : SPRING_DATASOURCE_USERNAME
+              value: hemel
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: sqlakashpass1234@
+            - name: SPRING_JPA_HIBERNATE_DDL-AUTO
+              value: update
+            - name: SPRING_JPA_SHOW-SQL
+              value: "true"
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+              value: org.hibernate.dialect.MySQL8Dialect
+            - name : SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL
+              value : "true"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-farming-backend-service
+  namespace: ai-farming
+spec:
+  selector:
+    app: ai-farming-backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer 
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ai-farming-backend-hpa
+  namespace: ai-farming
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ai-farming-backend
+  minReplicas: 1 # Set your desired minimum replica count here
+  maxReplicas: 3 # Set your desired maximum replica count here
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50

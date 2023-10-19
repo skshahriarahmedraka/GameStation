@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: aifarming.tech 
+  namespace: ai-farming
+spec:
+  secretName: aifarming.tech-tls
+  dnsNames:
+  - aifarming.tech 
+  - www.aifarming.tech 
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: www.aifarming.tech
+  

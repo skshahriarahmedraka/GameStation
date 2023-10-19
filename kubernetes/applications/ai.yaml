@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-app
+  namespace: ai-farming
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: fastapi-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+    spec:
+      containers:
+        - name: fastapi-app
+          image: hsakash/ai-farming-ai:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              cpu: "500m" # 0.5 CPU cores
+              memory: "512Mi" # 512 MiB of memory
+            requests:
+              cpu: "250m" # 0.25 CPU cores
+              memory: "256Mi" # 256 MiB of memory
+         
+  
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-app-service
+  namespace: ai-farming
+spec:
+  selector:
+    app: fastapi-app
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: LoadBalancer 
+---
+
+apiVersion: autoscaling/v2
+
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fastapi-app-hpa
+  namespace: ai-farming
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fastapi-app
+  minReplicas: 1 
+  maxReplicas: 3 
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50

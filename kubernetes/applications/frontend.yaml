@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: ai-farming
+spec:
+  replicas: 1 # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend-container
+          image: hsakash/ai-farming-frontend:latest
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: "500m" # 0.5 CPU cores
+              memory: "512Mi" # 512 MiB of memory
+            requests:
+              cpu: "250m" # 0.25 CPU cores
+              memory: "256Mi" # 256 MiB of memory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: ai-farming
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80 # External port
+      targetPort: 80 # Port exposed by the containers
+      # nodePort: 30008 # Port exposed externally by the node
+  type: LoadBalancer # Use LoadBalancer type for external access (assuming your Kubernetes cluster supports it)
+
+--- 
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend-hpa
+  namespace: ai-farming
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend-deployment
+  minReplicas: 1 # Set your desired minimum replica count here
+  maxReplicas: 3 # Set your desired maximum replica count here
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
